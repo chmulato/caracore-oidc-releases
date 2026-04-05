@@ -59,7 +59,7 @@ O conteúdo em **docs/** é espelho do portal **delivery/oidc** (matriz no domí
 
 - **Download EXE (recomendado):** [Releases / ReinoOIDC.exe](https://github.com/chmulato/reino-oidc-releases/releases/latest) — baixe o aplicativo Windows (versão FREE).
 - **Repositório público:** [github.com/chmulato/reino-oidc-releases](https://github.com/chmulato/reino-oidc-releases)
-- **Vitrine (GitHub Pages):** [chmulato.github.io/reino-oidc-releases/](https://chmulato.github.io/reino-oidc-releases/) (Settings → Pages → Source: branch `main`, folder `/docs`).
+- **Vitrine (domínio):** [oidc.caracore.com.br](https://oidc.caracore.com.br/) (espelho GitHub Pages: branch `main`, pasta `/docs`).
 - **Portal Cara Core Informática:** [caracore.com.br/delivery/oidc/](https://caracore.com.br/delivery/oidc/) — apresentação centralizada no portfólio da Cara Core.
 - **Upgrade O Trono da Identidade:** R$ 29,90 — página em `docs/upgrade-trono.html` (espelho de `delivery/oidc/upgrade-trono.html`).
 
