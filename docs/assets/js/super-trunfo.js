@@ -82,7 +82,7 @@
         STORAGE_ELITE_KEY: 'reino_oidc_elite_unlocked',
         STORAGE_HWID_KEY: 'reino_oidc_hwid',
         STORAGE_LAST_ERA_KEY: 'reino_oidc_last_era_seen',
-        LICENSE_KEY_URL: 'https://caracore.com.br/license.key'
+        LICENSE_KEY_URL: 'https://www.caracore.com.br/license.key'
     };
 
     let state = {

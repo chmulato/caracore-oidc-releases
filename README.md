@@ -48,10 +48,10 @@ O desenvolvimento e o código-fonte do projeto estão em repositório privado; a
 
 | Onde | Papel |
 |------|--------|
-| **Domínio Cara Core Informática** | Portal completo (fonte de verdade): `D:\dev\site\cara-core\delivery\oidc` · [caracore.com.br/delivery/oidc/](https://caracore.com.br/delivery/oidc/) |
+| **Domínio Cara Core Informática** | Referência institucional no portfólio: [caracore.com.br/portfolio.html#reino-oidc](https://www.caracore.com.br/portfolio.html#reino-oidc) |
 | **Vitrine e balcão público** | Espelho (este repositório): `docs/` publicado via GitHub Pages |
 
-O conteúdo em **docs/** é espelho do portal **delivery/oidc** (matriz no domínio Cara Core). A matriz contém: **index.html** (balcão), **conteudo-free.html** (conteúdo FREE), **canal-feedback.html**, **licenca-uso.html** e **upgrade-trono.html**. Ao sincronizar da matriz para **docs/**, substitua `../../portfolio.html` por `https://caracore.com.br/portfolio.html#reino-oidc` na vitrine.
+O conteúdo em **docs/** é espelho do portal **delivery/oidc** (matriz no domínio Cara Core). A matriz contém: **index.html** (balcão), **conteudo-free.html** (conteúdo FREE), **canal-feedback.html**, **licenca-uso.html** e **upgrade-trono.html**. Ao sincronizar da matriz para **docs/**, substitua `../../portfolio.html` por `https://www.caracore.com.br/portfolio.html#reino-oidc` na vitrine.
 
 ---
 
@@ -60,7 +60,7 @@ O conteúdo em **docs/** é espelho do portal **delivery/oidc** (matriz no domí
 - **Download EXE (recomendado):** [Releases / ReinoOIDC.exe](https://github.com/chmulato/reino-oidc-releases/releases/latest) — baixe o aplicativo Windows (versão FREE).
 - **Repositório público:** [github.com/chmulato/reino-oidc-releases](https://github.com/chmulato/reino-oidc-releases)
 - **Vitrine (domínio):** [oidc.caracore.com.br](https://oidc.caracore.com.br/) (espelho GitHub Pages: branch `main`, pasta `/docs`).
-- **Portal Cara Core Informática:** [caracore.com.br/delivery/oidc/](https://caracore.com.br/delivery/oidc/) — apresentação centralizada no portfólio da Cara Core.
+- **Portfólio Cara Core Informática:** [caracore.com.br/portfolio.html#reino-oidc](https://www.caracore.com.br/portfolio.html#reino-oidc) — apresentação institucional centralizada.
 - **Upgrade O Trono da Identidade:** R$ 29,90 — página em `docs/upgrade-trono.html` (espelho de `delivery/oidc/upgrade-trono.html`).
 
 ---
