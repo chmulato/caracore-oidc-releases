@@ -48,26 +48,26 @@ O desenvolvimento e o código-fonte do projeto estão em repositório privado; a
 
 | Onde | Papel |
 |------|--------|
-| **Domínio Cara Core Informática** | Referência institucional no portfólio: [caracore.com.br/portfolio.html#reino-oidc](https://www.caracore.com.br/portfolio.html#reino-oidc) |
+| **Loja oficial (Reino da OIDC)** | [oidc.caracore.com.br](https://oidc.caracore.com.br/) — vitrine e balcão público no mesmo domínio |
 | **Vitrine e balcão público** | Espelho (este repositório): `docs/` publicado via GitHub Pages |
 
-O conteúdo em **docs/** é espelho do portal **delivery/oidc** (matriz no domínio Cara Core). A matriz contém: **index.html** (balcão), **conteudo-free.html** (conteúdo FREE), **canal-feedback.html**, **licenca-uso.html** e **upgrade-trono.html**. Ao sincronizar da matriz para **docs/**, substitua `../../portfolio.html` por `https://www.caracore.com.br/portfolio.html#reino-oidc` na vitrine.
+O conteúdo em **docs/** é espelho do portal **delivery/oidc**. A vitrine publica **index.html** (balcão), **conteudo-free.html** (conteúdo FREE), **canal-feedback.html**, **licenca-uso.html** e **upgrade-trono.html**. Ao sincronizar da matriz para **docs/**, use links relativos ou `https://oidc.caracore.com.br/` para apresentação e navegação (evita domínios externos bloqueados na rede das visitantes).
 
 ---
 
 ## Onde acessar?
 
-- **Download EXE (recomendado):** [Releases / ReinoOIDC.exe](https://github.com/chmulato/reino-oidc-releases/releases/latest) — baixe o aplicativo Windows (versão FREE).
-- **Repositório público:** [github.com/chmulato/reino-oidc-releases](https://github.com/chmulato/reino-oidc-releases)
+- **Download EXE (recomendado):** [Página de download na loja](https://oidc.caracore.com.br/download.html) — aplicativo Windows (versão FREE) e checksums.
+- **Repositório público:** [github.com/chmulato/caracore-oidc-releases](https://github.com/chmulato/caracore-oidc-releases) (gestão de releases; o download para visitantes fica na loja).
 - **Vitrine (domínio):** [oidc.caracore.com.br](https://oidc.caracore.com.br/) (espelho GitHub Pages: branch `main`, pasta `/docs`).
-- **Portfólio Cara Core Informática:** [caracore.com.br/portfolio.html#reino-oidc](https://www.caracore.com.br/portfolio.html#reino-oidc) — apresentação institucional centralizada.
+- **Apresentação na loja:** [Balcão — index](https://oidc.caracore.com.br/index.html) — mesmo domínio da vitrine.
 - **Upgrade O Trono da Identidade:** R$ 29,90 — página em `docs/upgrade-trono.html` (espelho de `delivery/oidc/upgrade-trono.html`).
 
 ---
 
 ## Próximos passos (para você)
 
-1. **Baixar o aplicativo** [ReinoOIDC.exe](https://github.com/chmulato/reino-oidc-releases/releases/latest) (versão FREE para Windows).
+1. **Baixar o aplicativo** [ReinoOIDC.exe na loja](https://oidc.caracore.com.br/download.html) (versão FREE para Windows).
 2. **Ler a história** (Parte I → II → III) e conhecer os personagens (no app ou em `docs/`).
 3. **Praticar na Academia** com os 60 flashcards nos três níveis.
 4. **Consultar o glossário** e os mapas técnicos para fixar conceitos.
@@ -77,7 +77,7 @@ O conteúdo em **docs/** é espelho do portal **delivery/oidc** (matriz no domí
 
 ## Workspace local e delivery de novas features
 
-- **Remote Git:** `https://github.com/chmulato/reino-oidc-releases.git`
+- **Remote Git:** `https://github.com/chmulato/caracore-oidc-releases.git`
 - **Fluxo de novas features:** Desenvolvimento no repo privado → sincronização para `docs/` neste repo → commit e push para `reino-oidc-releases`. Detalhes em [WORKSPACE.md](WORKSPACE.md).
 - **Público-alvo e diretrizes:** [PUBLICO_ALVO.md](PUBLICO_ALVO.md) — definição do público (jovens programadoras, Security, OIDC/Google/Microsoft) e orientações para novas funcionalidades.
 
@@ -87,7 +87,7 @@ O conteúdo em **docs/** é espelho do portal **delivery/oidc** (matriz no domí
 
 - **O que é:** Portal público do Reino OIDC — material educacional sobre OAuth 2.1 e OIDC.
 - **Para quem:** Jovens programadoras, estudantes de segurança e educadoras; foco em autenticação Google/Microsoft e Big Tech.
-- **Onde:** Site em `docs/`, delivery centralizado na Cara Core Informática; gestão de features neste repositório público [reino-oidc-releases](https://github.com/chmulato/reino-oidc-releases).
+- **Onde:** Site em `docs/`, delivery centralizado na Cara Core Informática; gestão de features neste repositório público [caracore-oidc-releases](https://github.com/chmulato/caracore-oidc-releases).
 - **Licença:** Proprietária Cara Core Informática — conteúdo gratuito para pessoas físicas (uso pessoal e estudo). Instituições e uso comercial requerem contratação. Não é MIT, não é open source.
 
 Feito com 💜 para jovens programadoras e para o mundo da Security.

@@ -41,9 +41,9 @@ Painel de Controle > Programas > Programas e Recursos > desinstalar Reino OIDC.
 
 - Pagina de download: ../download.html
 - Upgrade: ../upgrade-trono.html
-- Suporte: https://www.caracore.com.br
+- Suporte / loja: https://oidc.caracore.com.br/
 
 ---
 
 > Versao: v1.0.0
-> Cara Core Informatica — https://www.caracore.com.br
+> Cara Core Informatica — https://oidc.caracore.com.br/

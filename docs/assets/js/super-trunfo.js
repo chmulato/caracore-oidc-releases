@@ -3,7 +3,7 @@
  * compareCards(attr): valida quem tem maior valor no atributo.
  * FREE: decks 1 e 2. PREMIUM (R$ 29,90): decks 3, 4 e 5 com Poderes Especiais.
  * Log [BATALHA], tremer tela + Selo Pawlowsky dourado em carta Premium.
- * check_license(HID): Cara-Core; sem license.key → pergaminho com QR PIX.
+ * check_license(HID): loja oidc.caracore.com.br; sem license.key → pergaminho com QR PIX.
  */
 
 (function () {
@@ -82,7 +82,7 @@
         STORAGE_ELITE_KEY: 'reino_oidc_elite_unlocked',
         STORAGE_HWID_KEY: 'reino_oidc_hwid',
         STORAGE_LAST_ERA_KEY: 'reino_oidc_last_era_seen',
-        LICENSE_KEY_URL: 'https://www.caracore.com.br/license.key'
+        LICENSE_KEY_URL: 'https://oidc.caracore.com.br/license.key'
     };
 
     let state = {
