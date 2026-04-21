@@ -1,93 +1,61 @@
-# Reino OIDC — Releases e portal público
+# Caracore OIDC Releases
 
-**Bem-vinda ao Reino da Identidade Federada.** Este repositório é o **portal público** do projeto Reino OIDC: material educacional **proprietário da Cara Core Informática** sobre **OAuth 2.1** e **OpenID Connect (OIDC)** — a base da autenticação que você usa todos os dias com **Google**, **Microsoft** e outras Big Techs.
+Loja oficial de distribuicao do Reino OIDC, orientada para publicacao de versoes, entrega do portal web e comunicacao institucional do produto.
 
-Com foco em **jovens programadoras** e no mundo da **Segurança**, o Reino OIDC transforma conceitos de autenticação e autorização em uma narrativa épica, personagens e jogos de aprendizado.
+## Posicionamento da loja
 
----
+Este repositorio atua como camada publica de mercado para o Reino OIDC, concentrando tres frentes operacionais:
 
-## Para quem é este projeto?
+- Distribuicao de releases para usuarios finais
+- Publicacao do portal comercial e educacional
+- Canal institucional para suporte e contratacao
 
-- **Jovens programadoras** que querem entender segurança digital e autenticação.
-- **Estudantes** de segurança da informação, desenvolvimento e áreas afins.
-- **Educadoras** em busca de material didático criativo sobre OIDC e OAuth.
-- **Qualquer pessoa** curiosa sobre como funcionam os logins "Entrar com Google" e "Entrar com Microsoft".
+## Portfolio de produtos da loja
 
-O conteúdo foi pensado para ser **acessível**, **memorável** e **inclusivo**, com linguagem dual (para leigos e para técnicas) e gamificação.
+| Produto | Objetivo | Entrega |
+|---|---|---|
+| Loja de Download | Disponibilizar versoes oficiais do aplicativo e historico de lancamentos | [Releases](https://github.com/chmulato/caracore-oidc-releases/releases) |
+| Portal Web OIDC | Publicar conteudo de apresentacao, jornada e material de apoio | [docs/index.html](docs/index.html) |
+| Conteudo Free | Oferecer acesso introdutorio para estudo individual | [docs/conteudo-free.html](docs/conteudo-free.html) |
+| Canal de Feedback | Receber sugestoes e demandas de suporte | [docs/canal-feedback.html](docs/canal-feedback.html) |
+| Licenciamento e Upgrade | Formalizar regras de uso e opcoes de ampliacao comercial | [docs/licenca-uso.html](docs/licenca-uso.html) |
 
----
+## Politica de uso e licenciamento
 
-## O que é OIDC e por que importa para Security?
+- Uso pessoal para estudo: permitido dentro da oferta gratuita vigente
+- Uso institucional e comercial: exige contratacao conforme condicoes da Cara Core Informatica
+- Natureza juridica do conteudo: proprietario, sem licenca open source
 
-**OpenID Connect (OIDC)** e **OAuth 2.1** são os protocolos por trás da autenticação moderna na web e em aplicativos. Quando você clica em "Entrar com Google" ou "Entrar com Microsoft", está usando OIDC/OAuth. Entender esses conceitos é um passo importante para quem quer atuar em **segurança**, **identidade** e **integração** com provedores das Big Techs.
+Termos legais deste repositorio:
 
-O Reino OIDC explica isso com:
+- [LICENSE](LICENSE)
 
-- **Personagens** (Lady OAuth, Lord OIDC, Pixie PKCE, Devia a Aprendiz, etc.) que representam cada conceito.
-- **Histórias em três partes** (Era das Senhas, Era da Confiança, Nova Ordem Digital).
-- **Academia** com 60 flashcards em 3 níveis (Iniciante, Aventureiro, Mestre).
-- **Glossário ilustrado**, **mapas técnicos** e **caminho feliz** interativo.
-- **Conteúdo técnico** (JWT, PKCE, refresh tokens) com explicações para leigas e para especialistas.
+## Publicacao do portal
 
----
+A vitrine desta loja e publicada via GitHub Pages a partir da pasta docs.
 
-## O que tem neste repositório?
+Configuracao recomendada:
 
-| Onde   | O que tem |
-|--------|-----------|
-| **docs/** | Site estático do Reino OIDC: página inicial, personagens, história (Parte I, II, III), conclusão, Academia, Mundo do Conhecimento, Caminho Feliz, glossário, mapas. |
-| **Raiz**  | Este README, LICENSE (Proprietário — Cara Core Informática), VERSION e CHANGELOG para gestão de novas features. |
+- Source: Deploy from a branch
+- Branch: master
+- Folder: /docs
 
-O desenvolvimento e o código-fonte do projeto estão em repositório privado; aqui ficam apenas o **conteúdo gratuito para pessoas físicas** (uso pessoal e estudo) e a gestão de **releases** e novas funcionalidades.
+Canais publicos:
 
-> ⚠️ **Licença proprietária — não é MIT, não é open source.** Gratuito para pessoas físicas (uso pessoal e estudo). Instituições e uso comercial requerem contratação. Decisão: 19/02/2026.
+- Dominio principal: https://oidc.caracore.com.br/
+- Repositorio de releases: https://github.com/chmulato/caracore-oidc-releases
 
----
+## Relacao com o repositorio principal
 
-## Espelho de delivery (mesma lógica do Cara Core Seed)
+O desenvolvimento continuo do produto ocorre no repositorio principal do Reino OIDC. Este repositorio de releases concentra a distribuicao publica e o material de loja.
 
-| Onde | Papel |
-|------|--------|
-| **Loja oficial (Reino da OIDC)** | [oidc.caracore.com.br](https://oidc.caracore.com.br/) — vitrine e balcão público no mesmo domínio |
-| **Vitrine e balcão público** | Espelho (este repositório): `docs/` publicado via GitHub Pages |
+- Produto principal: https://github.com/chmulato/caracore-oidc
+- Loja de releases: https://github.com/chmulato/caracore-oidc-releases
 
-O conteúdo em **docs/** é espelho do portal **delivery/oidc**. A vitrine publica **index.html** (balcão), **conteudo-free.html** (conteúdo FREE), **canal-feedback.html**, **licenca-uso.html** e **upgrade-trono.html**. Ao sincronizar da matriz para **docs/**, use links relativos ou `https://oidc.caracore.com.br/` para apresentação e navegação (evita domínios externos bloqueados na rede das visitantes).
+## Organizacao responsavel
 
----
+Cara Core Informatica
 
-## Onde acessar?
+CNPJ: 23.969.028/0001-37
 
-- **Download EXE (recomendado):** [Página de download na loja](https://oidc.caracore.com.br/download.html) — aplicativo Windows (versão FREE) e checksums.
-- **Repositório público:** [github.com/chmulato/caracore-oidc-releases](https://github.com/chmulato/caracore-oidc-releases) (gestão de releases; o download para visitantes fica na loja).
-- **Vitrine (domínio):** [oidc.caracore.com.br](https://oidc.caracore.com.br/) (espelho GitHub Pages: branch `main`, pasta `/docs`).
-- **Apresentação na loja:** [Balcão — index](https://oidc.caracore.com.br/index.html) — mesmo domínio da vitrine.
-- **Upgrade O Trono da Identidade:** R$ 29,90 — página em `docs/upgrade-trono.html` (espelho de `delivery/oidc/upgrade-trono.html`).
-
----
-
-## Próximos passos (para você)
-
-1. **Baixar o aplicativo** [ReinoOIDC.exe na loja](https://oidc.caracore.com.br/download.html) (versão FREE para Windows).
-2. **Ler a história** (Parte I → II → III) e conhecer os personagens (no app ou em `docs/`).
-3. **Praticar na Academia** com os 60 flashcards nos três níveis.
-4. **Consultar o glossário** e os mapas técnicos para fixar conceitos.
-5. **Contribuir** com sugestões e feedbacks via Issues (não é open source; não aceitamos pull requests externos ao ecossistema Cara Core).
-
----
-
-## Workspace local e delivery de novas features
-
-- **Remote Git:** `https://github.com/chmulato/caracore-oidc-releases.git`
-- **Fluxo de novas features:** Desenvolvimento no repo privado → sincronização para `docs/` neste repo → commit e push para `reino-oidc-releases`. Detalhes em [WORKSPACE.md](WORKSPACE.md).
-- **Público-alvo e diretrizes:** [PUBLICO_ALVO.md](PUBLICO_ALVO.md) — definição do público (jovens programadoras, Security, OIDC/Google/Microsoft) e orientações para novas funcionalidades.
-
----
-
-## Resumo rápido
-
-- **O que é:** Portal público do Reino OIDC — material educacional sobre OAuth 2.1 e OIDC.
-- **Para quem:** Jovens programadoras, estudantes de segurança e educadoras; foco em autenticação Google/Microsoft e Big Tech.
-- **Onde:** Site em `docs/`, delivery centralizado na Cara Core Informática; gestão de features neste repositório público [caracore-oidc-releases](https://github.com/chmulato/caracore-oidc-releases).
-- **Licença:** Proprietária Cara Core Informática — conteúdo gratuito para pessoas físicas (uso pessoal e estudo). Instituições e uso comercial requerem contratação. Não é MIT, não é open source.
-
-Feito com 💜 para jovens programadoras e para o mundo da Security.
+Site institucional: https://www.caracore.com.br
