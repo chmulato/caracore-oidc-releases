@@ -10,6 +10,8 @@ Este repositorio atua como camada publica de mercado para o Reino OIDC, concentr
 - Publicacao do portal comercial e educacional
 - Canal institucional para suporte e contratacao
 
+Atualizacao de memoria (25/04/2026): a vitrine removeu itens nao navegaveis do menu superior e breadcrumb redundante da home. O convite para produto relacionado a Python foi atualizado para **Circuito Ferradura**, com contraste reforcado e link para `circuito.caracore.com.br`.
+
 ## Portfolio de produtos da loja
 
 | Produto | Objetivo | Entrega |
