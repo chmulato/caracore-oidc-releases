@@ -144,16 +144,6 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.85rem;
 }
 
-/* Título do usuário no portal: Aventureira -> Soberana (glow roxo e dourado) */
-.reino-user-title {
-    color: rgba(255,255,255,0.9);
-    font-size: 0.9rem;
-}
-.reino-user-title-soberana {
-    color: #d4af37 !important;
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.8), 0 0 20px rgba(138, 43, 226, 0.5);
-}
-
 /* Bloqueio Premium: grayscale + ícone de cadeado de ferro (licenca.js) */
 .locked-feature {
     filter: grayscale(1);

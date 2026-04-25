@@ -147,9 +147,7 @@
                 document.title = 'Mestre da Identidade - Reino OIDC';
             }
             injectSealPremium();
-            injectUserTitle(true);
         } else {
-            injectUserTitle(false);
             document.body.classList.remove('reino-premium-active');
             applyLockedFeatureClass();
             bindVassaloClicks();
@@ -256,27 +254,6 @@
     }
 
     window.ativarReino = ativarReino;
-
-    /**
-     * Injeta ou atualiza o título do usuário no cabeçalho: Aventureira do Reino | Soberana das Identidades Federadas.
-     */
-    function injectUserTitle(isSoberano) {
-        var container = document.querySelector('.navbar .container');
-        if (!container) return;
-        var existing = document.getElementById('reino-user-title');
-        if (existing) {
-            existing.textContent = isSoberano ? 'Soberana das Identidades Federadas' : 'Aventureira do Reino';
-            existing.classList.toggle('reino-user-title-soberana', isSoberano);
-            return;
-        }
-        var brand = container.querySelector('.navbar-brand');
-        if (!brand) return;
-        var span = document.createElement('span');
-        span.id = 'reino-user-title';
-        span.className = 'reino-user-title d-none d-md-inline' + (isSoberano ? ' reino-user-title-soberana' : '');
-        span.textContent = isSoberano ? 'Soberana das Identidades Federadas' : 'Aventureira do Reino';
-        brand.parentNode.insertBefore(span, brand.nextSibling);
-    }
 
     verificarStatusReino();
     if (document.readyState === 'loading') {

@@ -73,8 +73,7 @@
     }
 
     /**
-     * Após fechar o modal: cabeçalho muda para 'Soberana das Identidades Federadas' com glow.
-     * Persistido via localStorage; licenca.js aplica no próximo load.
+     * Após fechar o modal, registra que a coroação já foi exibida.
      */
     function aplicarTituloSoberanaNoHeader() {
         try {
