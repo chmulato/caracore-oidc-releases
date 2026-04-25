@@ -65,21 +65,72 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: bold !important;
 }
 
-/* Convite Python Training */
-.python-training-invite {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border: none;
-    border-radius: 15px;
+/* Convite Circuito Ferradura */
+.alert.circuito-ferradura-invite {
+    background:
+        linear-gradient(135deg, rgba(13, 59, 31, .98) 0%, rgba(16, 92, 44, .96) 58%, rgba(113, 78, 12, .96) 100%),
+        #0d3b1f;
+    border: 1px solid rgba(244, 196, 48, .55) !important;
+    border-left: 8px solid #f4c430 !important;
+    border-radius: 18px;
+    color: #ffffff;
+    box-shadow: 0 18px 40px rgba(6, 19, 11, .35) !important;
 }
 
-.python-training-invite ul {
+.circuito-ferradura-invite h3 {
+    color: #f4c430 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .45);
+}
+
+.circuito-ferradura-invite p,
+.circuito-ferradura-invite li {
+    color: #d8f3dc !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .45);
+}
+
+.circuito-ferradura-invite strong {
+    color: #ffe08a;
+}
+
+.circuito-ferradura-list {
     font-size: 1.1rem;
+    list-style: none;
+    padding-left: 0;
 }
 
-.python-training-btn {
+.circuito-ferradura-list li {
+    background: rgba(0, 0, 0, .24);
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 10px;
+    margin-bottom: .55rem;
+    padding: .55rem .75rem;
+}
+
+.circuito-ferradura-list li::before {
+    content: "✓";
+    color: #f4c430;
+    font-weight: 800;
+    margin-right: .5rem;
+}
+
+.circuito-ferradura-btn {
+    background: #f4c430;
+    border-color: #f4c430;
+    color: #102115 !important;
     font-size: 1.3rem;
     font-weight: 700;
     border-radius: 50px;
+}
+
+.circuito-ferradura-btn:hover,
+.circuito-ferradura-btn:focus {
+    background: #ffe08a;
+    border-color: #ffe08a;
+    color: #102115 !important;
+}
+
+.circuito-ferradura-note {
+    color: #f7f7e8 !important;
 }
 
 /* Selo Acesso Premium Ativo (licenca.js — status SOBERANO) */
