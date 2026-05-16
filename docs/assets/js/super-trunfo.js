@@ -3,7 +3,7 @@
  * compareCards(attr): valida quem tem maior valor no atributo.
  * FREE: decks 1 e 2. PREMIUM (R$ 29,90): decks 3, 4 e 5 com Poderes Especiais.
  * Log [BATALHA], tremer tela + Selo Pawlowsky dourado em carta Premium.
- * check_license(HID): loja oidc.caracore.com.br; sem license.key → pergaminho com QR PIX.
+ * check_license(HID): Cara-Core; sem license.key → pergaminho com QR PIX.
  */
 
 (function () {
@@ -81,8 +81,7 @@
         UPGRADE_URL: 'upgrade-trono.html',
         STORAGE_ELITE_KEY: 'reino_oidc_elite_unlocked',
         STORAGE_HWID_KEY: 'reino_oidc_hwid',
-        STORAGE_LAST_ERA_KEY: 'reino_oidc_last_era_seen',
-        LICENSE_KEY_URL: 'https://oidc.caracore.com.br/license.key'
+        STORAGE_LAST_ERA_KEY: 'reino_oidc_last_era_seen'
     };
 
     let state = {
@@ -238,18 +237,21 @@
     }
 
     function renderPergaminhoPIX(container) {
-        var cnpj = CONFIG.CNPJ.replace(/\D/g, '');
-        var qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=' + encodeURIComponent('PIX+' + CONFIG.CNPJ + '+R%2429%2C90');
+        var pixPayload = 'PIX+' + CONFIG.CNPJ + '+R%2429%2C90';
         var div = document.createElement('div');
         div.className = 'trunfo-card pergaminho-pix';
         div.innerHTML =
             '<span class="badge-locked">🔒 LICENÇA</span>' +
             '<div class="card-name">Pergaminho de Selagem</div>' +
             '<div class="card-subtitle">Desbloqueie com R$ 29,90 — PIX CNPJ</div>' +
-            '<div class="pergaminho-qr"><img src="' + qrUrl + '" alt="QR PIX" width="100" height="100"></div>' +
+            '<div class="pergaminho-qr"><img class="pergaminho-qr-img" alt="QR PIX" width="100" height="100"></div>' +
             '<code class="pergaminho-cnpj">' + escapeHtml(CONFIG.CNPJ) + '</code>' +
             '<p class="pergaminho-hint">Chave PIX · R$ 29,90 · Cara Core Informática</p>';
         container.appendChild(div);
+        var qrImg = div.querySelector('.pergaminho-qr-img');
+        if (qrImg && window.ReinoQR && window.ReinoQR.applyToImg) {
+            window.ReinoQR.applyToImg(qrImg, pixPayload, 100);
+        }
     }
 
     function attrBarHtml(attrKey, value) {

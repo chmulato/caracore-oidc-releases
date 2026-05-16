@@ -1,13 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Mapa do Reino — Evolução | Reino OIDC</title>
     <meta name="description" content="Dashboard de evolução do Reino da Identidade Federada. Áreas acendem conforme você aprende e desbloqueia o Trono.">
-    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/evolution-status/evolution-status.css">
+  <link rel="stylesheet" href="/assets/caracore-core-typography.css">
+  <link rel="stylesheet" href="/assets/caracore-institutional-components.css">
     <style>
         .evolucao-map { max-width: 900px; margin: 0 auto; padding: 24px 0; }
         .evolucao-title { text-align: center; margin-bottom: 8px; }
@@ -60,14 +64,60 @@
         }
         .trono-cta p { margin-bottom: 16px; }
         .trono-cta .btn { font-weight: 600; }
+
+        @media (max-width: 768px) {
+            .evolucao-map {
+                padding: 16px 0;
+            }
+            .evolucao-title {
+                font-size: 1.55rem;
+            }
+            .evolucao-subtitle {
+                font-size: 0.92rem;
+                margin-bottom: 18px;
+            }
+            .area-card {
+                padding: 14px 14px;
+                margin-bottom: 12px;
+                border-radius: 10px;
+            }
+            .area-card .area-badge {
+                font-size: 1.2rem;
+                margin-right: 8px;
+            }
+            .area-card .area-name {
+                display: inline-block;
+                font-size: 1rem;
+                line-height: 1.3;
+            }
+            .area-card .area-desc {
+                font-size: 0.86rem;
+                margin-top: 8px;
+            }
+            .area-card.locked .area-desc::after {
+                content: ' (Desbloqueio premium)';
+            }
+            .trono-cta {
+                margin-top: 18px;
+                padding: 14px;
+            }
+            .trono-cta .btn {
+                width: 100%;
+            }
+        }
     </style>
-  <link rel="stylesheet" href="/assets/caracore-core-typography.css">
-  <link rel="stylesheet" href="/assets/caracore-institutional-components.css">
 </head>
-<body class="cc-i-page">
+<body class="page-mapa-evolucao cc-i-page">
+    <script src="assets/js/runtime-config.js"></script>
     <script src="assets/js/licenca.js"></script>
     <script>
         (function() {
+            if (window.isReinoLocalMode && window.isReinoLocalMode()) {
+                try {
+                    localStorage.setItem('reino_oidc_elite_unlocked', '1');
+                } catch (e) {}
+                return;
+            }
             if (typeof window.isPremium !== 'function' || !window.isPremium()) {
                 window.location.replace('acesso_negado.html?from=mapa_evolucao');
             }
@@ -76,7 +126,6 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
-</span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -109,40 +158,81 @@
     <div class="container evolucao-map">
         <h1 class="evolucao-title">Mapa do Reino</h1>
         <p class="evolucao-subtitle">As áreas acendem conforme você aprende. Desbloqueie o Trono para iluminar a Mineração de Chaves.</p>
-
-        <div class="row">
+        <div class="reino-media-block reino-media-content">
+            <picture class="reino-media-frame">
+                <source
+                    srcset="docs/img/mapa-evolucao-aprendizado-mobile.webp 900w, docs/img/mapa-evolucao-aprendizado.webp 2048w"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px"
+                    type="image/webp">
+                <img
+                    src="docs/img/mapa-evolucao-aprendizado.png"
+                    srcset="docs/img/mapa-evolucao-aprendizado-mobile.png 900w, docs/img/mapa-evolucao-aprendizado.png 2048w"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px"
+                    class="reino-media-image"
+                    loading="eager"
+                    decoding="async"
+                    alt="Mapa visual de evolução do aprendizado OIDC com trilhas Easy, Medium e Hard"
+                    title="Mapa de evolução do aprendizado no Reino OIDC">
+            </picture>
+            <p class="reino-media-caption">Acompanhe o progresso por trilhas, personagens e domínio de conceitos OIDC.</p>
+        </div>
+<div class="row">
             <div class="col-12">
+                <div class="reino-mapa-area-block" id="bloco-area-porta">
+
                 <a href="index.html" class="area-card unlocked" id="area-porta">
                     <span class="area-badge">🚪</span>
                     <span class="area-name">Porta do Reino</span>
                     <p class="area-desc">Início da jornada — Bem-vinda ao Reino da Identidade Federada.</p>
                 </a>
+</div>
+
+                <div class="reino-mapa-area-block" id="bloco-area-historia">
+
                 <a href="historia_p1.html" class="area-card unlocked" id="area-historia">
                     <span class="area-badge">📖</span>
                     <span class="area-name">História do Reino</span>
                     <p class="area-desc">As três eras: Senhas, OIDC e a Nova Ordem Digital.</p>
                 </a>
+</div>
+
+                <div class="reino-mapa-area-block" id="bloco-area-personagens">
+
                 <a href="personagens.html" class="area-card unlocked" id="area-personagens">
                     <span class="area-badge">👥</span>
                     <span class="area-name">Personagens</span>
                     <p class="area-desc">Lady OAuth, Lord OIDC, Pixie PKCE e os guardiões do Reino.</p>
                 </a>
+</div>
+
+                <div class="reino-mapa-area-block" id="bloco-area-academia">
+
                 <a href="aprendiz.html" class="area-card unlocked" id="area-academia">
                     <span class="area-badge">🎓</span>
                     <span class="area-name">Academia</span>
                     <p class="area-desc">Flashcards em 3 níveis: Iniciante, Aventureiro e Mestre.</p>
                 </a>
+</div>
+
+                <div class="reino-mapa-area-block" id="bloco-area-duelo">
+
                 <a href="super_trunfo.html" class="area-card unlocked" id="area-duelo">
                     <span class="area-badge">🃏</span>
                     <span class="area-name">Duelo de Atributos</span>
                     <p class="area-desc">Super Trunfo: compare Sigilo e Linhagem com o Conselho da Confiança.</p>
                 </a>
+</div>
+
+                <div class="reino-mapa-area-block" id="bloco-area-mineracao">
+
+
                 <div class="area-card locked" id="area-mineracao">
                     <span class="area-badge">🔐</span>
                     <span class="area-name">Mineração de Chaves</span>
                     <p class="area-desc">Protocolo de Mineração de Chaves. Acende após confirmação do pagamento (Chave de Soberania no portal de licenças).</p>
                     <a href="upgrade-trono.html" class="btn btn-primary mt-3">Desbloquear — R$ 29,90</a>
                 </div>
+</div>
             </div>
         </div>
 
@@ -159,7 +249,9 @@
         </div>
     </footer>
 
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="assets/js/reino-nav.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/footer-propriedade.js"></script>
     <script>
         (function() {
             try {
@@ -175,11 +267,6 @@
             } catch (e) {}
         })();
     </script>
-    <div class="evo-beta-wrap" aria-hidden="true"><span class="evo-beta-badge" title="Versão de teste oficial">Seed<span class="evo-beta-tooltip">Esta é uma versão oficial de teste da Cara Core Informática para parceiros do Plano Premium+.</span></span></div>
-    <footer class="evo-roadmap-footer" role="contentinfo"><p class="evo-roadmap-title">Próximos passos</p><ul class="evo-roadmap-list"><li>Domínio próprio <span class="evo-roadmap-tag">Março/2026</span></li><li>Integração PIX nativa</li><li>IA para estoque</li></ul></footer>
-    <div class="evo-feedback-fab"><a href="canal-feedback.html" class="evo-feedback-btn" target="_blank" rel="noopener noreferrer" aria-label="Sugira uma melhoria pelo WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Sugira uma melhoria</a></div>
+    <script src="assets/js/loja.js"></script>
 </body>
 </html>
-
-
-

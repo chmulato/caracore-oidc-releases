@@ -8,6 +8,17 @@
 (function () {
     'use strict';
 
+    function getRuntimeConfig() {
+        return window.REINO_OIDC_CONFIG || {};
+    }
+
+    function isLocalBaselineMode() {
+        var cfg = getRuntimeConfig();
+        return cfg.localMode === true || cfg.mode === 'local';
+    }
+
+    window.isReinoLocalMode = isLocalBaselineMode;
+
     var STORAGE_CHAVE = 'chave_soberania_oidc';
     var STORAGE_ELITE = 'reino_oidc_elite_unlocked';
     var STORAGE_HWID = 'reino_oidc_hwid';
@@ -24,6 +35,9 @@
      * Em produção pode ser trocado por validação completa (ex.: validarChave).
      */
     function isPremium() {
+        if (isLocalBaselineMode() && getRuntimeConfig().unlockAllLearningContent !== false) {
+            return true;
+        }
         try {
             var raw = localStorage.getItem(STORAGE_LICENSE);
             if (!raw || typeof raw !== 'string') return false;
@@ -90,6 +104,13 @@
      * Se válida (e compatível com HID), define SOBERANO e desbloqueia elite.
      */
     function verificarStatusReino() {
+        if (isLocalBaselineMode()) {
+            window.reinoStatus = 'SOBERANO';
+            try {
+                localStorage.setItem(STORAGE_ELITE, '1');
+            } catch (e) {}
+            return true;
+        }
         try {
             var chave = localStorage.getItem(STORAGE_CHAVE);
             if (chave && validarChave(chave)) {
@@ -116,6 +137,7 @@
      * Abre o modal de Ritual de Ativação (Checkout).
      */
     function openRitualAtivacao() {
+        if (isLocalBaselineMode()) return;
         var modal = document.getElementById('modal-pergaminho');
         if (modal && window.bootstrap) {
             var m = new bootstrap.Modal(modal);
@@ -146,8 +168,9 @@
             if (document.title && document.title.indexOf('Aprendiz') !== -1) {
                 document.title = 'Mestre da Identidade - Reino OIDC';
             }
-            injectSealPremium();
+            clearNavMenuExtras();
         } else {
+            clearNavMenuExtras();
             document.body.classList.remove('reino-premium-active');
             applyLockedFeatureClass();
             bindVassaloClicks();
@@ -169,18 +192,18 @@
         });
     }
 
+    function clearNavMenuExtras() {
+        var seal = document.getElementById('reino-seal-injected');
+        if (seal) seal.parentNode.removeChild(seal);
+        var title = document.getElementById('reino-user-title');
+        if (title) title.parentNode.removeChild(title);
+        document.querySelectorAll('.navbar .navbar-text').forEach(function (el) {
+            el.parentNode.removeChild(el);
+        });
+    }
+
     function injectSealPremium() {
-        if (document.getElementById('reino-seal-injected')) return;
-        var nav = document.querySelector('.navbar .navbar-nav');
-        if (!nav) return;
-        var li = document.createElement('li');
-        li.className = 'nav-item';
-        li.id = 'reino-seal-injected';
-        var span = document.createElement('span');
-        span.className = 'nav-link reino-seal-premium';
-        span.textContent = 'Acesso Premium Ativo';
-        li.appendChild(span);
-        nav.insertBefore(li, nav.firstChild);
+        /* removido: selo não exibido no menu */
     }
 
     function bindVassaloClicks() {
@@ -255,11 +278,20 @@
 
     window.ativarReino = ativarReino;
 
+    /**
+     * Injeta ou atualiza o título do usuário no cabeçalho: Aventureira do Reino | Soberana das Identidades Federadas.
+     */
+    function injectUserTitle() {
+        /* removido: título de usuário não exibido no menu */
+    }
+
     verificarStatusReino();
     if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', clearNavMenuExtras);
         document.addEventListener('DOMContentLoaded', applyReinoUI);
         document.addEventListener('DOMContentLoaded', initReinoImgFallback);
     } else {
+        clearNavMenuExtras();
         applyReinoUI();
         initReinoImgFallback();
     }

@@ -1,17 +1,21 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Aprendiz do Reino OIDC - Flashcards Interativos</title>
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/evolution-status/evolution-status.css">
+  <link rel="stylesheet" href="/assets/caracore-core-typography.css">
+  <link rel="stylesheet" href="/assets/caracore-institutional-components.css">
     <!-- <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico"> -->
     <style>
         .flashcard {
             perspective: 1000px;
-            height: 300px;
+            height: clamp(260px, 45vh, 360px);
             margin: 20px 0;
         }
         
@@ -73,7 +77,7 @@
         }
         
         .custom-progress {
-            width: 200px;
+            width: min(240px, 100%);
             height: 20px;
         }
         
@@ -83,15 +87,41 @@
             right: 10px;
             font-size: 0.8rem;
         }
+
+        @media (max-width: 768px) {
+            .flashcard {
+                height: clamp(320px, 58vh, 480px);
+            }
+
+            .flashcard-front,
+            .flashcard-back {
+                padding: 16px;
+            }
+
+            .flashcard-back .row > .col-md-6 {
+                border-right: none !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+                margin-bottom: 10px;
+                padding-bottom: 10px;
+            }
+
+            .flashcard-back .row > .col-md-6:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+
+            .custom-progress {
+                width: 100%;
+                max-width: 220px;
+            }
+        }
     </style>
-  <link rel="stylesheet" href="/assets/caracore-core-typography.css">
-  <link rel="stylesheet" href="/assets/caracore-institutional-components.css">
 </head>
-<body class="cc-i-page">
+<body class="page-aprendiz cc-i-page">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
-</span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -122,7 +152,7 @@
     </nav>
 
     <div class="container mt-4">
-        <!-- Página Inicial - Seleção de Caminhos -->
+<!-- Página Inicial - Seleção de Caminhos -->
         <div id="pathSelection" class="row">
             <div class="col-12">
                 <div class="text-center mb-5">
@@ -321,17 +351,16 @@
     <footer class="bg-dark text-white text-center py-3 mt-5">
         <div class="container">
             <p>&copy; 2025 Reino OIDC - Academia Interativa de OAuth 2.1 e OpenID Connect</p>
-            <p><small>Projeto educativo open source - <span  class="text-info">GitHub</span></small></p>
+            <p><small>Projeto educativo open source - <a href="https://github.com/chmulato/reino_oidc" class="text-info">GitHub</a></small></p>
         </div>
     </footer>
 
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/reino-nav.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/footer-propriedade.js"></script>
+    <script src="assets/js/runtime-config.js"></script>
     <script src="assets/js/licenca.js"></script>
     <script src="assets/js/aprendiz.js"></script>
-    <div class="evo-beta-wrap" aria-hidden="true"><span class="evo-beta-badge" title="Versão de teste oficial">Seed<span class="evo-beta-tooltip">Esta é uma versão oficial de teste da Cara Core Informática para parceiros do Plano Premium+.</span></span></div>
-    <footer class="evo-roadmap-footer" role="contentinfo"><p class="evo-roadmap-title">Próximos passos</p><ul class="evo-roadmap-list"><li>Domínio próprio <span class="evo-roadmap-tag">Março/2026</span></li><li>Integração PIX nativa</li><li>IA para estoque</li></ul></footer>
-    <div class="evo-feedback-fab"><a href="canal-feedback.html" class="evo-feedback-btn" target="_blank" rel="noopener noreferrer" aria-label="Sugira uma melhoria pelo WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Sugira uma melhoria</a></div>
+    <script src="assets/js/loja.js"></script>
 </body>
 </html>
-
-

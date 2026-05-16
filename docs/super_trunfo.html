@@ -1,24 +1,26 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Reino OIDC — Edição Super Trunfo | Proteja seu Reino</title>
     <meta name="description" content="Jogo de cartas Super Trunfo do Reino da Identidade Federada. Segurança, Complexidade, Escalabilidade e Privacidade (LGPD). Cara Core Informática.">
-    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/evolution-status/evolution-status.css">
-    <link rel="stylesheet" href="assets/css/super-trunfo.css">
-    <link rel="stylesheet" href="assets/css/sucesso-ativacao.css">
   <link rel="stylesheet" href="/assets/caracore-core-typography.css">
   <link rel="stylesheet" href="/assets/caracore-institutional-components.css">
+    <link rel="stylesheet" href="assets/css/super-trunfo.css">
+    <link rel="stylesheet" href="assets/css/sucesso-ativacao.css">
+    <link rel="stylesheet" href="assets/css/reino-responsive.css">
 </head>
 <body class="super-trunfo cc-i-page">
     <!-- Navegação do Reino (alinhada a todas as telas) -->
     <nav class="navbar navbar-expand-lg navbar-dark reino-nav-super-trunfo">
         <div class="container">
             <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
-</span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -238,10 +240,15 @@
     </div>
     <div id="spark-container" class="spark-container" aria-hidden="true"></div>
 
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="assets/js/reino-nav.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/footer-propriedade.js"></script>
+    <script src="assets/js/runtime-config.js"></script>
     <script src="assets/js/game-engine.js"></script>
     <script src="assets/js/licenca.js"></script>
     <script src="assets/js/sucesso_ativacao.js"></script>
+    <script src="assets/js/qrcode.min.js"></script>
+    <script src="assets/js/reino-qr.js"></script>
     <script src="assets/js/super-trunfo.js"></script>
     <script>
         (function() {
@@ -251,7 +258,14 @@
                 VALOR: 29.90,
                 EMPRESA: 'Cara Core Informática'
             };
+            var LOCAL_BASELINE = window.isReinoLocalMode && window.isReinoLocalMode();
             CONFIG.VALOR_FMT = 'R$ ' + CONFIG.VALOR.toFixed(2).replace('.', ',');
+
+            if (LOCAL_BASELINE) {
+                try {
+                    localStorage.setItem('reino_oidc_elite_unlocked', '1');
+                } catch (e) {}
+            }
 
             var el = document.getElementById('display-cnpj');
             if (el) el.textContent = CONFIG.CNPJ;
@@ -299,8 +313,8 @@
                 if (valorEl) valorEl.textContent = CONFIG.VALOR_FMT;
 
                 var qrEl = document.getElementById('checkout-qr-pix');
-                if (qrEl) {
-                    qrEl.src = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + encodeURIComponent(CONFIG.CNPJ);
+                if (qrEl && window.ReinoQR && window.ReinoQR.applyToImg) {
+                    window.ReinoQR.applyToImg(qrEl, CONFIG.CNPJ, 180);
                 }
 
                 var sineteBtn = document.getElementById('btn-sinete-hwid');
@@ -316,11 +330,21 @@
                 }
             }
 
-            document.getElementById('btn-upgrade-trono') && document.getElementById('btn-upgrade-trono').addEventListener('click', openPergaminho);
-            document.getElementById('btn-upgrade-trono-secondary') && document.getElementById('btn-upgrade-trono-secondary').addEventListener('click', openPergaminho);
-            document.getElementById('btn-abrir-pergaminho') && document.getElementById('btn-abrir-pergaminho').addEventListener('click', openPergaminho);
+            if (!LOCAL_BASELINE) {
+                document.getElementById('btn-upgrade-trono') && document.getElementById('btn-upgrade-trono').addEventListener('click', openPergaminho);
+                document.getElementById('btn-upgrade-trono-secondary') && document.getElementById('btn-upgrade-trono-secondary').addEventListener('click', openPergaminho);
+                document.getElementById('btn-abrir-pergaminho') && document.getElementById('btn-abrir-pergaminho').addEventListener('click', openPergaminho);
+            } else {
+                ['era-3-premium-cta', 'btn-upgrade-trono', 'btn-upgrade-trono-secondary', 'carta-sombreada-premium'].forEach(function(id) {
+                    var el = document.getElementById(id);
+                    if (el) el.style.display = 'none';
+                });
+                document.querySelectorAll('.upgrade-elite-box').forEach(function(el) {
+                    el.style.display = 'none';
+                });
+            }
 
-            if (window.location.hash === '#ritual') {
+            if (!LOCAL_BASELINE && window.location.hash === '#ritual') {
                 setTimeout(openPergaminho, 500);
             }
 
@@ -376,11 +400,6 @@
             });
         })();
     </script>
-    <div class="evo-beta-wrap" aria-hidden="true"><span class="evo-beta-badge" title="Versão de teste oficial">Seed<span class="evo-beta-tooltip">Esta é uma versão oficial de teste da Cara Core Informática para parceiros do Plano Premium+.</span></span></div>
-    <footer class="evo-roadmap-footer" role="contentinfo"><p class="evo-roadmap-title">Próximos passos</p><ul class="evo-roadmap-list"><li>Domínio próprio <span class="evo-roadmap-tag">Março/2026</span></li><li>Integração PIX nativa</li><li>IA para estoque</li></ul></footer>
-    <div class="evo-feedback-fab"><a href="canal-feedback.html" class="evo-feedback-btn" target="_blank" rel="noopener noreferrer" aria-label="Sugira uma melhoria pelo WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Sugira uma melhoria</a></div>
+    <script src="assets/js/loja.js"></script>
 </body>
 </html>
-
-
-

@@ -1,20 +1,21 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Personagens - Reino da Identidade Federada</title>
-    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/evolution-status/evolution-status.css">
   <link rel="stylesheet" href="/assets/caracore-core-typography.css">
   <link rel="stylesheet" href="/assets/caracore-institutional-components.css">
 </head>
-<body class="cc-i-page">
+<body class="page-personagens cc-i-page">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
-</span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -48,8 +49,69 @@
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <h1 class="text-center">Os Personagens</h1>
-                <div class="text-center">
-                    <img src="assets/images/personagens.png" class="img-fluid" alt="Personagens">
+                <div class="reino-media-block reino-media-content">
+                    <picture class="reino-media-frame">
+                        <source srcset="docs/img/personagem-devia-integradora-suprema-mobile.webp 900w, docs/img/personagem-devia-integradora-suprema.webp 2048w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" type="image/webp">
+                        <img src="docs/img/personagem-devia-integradora-suprema.png" srcset="docs/img/personagem-devia-integradora-suprema-mobile.png 900w, docs/img/personagem-devia-integradora-suprema.png 2048w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" class="reino-media-image" loading="eager" decoding="async" alt="Devia como integradora suprema conectando personagens e conceitos do protocolo OIDC" title="Devia - personagem principal do Reino OIDC">
+                    </picture>
+                    <p class="reino-media-caption">Galeria oficial dos personagens que conduzem a jornada do leigo ao técnico.</p>
+                </div>
+
+                <div class="row g-3 mt-1 reino-phase-grid">
+                    <div class="col-6 col-md-4">
+                        <div class="card h-100">
+                            <picture>
+                                <source srcset="docs/img/personagem-lady-oauth-mobile.webp 900w, docs/img/personagem-lady-oauth.webp 2048w" sizes="(max-width: 768px) 50vw, 33vw" type="image/webp">
+                                <img src="docs/img/personagem-lady-oauth.png" srcset="docs/img/personagem-lady-oauth-mobile.png 900w, docs/img/personagem-lady-oauth.png 2048w" sizes="(max-width: 768px) 50vw, 33vw" class="reino-media-image" loading="lazy" decoding="async" alt="Lady OAuth guardiã das permissões e da autorização no Reino OIDC" title="Lady OAuth - autorização">
+                            </picture>
+                            <div class="card-body py-2"><p class="small mb-0">Lady OAuth</p></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <div class="card h-100">
+                            <picture>
+                                <source srcset="docs/img/personagem-lord-oidc-mobile.webp 900w, docs/img/personagem-lord-oidc.webp 2048w" sizes="(max-width: 768px) 50vw, 33vw" type="image/webp">
+                                <img src="docs/img/personagem-lord-oidc.png" srcset="docs/img/personagem-lord-oidc-mobile.png 900w, docs/img/personagem-lord-oidc.png 2048w" sizes="(max-width: 768px) 50vw, 33vw" class="reino-media-image" loading="lazy" decoding="async" alt="Lord OIDC mago da identidade com ID Token assinado" title="Lord OIDC - autenticação e identidade">
+                            </picture>
+                            <div class="card-body py-2"><p class="small mb-0">Lord OIDC</p></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <div class="card h-100">
+                            <picture>
+                                <source srcset="docs/img/personagem-pixie-pkce-mobile.webp 900w, docs/img/personagem-pixie-pkce.webp 2048w" sizes="(max-width: 768px) 50vw, 33vw" type="image/webp">
+                                <img src="docs/img/personagem-pixie-pkce.png" srcset="docs/img/personagem-pixie-pkce-mobile.png 900w, docs/img/personagem-pixie-pkce.png 2048w" sizes="(max-width: 768px) 50vw, 33vw" class="reino-media-image" loading="lazy" decoding="async" alt="Pixie PKCE protegendo o Authorization Code Flow com code challenge e code verifier" title="Pixie PKCE - proteção do fluxo">
+                            </picture>
+                            <div class="card-body py-2"><p class="small mb-0">Pixie PKCE</p></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <div class="card h-100">
+                            <picture>
+                                <source srcset="docs/img/personagem-ace-token-mobile.webp 900w, docs/img/personagem-ace-token.webp 2048w" sizes="(max-width: 768px) 50vw, 33vw" type="image/webp">
+                                <img src="docs/img/personagem-ace-token.png" srcset="docs/img/personagem-ace-token-mobile.png 900w, docs/img/personagem-ace-token.png 2048w" sizes="(max-width: 768px) 50vw, 33vw" class="reino-media-image" loading="lazy" decoding="async" alt="Ace Token representando autorização de acesso a APIs e recursos protegidos" title="Ace Token - autorização de recurso">
+                            </picture>
+                            <div class="card-body py-2"><p class="small mb-0">Ace Token</p></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <div class="card h-100">
+                            <picture>
+                                <source srcset="docs/img/personagem-seraph-resource-mobile.webp 900w, docs/img/personagem-seraph-resource.webp 2048w" sizes="(max-width: 768px) 50vw, 33vw" type="image/webp">
+                                <img src="docs/img/personagem-seraph-resource.png" srcset="docs/img/personagem-seraph-resource-mobile.png 900w, docs/img/personagem-seraph-resource.png 2048w" sizes="(max-width: 768px) 50vw, 33vw" class="reino-media-image" loading="lazy" decoding="async" alt="Seraph Resource guardião das APIs com validação de token e escopo" title="Seraph Resource - proteção de APIs">
+                            </picture>
+                            <div class="card-body py-2"><p class="small mb-0">Seraph Resource</p></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <div class="card h-100">
+                            <picture>
+                                <source srcset="docs/img/personagem-devia-integradora-suprema-mobile.webp 900w, docs/img/personagem-devia-integradora-suprema.webp 2048w" sizes="(max-width: 768px) 50vw, 33vw" type="image/webp">
+                                <img src="docs/img/personagem-devia-integradora-suprema.png" srcset="docs/img/personagem-devia-integradora-suprema-mobile.png 900w, docs/img/personagem-devia-integradora-suprema.png 2048w" sizes="(max-width: 768px) 50vw, 33vw" class="reino-media-image" loading="lazy" decoding="async" alt="Devia integradora suprema consolidando todos os conceitos do protocolo OIDC" title="Devia - integração ponta a ponta">
+                            </picture>
+                            <div class="card-body py-2"><p class="small mb-0">Devia</p></div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="accordion mt-5" id="accordionPersonagens">
@@ -242,12 +304,9 @@
         </div>
     </footer>
 
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="assets/js/reino-nav.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/footer-propriedade.js"></script>
     <script src="assets/js/loja.js"></script>
-    <div class="evo-beta-wrap" aria-hidden="true"><span class="evo-beta-badge" title="Versão de teste oficial">Seed<span class="evo-beta-tooltip">Esta é uma versão oficial de teste da Cara Core Informática para parceiros do Plano Premium+.</span></span></div>
-    <footer class="evo-roadmap-footer" role="contentinfo"><p class="evo-roadmap-title">Próximos passos</p><ul class="evo-roadmap-list"><li>Domínio próprio <span class="evo-roadmap-tag">Março/2026</span></li><li>Integração PIX nativa</li><li>IA para estoque</li></ul></footer>
-    <div class="evo-feedback-fab"><a href="canal-feedback.html" class="evo-feedback-btn" target="_blank" rel="noopener noreferrer" aria-label="Sugira uma melhoria pelo WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Sugira uma melhoria</a></div>
 </body>
 </html>
-
-

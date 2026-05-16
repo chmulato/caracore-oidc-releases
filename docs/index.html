@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="https://oidc.caracore.com.br/">
@@ -65,14 +66,78 @@
                     </div>
                 </div>
 
-                <h1 class="text-center">Bem-vindo ao Reino da Identidade Federada</h1>
-                <p class="lead text-center">Uma saga sobre confiança, autorização e autenticação digital.</p>
-                <p class="text-center text-muted small mb-0">Para <strong>jovens entusiastas desenvolvedores</strong> (com foco em público-alvo feminino) — mercado seleto e com olhar crítico. Primeira entrega <strong>FREE</strong>.</p>
-                <div class="text-center">
-                    <img src="assets/images/historia.png" class="img-fluid" alt="História">
+                <p class="text-center mb-2"><span class="badge rounded-pill text-bg-primary">Versão v2.0.0-RC1</span> · Imersão v2</p>
+<h1 class="text-center">Bem-vindo ao Reino da Identidade Federada</h1>
+<p class="text-center text-muted small mb-4">Imersão interativa sobre OAuth 2.1 e OpenID Connect Primeira entrega <strong>FREE</strong>.</p>
+                <div class="reino-media-block reino-media-hero">
+                    <picture class="reino-media-frame">
+                        <source
+                            srcset="docs/img/capa-reino-oidc-imersao-mobile.webp 900w, docs/img/capa-reino-oidc-imersao.webp 2048w"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 92vw, 1080px"
+                            type="image/webp">
+                        <img
+                            src="docs/img/capa-reino-oidc-imersao.png"
+                            srcset="docs/img/capa-reino-oidc-imersao-mobile.png 900w, docs/img/capa-reino-oidc-imersao.png 2048w"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 92vw, 1080px"
+                            class="reino-media-image"
+                            loading="eager"
+                            fetchpriority="high"
+                            decoding="async"
+                            alt="Capa do Reino OIDC mostrando Devia liderando a jornada de aprendizado do nível leigo ao técnico"
+                            title="Reino OIDC Imersão Local - jornada completa de aprendizado">
+                    </picture>
+                    <p class="reino-media-caption">Jornada imersiva local com evolução progressiva por fases e cenários OIDC.</p>
                 </div>
 
-                <div class="list-group mt-5">
+                <div class="row g-3 mt-2 reino-phase-grid">
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <a class="reino-explore-trigger" href="explorar-imagem.html?group=fases-index&amp;i=0&amp;from=index.html" data-reino-explore data-reino-explore-group="fases-index" data-explore-index="0" aria-label="Explorar ilustração da Fase Easy">
+                            <picture>
+                                <source srcset="docs/img/fase-easy-mobile.webp 900w, docs/img/fase-easy.webp 2048w" sizes="(max-width: 768px) 100vw, 33vw" type="image/webp">
+                                <img src="docs/img/fase-easy.png" srcset="docs/img/fase-easy-mobile.png 900w, docs/img/fase-easy.png 2048w" sizes="(max-width: 768px) 100vw, 33vw" class="reino-media-image" loading="lazy" decoding="async" alt="Fase Easy com fundamentos de identidade, autenticação e autorização no Reino OIDC" title="Fase Easy - fundamentos do Reino OIDC">
+                            </picture>
+                            <span class="reino-explore-hint" aria-hidden="true">Explorar</span>
+                            </a>
+                            <div class="card-body py-2">
+                                <h5 class="card-title mb-1">Fase Easy</h5>
+                                <p class="small mb-0 text-muted">Base conceitual para entrada no protocolo.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <a class="reino-explore-trigger" href="explorar-imagem.html?group=fases-index&amp;i=1&amp;from=index.html" data-reino-explore data-reino-explore-group="fases-index" data-explore-index="1" aria-label="Explorar ilustração da Fase Medium">
+                            <picture>
+                                <source srcset="docs/img/fase-medium-mobile.webp 900w, docs/img/fase-medium.webp 2048w" sizes="(max-width: 768px) 100vw, 33vw" type="image/webp">
+                                <img src="docs/img/fase-medium.png" srcset="docs/img/fase-medium-mobile.png 900w, docs/img/fase-medium.png 2048w" sizes="(max-width: 768px) 100vw, 33vw" class="reino-media-image" loading="lazy" decoding="async" alt="Fase Medium com fluxo Authorization Code e PKCE em progresso técnico" title="Fase Medium - transição para o técnico">
+                            </picture>
+                            <span class="reino-explore-hint" aria-hidden="true">Explorar</span>
+                            </a>
+                            <div class="card-body py-2">
+                                <h5 class="card-title mb-1">Fase Medium</h5>
+                                <p class="small mb-0 text-muted">Fluxo OIDC e segurança em prática guiada.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <a class="reino-explore-trigger" href="explorar-imagem.html?group=fases-index&amp;i=2&amp;from=index.html" data-reino-explore data-reino-explore-group="fases-index" data-explore-index="2" aria-label="Explorar ilustração da Fase Hard">
+                            <picture>
+                                <source srcset="docs/img/fase-hard-mobile.webp 900w, docs/img/fase-hard.webp 2048w" sizes="(max-width: 768px) 100vw, 33vw" type="image/webp">
+                                <img src="docs/img/fase-hard.png" srcset="docs/img/fase-hard-mobile.png 900w, docs/img/fase-hard.png 2048w" sizes="(max-width: 768px) 100vw, 33vw" class="reino-media-image" loading="lazy" decoding="async" alt="Fase Hard com arquitetura integrada, APIs protegidas e validações avançadas OIDC" title="Fase Hard - domínio técnico OIDC">
+                            </picture>
+                            <span class="reino-explore-hint" aria-hidden="true">Explorar</span>
+                            </a>
+                            <div class="card-body py-2">
+                                <h5 class="card-title mb-1">Fase Hard</h5>
+                                <p class="small mb-0 text-muted">Domínio técnico aplicado em arquitetura real.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<div class="list-group mt-5">
                     <a href="personagens.html" class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1 font-weight-bold">Os Personagens</h5>

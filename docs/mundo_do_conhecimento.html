@@ -1,20 +1,21 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Reino da Identidade Federada - Mundo do Conhecimento</title>
-    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/evolution-status/evolution-status.css">
   <link rel="stylesheet" href="/assets/caracore-core-typography.css">
   <link rel="stylesheet" href="/assets/caracore-institutional-components.css">
 </head>
-<body class="cc-i-page">
+<body class="page-mundo-conhecimento cc-i-page">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
-</span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -48,7 +49,14 @@
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <h1 class="text-center">Mundo do Conhecimento OIDC</h1>
-                <p class="lead text-center">Explore os segredos do OpenID Connect de forma lúdica e descontraída.</p>
+                <p class="lead text-center">Estude OpenID Connect com foco em padrão, arquitetura, segurança e implementação técnica.</p>
+<div class="reino-media-block reino-media-content">
+                    <picture class="reino-media-frame">
+                        <source srcset="docs/img/cenario-12-arquitetura-final-integrada-mobile.webp 900w, docs/img/cenario-12-arquitetura-final-integrada.webp 2048w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" type="image/webp">
+                        <img src="docs/img/cenario-12-arquitetura-final-integrada.png" srcset="docs/img/cenario-12-arquitetura-final-integrada-mobile.png 900w, docs/img/cenario-12-arquitetura-final-integrada.png 2048w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" class="reino-media-image" loading="eager" decoding="async" alt="Arquitetura integrada do ecossistema OIDC conectando cliente, provedor de identidade e resource server" title="Arquitetura OIDC de ponta a ponta">
+                    </picture>
+                    <p class="reino-media-caption">Visão macro da arquitetura OIDC com foco em autenticação, autorização e proteção de APIs.</p>
+                </div>
                 
                 <div class="accordion" id="oidcAccordion">
                     <!-- Introdução -->
@@ -210,47 +218,49 @@
                                     <p class="mb-1"><em>Lord OIDC desenrola um pergaminho dourado: "Cada habitante do nosso reino tem um nome e uma função. Alex Client é nosso mensageiro, Lady OAuth comanda o Authorization Server, Seraph Resource protege os tesouros, e os cidadãos são nossos End Users. Conhecer estes nomes é a primeira sabedoria do Reino!"</em></p>
                                 </div>
                                 
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Termo</th>
-                                            <th>Descrição</th>
-                                            <th>🎭 Personagem</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><strong>End User</strong></td>
-                                            <td>Usuário final que se autentica.</td>
-                                            <td><em>Os Cidadãos do Reino</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Client / RP (Relying Party)</strong></td>
-                                            <td>Aplicação que confia no provedor de identidade.</td>
-                                            <td><em>Alex Client - O Mensageiro</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Authorization Server / IdP</strong></td>
-                                            <td>Servidor que autentica e emite tokens.</td>
-                                            <td><em>Lady OAuth + Lord OIDC</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Resource Server</strong></td>
-                                            <td>API que protege recursos e valida tokens.</td>
-                                            <td><em>Seraph Resource - O Guardião</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Scopes</strong></td>
-                                            <td>Permissões solicitadas (ex: <code>openid</code>, <code>email</code>).</td>
-                                            <td><em>Cartas de Permissão de Lady OAuth</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Claims</strong></td>
-                                            <td>Informações sobre o usuário dentro do token.</td>
-                                            <td><em>Segredos gravados no medalhão de IDA Token</em></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Termo</th>
+                                                <th>Descrição</th>
+                                                <th>🎭 Personagem</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>End User</strong></td>
+                                                <td>Usuário final que se autentica.</td>
+                                                <td><em>Os Cidadãos do Reino</em></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Client / RP (Relying Party)</strong></td>
+                                                <td>Aplicação que confia no provedor de identidade.</td>
+                                                <td><em>Alex Client - O Mensageiro</em></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Authorization Server / IdP</strong></td>
+                                                <td>Servidor que autentica e emite tokens.</td>
+                                                <td><em>Lady OAuth + Lord OIDC</em></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Resource Server</strong></td>
+                                                <td>API que protege recursos e valida tokens.</td>
+                                                <td><em>Seraph Resource - O Guardião</em></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Scopes</strong></td>
+                                                <td>Permissões solicitadas (ex: <code>openid</code>, <code>email</code>).</td>
+                                                <td><em>Cartas de Permissão de Lady OAuth</em></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Claims</strong></td>
+                                                <td>Informações sobre o usuário dentro do token.</td>
+                                                <td><em>Segredos gravados no medalhão de IDA Token</em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -297,6 +307,12 @@
                                 <div class="alert alert-info">
                                     <h6><strong>🛤️ Os Caminhos Sagrados da Jornada:</strong></h6>
                                     <p class="mb-1"><em>Alex Client se aproxima de Pixie PKCE: "Quais são os caminhos para chegar aos tokens?" Pixie sorri e aponta para quatro trilhas: "A Estrada Real (Authorization Code) é a mais segura, a Trilha Protegida (Code + PKCE) é para mensageiros móveis, a Ponte Perigosa (Implicit) está fechada para reformas, e o Caminho Híbrido é para aventureiros experientes!"</em></p>
+                                </div>
+                                <div class="reino-media-block">
+                                    <picture class="reino-media-frame">
+                                        <source srcset="docs/img/cenario-03-authorization-code-pkce-mobile.webp 900w, docs/img/cenario-03-authorization-code-pkce.webp 2048w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" type="image/webp">
+                                        <img src="docs/img/cenario-03-authorization-code-pkce.png" srcset="docs/img/cenario-03-authorization-code-pkce-mobile.png 900w, docs/img/cenario-03-authorization-code-pkce.png 2048w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" class="reino-media-image" loading="lazy" decoding="async" alt="Fluxo Authorization Code com PKCE em etapas sequenciais no Reino OIDC" title="Authorization Code Flow com PKCE">
+                                    </picture>
                                 </div>
                                 
                                 <div class="row">
@@ -566,6 +582,12 @@
                                     <h6><strong>🚨 O Hospital dos Tokens Perdidos:</strong></h6>
                                     <p class="mb-1"><em>No reino, às vezes as coisas dão errado. Alex Client chega desesperado: "Meus tokens foram rejeitados!" Devia, agora uma doutora experiente, examina os sintomas. Seraph Resource resmunge sobre assinaturas inválidas. Pixie PKCE aponta erros de CORS. E Rex Token sussurra sobre rotações mal feitas. Aqui estão os casos mais comuns que a Dra. Devia trata em seu consultório digital!</em></p>
                                 </div>
+                                <div class="reino-media-block">
+                                    <picture class="reino-media-frame">
+                                        <source srcset="docs/img/cenario-10-erros-e-diagnostico-mobile.webp 900w, docs/img/cenario-10-erros-e-diagnostico.webp 2048w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" type="image/webp">
+                                        <img src="docs/img/cenario-10-erros-e-diagnostico.png" srcset="docs/img/cenario-10-erros-e-diagnostico-mobile.png 900w, docs/img/cenario-10-erros-e-diagnostico.png 2048w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" class="reino-media-image" loading="lazy" decoding="async" alt="Painel de diagnóstico de erros comuns do protocolo OIDC com causas e correções" title="Troubleshooting OIDC">
+                                    </picture>
+                                </div>
                                 
                                 <div class="accordion" id="troubleshootingAccordion">
                                     <div class="accordion-item">
@@ -655,9 +677,9 @@
                                     <div class="col-md-6">
                                         <h6><strong>🔬 Ferramentas de Debug</strong></h6>
                                         <ul class="small">
-                                            <li><span  target="_blank">JWT.io</span> - <em>🔍 Microscópio de IDA Token</em></li>
-                                            <li><span  target="_blank">OIDC Debugger</span> - <em>🧪 Laboratório de Alex Client</em></li>
-                                            <li><span  target="_blank">OAuth.tools</span> - <em>🧰 Caixa de ferramentas completa</em></li>
+                                            <li><a href="https://jwt.io" target="_blank">JWT.io</a> - <em>🔍 Microscópio de IDA Token</em></li>
+                                            <li><a href="https://oidcdebugger.com" target="_blank">OIDC Debugger</a> - <em>🧪 Laboratório de Alex Client</em></li>
+                                            <li><a href="https://oauth.tools" target="_blank">OAuth.tools</a> - <em>🧰 Caixa de ferramentas completa</em></li>
                                             <li>Postman/Insomnia - <em>📡 Telescópios para APIs distantes</em></li>
                                         </ul>
                                     </div>
@@ -685,10 +707,10 @@
                                     <div class="col-md-6">
                                         <h6><strong>📜 Pergaminhos de Sabedoria (Specs)</strong></h6>
                                         <ul class="small">
-                                            <li><span  target="_blank">OIDC Core 1.0</span> - <em>📖 Livro de Lord OIDC</em></li>
-                                            <li><span  target="_blank">OAuth 2.0 (RFC 6749)</span> - <em>⚖️ Constituição de Lady OAuth</em></li>
-                                            <li><span  target="_blank">JWT (RFC 7519)</span> - <em>🎭 Manual dos Tokens</em></li>
-                                            <li><span  target="_blank">PKCE (RFC 7636)</span> - <em>✨ Grimório de Pixie PKCE</em></li>
+                                            <li><a href="https://openid.net/specs/openid-connect-core-1_0.html" target="_blank">OIDC Core 1.0</a> - <em>📖 Livro de Lord OIDC</em></li>
+                                            <li><a href="https://tools.ietf.org/html/rfc6749" target="_blank">OAuth 2.0 (RFC 6749)</a> - <em>⚖️ Constituição de Lady OAuth</em></li>
+                                            <li><a href="https://tools.ietf.org/html/rfc7519" target="_blank">JWT (RFC 7519)</a> - <em>🎭 Manual dos Tokens</em></li>
+                                            <li><a href="https://tools.ietf.org/html/rfc7636" target="_blank">PKCE (RFC 7636)</a> - <em>✨ Grimório de Pixie PKCE</em></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -820,7 +842,6 @@ except ValueError as e:
                                 <em>Dicionário com explicações para leigos e técnicos, usando as metáforas dos personagens do Reino OIDC.</em>
                             </p>
                         </div>
-
                         <div class="alert alert-success mt-4">
                             <h6><strong>✨ Quer ver o fluxo completo funcionando perfeitamente?</strong></h6>
                             <p class="mb-2">Acompanhe o <strong>Authorization Code Flow</strong> passo a passo, do login até o sucesso:</p>
@@ -857,12 +878,9 @@ except ValueError as e:
         </div>
     </footer>
 
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="assets/js/reino-nav.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/footer-propriedade.js"></script>
     <script src="assets/js/loja.js"></script>
-    <div class="evo-beta-wrap" aria-hidden="true"><span class="evo-beta-badge" title="Versão de teste oficial">Seed<span class="evo-beta-tooltip">Esta é uma versão oficial de teste da Cara Core Informática para parceiros do Plano Premium+.</span></span></div>
-    <footer class="evo-roadmap-footer" role="contentinfo"><p class="evo-roadmap-title">Próximos passos</p><ul class="evo-roadmap-list"><li>Domínio próprio <span class="evo-roadmap-tag">Março/2026</span></li><li>Integração PIX nativa</li><li>IA para estoque</li></ul></footer>
-    <div class="evo-feedback-fab"><a href="canal-feedback.html" class="evo-feedback-btn" target="_blank" rel="noopener noreferrer" aria-label="Sugira uma melhoria pelo WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Sugira uma melhoria</a></div>
 </body>
 </html>
-
-

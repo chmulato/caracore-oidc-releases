@@ -1,5 +1,4 @@
 /* Reino OIDC — Super Trunfo | Dark Gothic · Nobreza Digital */
-@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=Uncial+Antiqua&display=swap');
 
 :root {
     /* Paleta Dark Gothic */
@@ -27,7 +26,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body.super-trunfo {
-    font-family: 'MedievalSharp', cursive;
+    font-family: var(--reino-font-body, "Segoe UI", system-ui, sans-serif);
     background: var(--gothic-deep);
     color: var(--gothic-text);
     min-height: 100vh;
@@ -42,7 +41,7 @@ body.super-trunfo {
 .super-trunfo .font-arena,
 .super-trunfo .reino-title,
 .super-trunfo .mesa-title {
-    font-family: 'Uncial Antiqua', cursive;
+    font-family: var(--reino-font-display, Georgia, serif);
 }
 
 /* ----- Navegação ----- */
@@ -54,8 +53,8 @@ body.super-trunfo {
 
 .reino-nav-super-trunfo .navbar-brand {
     color: var(--gothic-gold) !important;
-    font-family: 'Uncial Antiqua', cursive;
-    font-weight: 400;
+    font-family: var(--reino-font-display, Georgia, serif);
+    font-weight: 700;
 }
 
 .reino-nav-super-trunfo .nav-link {
@@ -1406,4 +1405,34 @@ body.reino-soberano .trunfo-card.pergaminho-pix {
     .attr-buttons { justify-content: center; }
     .empowerment-banner p { font-size: 1rem; }
     .card-seal-pawlowsky { width: 24px; height: 24px; font-size: 10px; bottom: 6px; right: 6px; }
+    .mesa-container { padding: 16px 12px 120px; }
+    .mesa-panel { padding: 16px; }
+    .upgrade-elite-box { padding: 14px; }
+    .checkout-gothic-body,
+    .checkout-gothic-header,
+    .checkout-gothic-footer { padding-left: 14px; padding-right: 14px; }
+    .btn-sinete {
+        min-width: 112px;
+        min-height: 112px;
+        padding: 12px;
+        font-size: 0.8rem;
+    }
+    .telemetria-defesa {
+        max-height: 34vh;
+    }
+    .telemetria-defesa .telemetria-log {
+        padding: 8px 12px;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .reino-header-super-trunfo .reino-title { font-size: 1.2rem; }
+    .reino-header-super-trunfo .reino-subtitle { font-size: 0.85rem; }
+    .trunfo-card { width: min(100%, 170px); }
+    .deck-tab { width: 100%; text-align: left; }
+    .attr-btn { width: 100%; }
+    .game-controls .btn-arena { width: 100%; }
+    .checkout-gothic-title { font-size: 1.05rem; }
+    .checkout-epic-text { font-size: 0.9rem; }
 }

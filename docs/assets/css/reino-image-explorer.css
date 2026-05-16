@@ -1,0 +1,194 @@
+/* Explorador de imagens — gatilhos na home e página dedicada */
+
+.reino-explore-trigger {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+}
+
+.reino-explore-trigger:focus-visible {
+  outline: 2px solid #d4af37;
+  outline-offset: 3px;
+}
+
+.reino-explore-trigger picture {
+  display: block;
+  width: 100%;
+}
+
+.reino-explore-hint {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  padding: 0.25rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #f6efe3;
+  background: rgba(26, 5, 37, 0.72);
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.reino-phase-grid .card {
+  transition: box-shadow 0.2s ease;
+}
+
+.reino-phase-grid .card:has(.reino-explore-trigger:hover) {
+  box-shadow: 0 8px 22px rgba(46, 8, 84, 0.22);
+}
+
+/* ---------- Página explorar-imagem.html ---------- */
+
+.reino-explore-page {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #0d0214;
+  color: #f6efe3;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  overflow: hidden;
+}
+
+.reino-explore-page__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  background: linear-gradient(180deg, #1a0525 0%, #12031a 100%);
+}
+
+.reino-explore-page__back {
+  flex-shrink: 0;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #f6efe3;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.reino-explore-page__back:hover {
+  background: rgba(212, 175, 55, 0.2);
+  color: #fff;
+}
+
+.reino-explore-page__title {
+  margin: 0;
+  flex: 1 1 auto;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 700;
+  color: #f6efe3;
+}
+
+.reino-explore-page__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  background: #12031a;
+}
+
+.reino-explore-page__toolbar button {
+  min-width: 2.5rem;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #f6efe3;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.reino-explore-page__toolbar button:hover:not(:disabled) {
+  background: rgba(212, 175, 55, 0.18);
+}
+
+.reino-explore-page__toolbar button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.reino-explore-page__zoom-label {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: #c9b8a8;
+}
+
+.reino-explore-page__viewport {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  cursor: zoom-in;
+  touch-action: none;
+  background: #0d0214;
+}
+
+.reino-explore-page__viewport.is-pannable {
+  cursor: grab;
+}
+
+.reino-explore-page__viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.reino-explore-page__stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+.reino-explore-page__img {
+  display: block;
+  max-width: min(96vw, 1400px);
+  max-height: calc(100vh - 11rem);
+  width: auto;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+.reino-explore-page__caption {
+  margin: 0;
+  padding: 0.65rem 1rem 0.85rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: #d8cfc4;
+  border-top: 1px solid rgba(212, 175, 55, 0.15);
+  background: #12031a;
+}
+
+@media (max-width: 576px) {
+  .reino-explore-page__toolbar button {
+    font-size: 0.78rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .reino-explore-page__img {
+    max-height: calc(100vh - 13rem);
+  }
+
+  .reino-explore-hint {
+    font-size: 0.65rem;
+  }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Explorar ilustração — Reino OIDC</title>
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/css/reino-image-explorer.css">
+</head>
+<body class="reino-explore-page">
+    <header class="reino-explore-page__bar">
+        <a href="index.html" id="reino-explore-back" class="reino-explore-page__back">← Voltar</a>
+        <h1 id="reino-explore-title" class="reino-explore-page__title">Explorar ilustração</h1>
+    </header>
+
+    <div class="reino-explore-page__toolbar">
+        <button type="button" data-explore-prev aria-label="Imagem anterior">&#9664; Anterior</button>
+        <button type="button" data-explore-next aria-label="Próxima imagem">Próxima &#9654;</button>
+        <button type="button" data-explore-zoom-out aria-label="Diminuir zoom">−</button>
+        <button type="button" data-explore-zoom-in aria-label="Aumentar zoom">+</button>
+        <button type="button" data-explore-reset aria-label="Redefinir zoom">Ajustar</button>
+        <span class="reino-explore-page__zoom-label" data-explore-zoom-label>100%</span>
+    </div>
+
+    <main class="reino-explore-page__viewport">
+        <div class="reino-explore-page__stage">
+            <img
+                id="reino-explore-img"
+                class="reino-explore-page__img"
+                alt=""
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+                draggable="false">
+        </div>
+    </main>
+
+    <p id="reino-explore-caption" class="reino-explore-page__caption"></p>
+
+    <script src="assets/js/explore-catalog.js"></script>
+    <script src="assets/js/reino-image-viewer.js"></script>
+</body>
+</html>

@@ -1,21 +1,22 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>O Caminho Feliz do OpenID Connect - Reino OIDC</title>
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/evolution-status/evolution-status.css">
-    <!-- <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico"> -->
   <link rel="stylesheet" href="/assets/caracore-core-typography.css">
   <link rel="stylesheet" href="/assets/caracore-institutional-components.css">
+    <!-- <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico"> -->
 </head>
-<body class="cc-i-page">
+<body class="page-caminho-feliz cc-i-page">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
-</span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -56,7 +57,14 @@
                     <div class="card-body">
                         <div class="alert alert-info">
                             <h5><i class="fas fa-info-circle"></i> O que é o "Caminho Feliz"?</h5>
-                            <p class="mb-0">O <strong>Caminho Feliz</strong> (Happy Path) é quando tudo funciona perfeitamente no fluxo de autenticação. É o cenário ideal onde o usuário consegue fazer login com sucesso, sem erros ou problemas. Vamos acompanhar esta jornada!</p>
+<p class="mb-0">O <strong>Caminho Feliz</strong> (Happy Path) é quando tudo funciona perfeitamente no fluxo de autenticação. É o cenário ideal onde o usuário consegue fazer login com sucesso, sem erros ou problemas. Vamos acompanhar esta jornada!</p>
+                        </div>
+                        <div class="reino-media-block reino-media-content">
+                            <picture class="reino-media-frame">
+                                <source srcset="docs/img/cenario-03-authorization-code-pkce-mobile.webp 900w, docs/img/cenario-03-authorization-code-pkce.webp 2048w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" type="image/webp">
+                                <img src="docs/img/cenario-03-authorization-code-pkce.png" srcset="docs/img/cenario-03-authorization-code-pkce-mobile.png 900w, docs/img/cenario-03-authorization-code-pkce.png 2048w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" class="reino-media-image" loading="eager" decoding="async" alt="Fluxo feliz do Authorization Code com PKCE no Reino OIDC em sequência didática" title="Caminho feliz do fluxo OIDC">
+                            </picture>
+                            <p class="reino-media-caption">Fluxo recomendado para clientes públicos com proteção PKCE.</p>
                         </div>
 
                         <!-- Accordion para o fluxo passo a passo -->
@@ -359,7 +367,13 @@ user_authenticated = true</pre>
                                     <h4 class="mb-0">🎯 Resumo do Caminho Feliz</h4>
                                 </div>
                                 <div class="card-body">
-                                    <div class="row text-center">
+                                    <div class="reino-media-block reino-media-content">
+                                        <picture class="reino-media-frame">
+                                            <source srcset="docs/img/cenario-09-ciclo-de-vida-token-mobile.webp 900w, docs/img/cenario-09-ciclo-de-vida-token.webp 2048w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" type="image/webp">
+                                            <img src="docs/img/cenario-09-ciclo-de-vida-token.png" srcset="docs/img/cenario-09-ciclo-de-vida-token-mobile.png 900w, docs/img/cenario-09-ciclo-de-vida-token.png 2048w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" class="reino-media-image" loading="lazy" decoding="async" alt="Ciclo de vida de tokens com emissão, expiração e renovação no fluxo OIDC" title="Ciclo de vida dos tokens OIDC">
+                                        </picture>
+                                    </div>
+                                    <div class="row text-center fluxo-resumo-row">
                                         <div class="col-md-2">
                                             <div class="p-3">
                                                 <div class="display-6">👤</div>
@@ -431,7 +445,7 @@ user_authenticated = true</pre>
                         </div>
 
                         <!-- Navegação -->
-                        <div class="text-center mt-4">
+                        <div class="text-center mt-4 caminho-nav-actions">
                             <a href="mundo_do_conhecimento.html" class="btn btn-primary me-2">
                                 ⬅️ Voltar ao Conhecimento
                             </a>
@@ -449,16 +463,13 @@ user_authenticated = true</pre>
     <footer class="bg-dark text-white text-center py-3 mt-5">
         <div class="container">
             <p>&copy; 2025 Reino OIDC - Educação em OAuth 2.1 e OpenID Connect</p>
-            <p><small>Projeto educativo open source - <span  class="text-info">GitHub</span></small></p>
+            <p><small>Projeto educativo open source - <a href="https://github.com/chmulato/reino_oidc" class="text-info">GitHub</a></small></p>
         </div>
     </footer>
 
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/reino-nav.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/footer-propriedade.js"></script>
     <script src="assets/js/loja.js"></script>
-    <div class="evo-beta-wrap" aria-hidden="true"><span class="evo-beta-badge" title="Versão de teste oficial">Seed<span class="evo-beta-tooltip">Esta é uma versão oficial de teste da Cara Core Informática para parceiros do Plano Premium+.</span></span></div>
-    <footer class="evo-roadmap-footer" role="contentinfo"><p class="evo-roadmap-title">Próximos passos</p><ul class="evo-roadmap-list"><li>Domínio próprio <span class="evo-roadmap-tag">Março/2026</span></li><li>Integração PIX nativa</li><li>IA para estoque</li></ul></footer>
-    <div class="evo-feedback-fab"><a href="canal-feedback.html" class="evo-feedback-btn" target="_blank" rel="noopener noreferrer" aria-label="Sugira uma melhoria pelo WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Sugira uma melhoria</a></div>
 </body>
 </html>
-
-

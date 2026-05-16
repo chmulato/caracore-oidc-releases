@@ -10,6 +10,28 @@ Cada versão inclui uma nota de **Impacto** para o público-alvo e para seguran�
 
 ---
 
+## [2.0.0-RC1] — 2026-05-16
+
+### Impacto
+
+| Público | Efeito |
+|--------|--------|
+| **Estudantes e devs em formação** | Nova linha v2 com imersão local, explorador de ilustrações em página dedicada e pacote desktop `ReinoOIDC-v2.exe`. |
+| **Operação / loja** | Download e checksums alinhados ao canal v2; legado `ReinoOIDC.exe` permanece no histórico de tags anteriores. |
+
+### [App Desktop]
+
+#### Adicionado
+- **ReinoOIDC-v2.exe** — build autocontido do canal v2 (`apps/v2/site`).
+- Checksums SHA-256 e MD5 por release.
+
+### [Web/Conteúdo]
+
+#### Alterado
+- Página de download apontando para `ReinoOIDC-v2.exe` e versão **v2.0.0-RC1**.
+
+---
+
 ## [1.0.0] — 2025-02-05
 
 ### Impacto
@@ -44,4 +66,5 @@ Cada versão inclui uma nota de **Impacto** para o público-alvo e para seguran�
 
 ---
 
-[1.0.0]: https://github.com/chmulato/reino-oidc-releases/releases/tag/v1.0.0
+[2.0.0-RC1]: https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.0-RC1
+[1.0.0]: https://github.com/chmulato/caracore-oidc-releases/releases/tag/v1.0.0
