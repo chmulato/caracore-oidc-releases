@@ -4,7 +4,7 @@
 (function () {
     "use strict";
 
-    var COLLAPSE_MAX = 1199.98;
+    var COLLAPSE_MAX = 991.98;
 
     function onReady(fn) {
         if (document.readyState === "loading") {

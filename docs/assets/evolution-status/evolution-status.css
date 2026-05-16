@@ -124,7 +124,7 @@ body.cc-i-page:not(:has(.navbar)) .evo-beta-wrap {
 }
 
 /* Mobile / tablet: Seed mais abaixo, à esquerda (sanduíche à direita) */
-@media (max-width: 1199.98px) {
+@media (max-width: 991.98px) {
   .evo-beta-wrap {
     top: calc(var(--evo-seed-below-nav-mobile) + env(safe-area-inset-top, 0px));
     left: max(var(--evo-seed-edge), env(safe-area-inset-left, 0px));
@@ -144,7 +144,7 @@ body.cc-i-page:not(:has(.navbar)) .evo-beta-wrap {
 }
 
 /* Desktop: abaixo da barra expandida, canto direito */
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
   .evo-beta-wrap {
     top: calc(var(--evo-seed-below-nav) + env(safe-area-inset-top, 0px));
     right: max(1.25rem, env(safe-area-inset-right, 0px));
@@ -262,7 +262,7 @@ body.cc-i-page:has(.evo-feedback-fab) {
   padding-bottom: var(--evo-chrome-bottom);
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
   body.cc-i-page:has(.evo-feedback-fab) {
     padding-bottom: calc(var(--evo-chrome-bottom) + 0.5rem);
   }

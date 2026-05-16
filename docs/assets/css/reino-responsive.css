@@ -93,14 +93,19 @@ p,
     font-size: max(1rem, var(--reino-text-sm));
 }
 
-.btn,
-.nav-link,
-.accordion-button,
-.dropdown-item,
 .deck-tab,
 .attr-btn,
 .btn-upgrade {
     min-height: var(--reino-touch-min);
+}
+
+@media (max-width: 991.98px) {
+    .btn,
+    .nav-link,
+    .accordion-button,
+    .dropdown-item {
+        min-height: var(--reino-touch-min);
+    }
 }
 
 .container,
@@ -261,7 +266,7 @@ body.super-trunfo .attr-buttons {
     font-family: var(--reino-font-display) !important;
 }
 
-/* ---------- Navegação (mobile + tablet: menu sanduíche até 1199px) ---------- */
+/* ---------- Navegação (mobile + tablet: menu sanduíche até 991px) ---------- */
 .navbar.reino-site-nav,
 .navbar.reino-nav-super-trunfo.reino-site-nav {
     position: sticky;
@@ -275,7 +280,7 @@ body.super-trunfo .attr-buttons {
     align-items: center;
 }
 
-@media (max-width: 1199.98px) {
+@media (max-width: 991.98px) {
     .navbar.reino-site-nav .navbar-toggler {
         position: relative;
         z-index: 1040;
@@ -359,23 +364,27 @@ body.super-trunfo .attr-buttons {
     }
 }
 
-/* ---------- Desktop (≥1200px): menu clássico horizontal ---------- */
-@media (min-width: 1200px) {
+/* ---------- Desktop (≥992px): menu clássico horizontal ---------- */
+@media (min-width: 992px) {
     :root {
         --reino-nav-height: 3.75rem;
     }
 
-    .navbar.reino-site-nav.navbar-expand-xl .navbar-toggler,
-    .navbar.reino-nav-super-trunfo.reino-site-nav.navbar-expand-xl .navbar-toggler {
-        display: none;
+    .navbar.reino-site-nav.navbar-expand-lg .navbar-toggler,
+    .navbar.reino-nav-super-trunfo.reino-site-nav.navbar-expand-lg .navbar-toggler {
+        display: none !important;
     }
 
-    .navbar.reino-site-nav.navbar-expand-xl .navbar-collapse,
-    .navbar.reino-nav-super-trunfo.reino-site-nav.navbar-expand-xl .navbar-collapse {
+    .navbar.reino-site-nav.navbar-expand-lg .navbar-collapse,
+    .navbar.reino-nav-super-trunfo.reino-site-nav.navbar-expand-lg .navbar-collapse,
+    .navbar.reino-site-nav.navbar-expand-lg .navbar-collapse.collapse,
+    .navbar.reino-nav-super-trunfo.reino-site-nav.navbar-expand-lg .navbar-collapse.collapse {
         display: flex !important;
         flex-basis: auto;
         flex-grow: 1;
         align-items: center;
+        visibility: visible !important;
+        height: auto !important;
         margin-top: 0;
         padding: 0;
         background: transparent;
@@ -383,6 +392,10 @@ body.super-trunfo .attr-buttons {
         border-radius: 0;
         max-height: none;
         overflow: visible;
+    }
+
+    .navbar.reino-site-nav.navbar-expand-lg .container {
+        flex-wrap: nowrap;
     }
 
     .navbar.reino-site-nav .navbar-collapse .navbar-nav {
@@ -401,7 +414,8 @@ body.super-trunfo .attr-buttons {
 
     .navbar.reino-site-nav .navbar-collapse .nav-link {
         width: auto;
-        padding: 0.45rem 0.6rem;
+        padding: 0.4rem 0.55rem;
+        font-size: 0.9rem;
         border-radius: 6px;
         white-space: nowrap;
         min-height: auto;
@@ -461,8 +475,8 @@ body.super-trunfo .attr-buttons {
     }
 }
 
-/* ---------- Tablet (768px – 1199px) ---------- */
-@media (min-width: 768px) and (max-width: 1199.98px) {
+/* ---------- Tablet (768px – 991px) ---------- */
+@media (min-width: 768px) and (max-width: 991.98px) {
     body.super-trunfo .mesa-panel .row > [class*="col-"] {
         margin-bottom: 1rem;
     }

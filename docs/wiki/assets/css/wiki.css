@@ -163,7 +163,7 @@ html:not([data-theme="dark"]) .fed-header > * {
   font-size: 1.2rem;
 }
 
-@media (max-width: 1199.98px) {
+@media (max-width: 991.98px) {
   .wiki-nav.reino-site-nav .navbar-collapse {
     background: linear-gradient(180deg, #4a5fc9 0%, #5e3a7a 100%);
     border-color: rgba(255, 255, 255, 0.3);
@@ -178,9 +178,13 @@ html:not([data-theme="dark"]) .fed-header > * {
   }
 }
 
-@media (min-width: 1200px) {
-  .wiki-nav.reino-site-nav.navbar-expand-xl .navbar-toggler {
-    display: none;
+@media (min-width: 992px) {
+  .wiki-nav.reino-site-nav.navbar-expand-lg .navbar-toggler {
+    display: none !important;
+  }
+
+  .wiki-nav.reino-site-nav.navbar-expand-lg .navbar-collapse {
+    display: flex !important;
   }
 
   .wiki-nav.reino-site-nav .navbar-collapse .navbar-nav {
