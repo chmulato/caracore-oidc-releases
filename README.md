@@ -10,7 +10,9 @@ Este repositorio atua como camada publica de mercado para o Reino OIDC, concentr
 - Publicacao do portal comercial e educacional
 - Canal institucional para suporte e contratacao
 
-Atualizacao de memoria (25/04/2026): a vitrine removeu itens nao navegaveis do menu superior e breadcrumb redundante da home. O convite para produto relacionado a Python foi atualizado para **Circuito Ferradura**, com contraste reforcado e link para `circuito.caracore.com.br`.
+Atualizacao de memoria (16/05/2026): release **v2.0.0-RC1** publicada em https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.0-RC1 (`ReinoOIDC-v2.exe`). Loja com links oficiais para GitHub Releases; portal educativo sincronizado do canal v2 (`apps/v2/site`). Explorador de ilustrações em `explorar-imagem.html`. Download primario via GitHub; espelho em `docs/artifacts/`.
+
+Atualizacao anterior (25/04/2026): vitrine sem itens nao navegaveis no menu; convite **Circuito Ferradura** em `circuito.caracore.com.br`.
 
 ## Portfolio de produtos da loja
 
