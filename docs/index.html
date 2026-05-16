@@ -3,20 +3,20 @@
 <head>
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="https://oidc.caracore.com.br/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link rel="canonical" href="https://oidc.caracore.com.br/index.html">
     <title>Reino da Identidade Federada</title>
-    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/evolution-status/evolution-status.css">
-  <link rel="stylesheet" href="/assets/caracore-core-typography.css">
-  <link rel="stylesheet" href="/assets/caracore-institutional-components.css">
+  <link rel="stylesheet" href="assets/caracore-core-typography.css">
+  <link rel="stylesheet" href="assets/caracore-institutional-components.css">
 </head>
 <body class="cc-i-page">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-xl navbar-dark reino-site-nav sticky-top bg-primary">
         <div class="container">
             <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menu de navegação">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -99,7 +99,7 @@
                             <a class="reino-explore-trigger" href="explorar-imagem.html?group=fases-index&amp;i=0&amp;from=index.html" data-reino-explore data-reino-explore-group="fases-index" data-explore-index="0" aria-label="Explorar ilustração da Fase Easy">
                             <picture>
                                 <source srcset="docs/img/fase-easy-mobile.webp 900w, docs/img/fase-easy.webp 2048w" sizes="(max-width: 768px) 100vw, 33vw" type="image/webp">
-                                <img src="docs/img/fase-easy.png" srcset="docs/img/fase-easy-mobile.png 900w, docs/img/fase-easy.png 2048w" sizes="(max-width: 768px) 100vw, 33vw" class="reino-media-image" loading="lazy" decoding="async" alt="Fase Easy com fundamentos de identidade, autenticação e autorização no Reino OIDC" title="Fase Easy - fundamentos do Reino OIDC">
+                                <img src="docs/img/fase-easy.png" srcset="docs/img/fase-easy-mobile.png 900w, docs/img/fase-easy.png 2048w" sizes="(max-width: 768px) 100vw, 33vw" class="reino-media-image" loading="eager" decoding="async" alt="Fase Easy com fundamentos de identidade, autenticação e autorização no Reino OIDC" title="Fase Easy - fundamentos do Reino OIDC">
                             </picture>
                             <span class="reino-explore-hint" aria-hidden="true">Explorar</span>
                             </a>
@@ -114,7 +114,7 @@
                             <a class="reino-explore-trigger" href="explorar-imagem.html?group=fases-index&amp;i=1&amp;from=index.html" data-reino-explore data-reino-explore-group="fases-index" data-explore-index="1" aria-label="Explorar ilustração da Fase Medium">
                             <picture>
                                 <source srcset="docs/img/fase-medium-mobile.webp 900w, docs/img/fase-medium.webp 2048w" sizes="(max-width: 768px) 100vw, 33vw" type="image/webp">
-                                <img src="docs/img/fase-medium.png" srcset="docs/img/fase-medium-mobile.png 900w, docs/img/fase-medium.png 2048w" sizes="(max-width: 768px) 100vw, 33vw" class="reino-media-image" loading="lazy" decoding="async" alt="Fase Medium com fluxo Authorization Code e PKCE em progresso técnico" title="Fase Medium - transição para o técnico">
+                                <img src="docs/img/fase-medium.png" srcset="docs/img/fase-medium-mobile.png 900w, docs/img/fase-medium.png 2048w" sizes="(max-width: 768px) 100vw, 33vw" class="reino-media-image" loading="eager" decoding="async" alt="Fase Medium com fluxo Authorization Code e PKCE em progresso técnico" title="Fase Medium - transição para o técnico">
                             </picture>
                             <span class="reino-explore-hint" aria-hidden="true">Explorar</span>
                             </a>
@@ -129,7 +129,7 @@
                             <a class="reino-explore-trigger" href="explorar-imagem.html?group=fases-index&amp;i=2&amp;from=index.html" data-reino-explore data-reino-explore-group="fases-index" data-explore-index="2" aria-label="Explorar ilustração da Fase Hard">
                             <picture>
                                 <source srcset="docs/img/fase-hard-mobile.webp 900w, docs/img/fase-hard.webp 2048w" sizes="(max-width: 768px) 100vw, 33vw" type="image/webp">
-                                <img src="docs/img/fase-hard.png" srcset="docs/img/fase-hard-mobile.png 900w, docs/img/fase-hard.png 2048w" sizes="(max-width: 768px) 100vw, 33vw" class="reino-media-image" loading="lazy" decoding="async" alt="Fase Hard com arquitetura integrada, APIs protegidas e validações avançadas OIDC" title="Fase Hard - domínio técnico OIDC">
+                                <img src="docs/img/fase-hard.png" srcset="docs/img/fase-hard-mobile.png 900w, docs/img/fase-hard.png 2048w" sizes="(max-width: 768px) 100vw, 33vw" class="reino-media-image" loading="eager" decoding="async" alt="Fase Hard com arquitetura integrada, APIs protegidas e validações avançadas OIDC" title="Fase Hard - domínio técnico OIDC">
                             </picture>
                             <span class="reino-explore-hint" aria-hidden="true">Explorar</span>
                             </a>
@@ -268,7 +268,8 @@
         </div>
     </footer>
 
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/reino-nav.js"></script>
     <script src="assets/js/licenca.js"></script>
     <div class="evo-beta-wrap" aria-hidden="true"><span class="evo-beta-badge" title="Versão de teste oficial">Seed<span class="evo-beta-tooltip">Esta é uma versão oficial de teste da Cara Core Informática para parceiros do Plano Premium+.</span></span></div>
     <footer class="evo-roadmap-footer" role="contentinfo"><p class="evo-roadmap-title">Próximos passos</p><ul class="evo-roadmap-list"><li>Domínio próprio <span class="evo-roadmap-tag">Março/2026</span></li><li>Integração PIX nativa</li><li>IA para estoque</li></ul></footer>

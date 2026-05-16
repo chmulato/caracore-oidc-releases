@@ -163,6 +163,36 @@ html:not([data-theme="dark"]) .fed-header > * {
   font-size: 1.2rem;
 }
 
+@media (max-width: 1199.98px) {
+  .wiki-nav.reino-site-nav .navbar-collapse {
+    background: linear-gradient(180deg, #4a5fc9 0%, #5e3a7a 100%);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .wiki-nav.reino-site-nav .navbar-brand {
+    font-size: clamp(1rem, 0.95rem + 0.5vw, 1.15rem);
+    max-width: calc(100% - 3.5rem);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 1200px) {
+  .wiki-nav.reino-site-nav.navbar-expand-xl .navbar-toggler {
+    display: none;
+  }
+
+  .wiki-nav.reino-site-nav .navbar-collapse .navbar-nav {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .wiki-nav.reino-site-nav .navbar-brand {
+    max-width: none;
+  }
+}
+
 /* Container Principal */
 .wiki-container {
   max-width: 1200px;

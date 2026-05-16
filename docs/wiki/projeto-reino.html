@@ -2,21 +2,22 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Reino OIDC - Wiki Cara Core</title>
     <meta name="description" content="Reino OIDC - Projeto educativo sobre OAuth 2.0 e OpenID Connect com cen�rio l�dico e implementa��o did�tica para aprendizado de autentica��o moderna.">
     
     <!-- Bootstrap CSS -->
-    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="/assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
     <!-- Wiki CSS -->
     <link rel="stylesheet" href="assets/css/wiki.css">
     <!-- Projeto Reino CSS -->
     <link rel="stylesheet" href="assets/css/projeto-reino.css">
     <!-- Wiki Unified (overrides) -->
     <link rel="stylesheet" href="assets/css/wiki-unified.css">
-    
+    <link rel="stylesheet" href="../assets/css/reino-responsive.css">
+
     <!-- Favicon -->
     <link rel="icon" href="../assets/images/favicon.ico" type="image/ico">
     
@@ -31,12 +32,12 @@
             custom_map: {'custom_parameter_1': 'project_reino'}
         });
     </script>
-  <link rel="stylesheet" href="/assets/caracore-core-typography.css">
-  <link rel="stylesheet" href="/assets/caracore-institutional-components.css">
+  <link rel="stylesheet" href="../assets/caracore-core-typography.css">
+  <link rel="stylesheet" href="../assets/caracore-institutional-components.css">
 </head>
 <body class="cc-i-page">
     <!-- Navega��o -->
-    <nav class="navbar navbar-expand-lg navbar-dark wiki-nav">
+    <nav class="navbar navbar-expand-xl navbar-dark reino-site-nav sticky-top wiki-nav">
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <i class="bi bi-journal-code"></i> Wiki Cara Core
@@ -680,7 +681,8 @@ pip install flask authlib</code></pre>
     </footer>
 
     <!-- Bootstrap JS -->
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/reino-nav.js"></script>
     <!-- Wiki JS -->
     <script src="assets/js/wiki.js"></script>
 </body>

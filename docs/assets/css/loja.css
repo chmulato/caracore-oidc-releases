@@ -19,10 +19,39 @@ body {
     color: var(--text-primary);
     background: var(--bg-dark);
     min-height: 100vh;
-    padding: 0 20px 40px;
+    padding: 0 clamp(12px, 4vw, 20px) 40px;
+    overflow-x: hidden;
 }
 
-.wrapper { max-width: 640px; margin: 0 auto; }
+body.cc-i-page:has(.evo-feedback-fab) {
+    padding-bottom: var(--evo-chrome-bottom, 6rem);
+}
+
+body.cc-i-page:has(.evo-beta-wrap) .wrapper {
+    padding-top: 2.75rem;
+}
+
+@media (min-width: 1200px) {
+    body.cc-i-page:has(.evo-beta-wrap) .wrapper {
+        max-width: min(720px, 100%);
+        padding-top: 3rem;
+    }
+}
+
+.wrapper { max-width: min(640px, 100%); margin: 0 auto; }
+
+@media (max-width: 767.98px) {
+    header { padding: 32px 0 24px; }
+    header h1 { font-size: 1.45rem; }
+    .download-hero { padding: 24px 16px; margin: 24px 0 16px; }
+    .download-hero .btn-download {
+        width: 100%;
+        justify-content: center;
+        font-size: 1rem;
+        padding: 14px 20px;
+    }
+    .download-meta ul { margin-left: 0; padding-left: 1.1rem; }
+}
 
 .breadcrumb { font-size: 0.85rem; margin-bottom: 24px; padding-top: 16px; }
 .breadcrumb a { color: var(--accent-blue); text-decoration: none; }

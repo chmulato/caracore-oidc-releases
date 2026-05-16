@@ -261,14 +261,208 @@ body.super-trunfo .attr-buttons {
     font-family: var(--reino-font-display) !important;
 }
 
-/* ---------- Tablet (768px – 1024px) ---------- */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .navbar-expand-lg .navbar-nav .nav-link {
-        padding-left: 0.65rem;
-        padding-right: 0.65rem;
-        font-size: 0.95rem;
+/* ---------- Navegação (mobile + tablet: menu sanduíche até 1199px) ---------- */
+.navbar.reino-site-nav,
+.navbar.reino-nav-super-trunfo.reino-site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+}
+
+.navbar.reino-site-nav .container {
+    align-items: center;
+}
+
+@media (max-width: 1199.98px) {
+    .navbar.reino-site-nav .navbar-toggler {
+        position: relative;
+        z-index: 1040;
     }
 
+    .navbar-dark.reino-site-nav .navbar-toggler,
+    .navbar-dark.reino-nav-super-trunfo.reino-site-nav .navbar-toggler {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        padding: 0.45rem 0.6rem;
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+
+    .navbar-dark.reino-site-nav .navbar-toggler:focus,
+    .navbar-dark.reino-site-nav .navbar-toggler:hover,
+    .navbar-dark.reino-nav-super-trunfo.reino-site-nav .navbar-toggler:focus,
+    .navbar-dark.reino-nav-super-trunfo.reino-site-nav .navbar-toggler:hover {
+        border-color: var(--reino-gold, #d4af37);
+        box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.35);
+    }
+
+    .navbar-dark.reino-site-nav .navbar-toggler-icon,
+    .navbar-dark.reino-nav-super-trunfo.reino-site-nav .navbar-toggler-icon {
+        width: 1.35em;
+        height: 1.35em;
+        background-size: 100%;
+    }
+
+    body.cc-i-page:has(.evo-beta-wrap) > nav ~ .container:first-of-type,
+    body.cc-i-page:has(.evo-beta-wrap) > .container.mt-5:first-of-type {
+        padding-top: calc(2.25rem + env(safe-area-inset-top, 0px));
+    }
+
+    .navbar.reino-site-nav .navbar-brand {
+        max-width: calc(100% - 3.75rem);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        flex-shrink: 1;
+        margin-right: 0.35rem;
+    }
+
+    .navbar.reino-site-nav .navbar-collapse {
+        margin-top: 0.65rem;
+        padding: 0.5rem 0.75rem 0.75rem;
+        background: linear-gradient(180deg, var(--reino-ink, #1a0a24) 0%, var(--reino-deep, #2e0854) 100%);
+        border: 1px solid var(--reino-gold-soft, rgba(212, 175, 55, 0.35));
+        border-radius: 10px;
+        max-height: min(70vh, calc(100dvh - 5rem));
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .navbar.reino-site-nav .navbar-collapse .navbar-nav {
+        gap: 0.15rem;
+    }
+
+    .navbar.reino-site-nav .navbar-collapse .nav-link,
+    .navbar.reino-site-nav .navbar-collapse .dropdown-item {
+        width: 100%;
+        border-radius: 6px;
+    }
+
+    .navbar.reino-site-nav .navbar-collapse .nav-link:hover,
+    .navbar.reino-site-nav .navbar-collapse .nav-link:focus,
+    .navbar.reino-site-nav .navbar-collapse .dropdown-item:hover,
+    .navbar.reino-site-nav .navbar-collapse .dropdown-item:focus {
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    .navbar.reino-site-nav .dropdown-menu {
+        position: static !important;
+        float: none;
+        width: 100%;
+        margin: 0.25rem 0 0.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* ---------- Desktop (≥1200px): menu clássico horizontal ---------- */
+@media (min-width: 1200px) {
+    :root {
+        --reino-nav-height: 3.75rem;
+    }
+
+    .navbar.reino-site-nav.navbar-expand-xl .navbar-toggler,
+    .navbar.reino-nav-super-trunfo.reino-site-nav.navbar-expand-xl .navbar-toggler {
+        display: none;
+    }
+
+    .navbar.reino-site-nav.navbar-expand-xl .navbar-collapse,
+    .navbar.reino-nav-super-trunfo.reino-site-nav.navbar-expand-xl .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto;
+        flex-grow: 1;
+        align-items: center;
+        margin-top: 0;
+        padding: 0;
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .navbar.reino-site-nav .navbar-collapse .navbar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-end;
+        row-gap: 0.15rem;
+        column-gap: 0.05rem;
+        width: 100%;
+    }
+
+    .navbar.reino-site-nav .navbar-collapse .nav-item {
+        position: relative;
+    }
+
+    .navbar.reino-site-nav .navbar-collapse .nav-link {
+        width: auto;
+        padding: 0.45rem 0.6rem;
+        border-radius: 6px;
+        white-space: nowrap;
+        min-height: auto;
+    }
+
+    .navbar.reino-site-nav .navbar-collapse .dropdown-item {
+        width: auto;
+        min-height: auto;
+        white-space: nowrap;
+    }
+
+    .navbar.reino-site-nav .dropdown-menu {
+        position: absolute !important;
+        float: none;
+        width: auto;
+        min-width: 12rem;
+        margin: 0;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        background: var(--reino-deep, #2e0854);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .navbar.reino-site-nav .dropdown-menu .dropdown-item:hover,
+    .navbar.reino-site-nav .dropdown-menu .dropdown-item:focus {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar.reino-site-nav .navbar-brand {
+        max-width: none;
+        margin-right: 0.75rem;
+        flex-shrink: 0;
+    }
+
+    body.cc-i-page:has(.evo-beta-wrap) > nav ~ .container:first-of-type,
+    body.cc-i-page:has(.evo-beta-wrap) > .container.mt-5:first-of-type {
+        padding-top: calc(1.75rem + env(safe-area-inset-top, 0px));
+    }
+
+    body.cc-i-page:has(.evo-beta-wrap) .col-md-8.offset-md-2,
+    body.cc-i-page:has(.evo-beta-wrap) .col-lg-8.offset-lg-2 {
+        max-width: 48rem;
+    }
+
+    .reino-media-block.reino-media-hero .reino-media-frame {
+        max-width: min(1080px, 92vw);
+        margin-inline: auto;
+    }
+
+    .reino-phase-grid .row {
+        --bs-gutter-x: 1.25rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: min(1140px, 94vw);
+    }
+}
+
+/* ---------- Tablet (768px – 1199px) ---------- */
+@media (min-width: 768px) and (max-width: 1199.98px) {
     body.super-trunfo .mesa-panel .row > [class*="col-"] {
         margin-bottom: 1rem;
     }
@@ -286,23 +480,26 @@ body.super-trunfo .attr-buttons {
         margin-left: 0;
     }
 
-    .navbar-brand {
+    .navbar.reino-site-nav .navbar-brand {
         font-size: 1.05rem;
-        max-width: 70vw;
+        max-width: calc(100vw - 5.5rem);
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
     }
 
-    .navbar-collapse .navbar-nav {
-        padding-bottom: 0.5rem;
+    .reino-hero-cta .d-flex.flex-wrap.gap-3 {
+        flex-direction: column;
+        align-items: stretch !important;
     }
 
-    .navbar-collapse .nav-link,
-    .navbar-collapse .dropdown-item {
+    .reino-hero-cta .btn {
         width: 100%;
-        padding-top: 0.65rem;
-        padding-bottom: 0.65rem;
+    }
+
+    .col-md-8.offset-md-2,
+    .col-md-8.offset-md-2 > * {
+        max-width: 100%;
     }
 
     .display-4 {
