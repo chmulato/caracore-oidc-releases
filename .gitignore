@@ -94,6 +94,9 @@ node_modules/
 *.tar.gz
 *.rar
 
+# Binários grandes — distribuição via GitHub Releases, não no git
+docs/artifacts/*.exe
+
 # ============================================================================
 # O que NÃO ignorar (manter versionados)
 # ============================================================================
