@@ -29,6 +29,7 @@ Cada versão inclui uma nota de **Impacto** para o público-alvo e para seguran�
 
 #### Alterado
 - Página de download apontando para `ReinoOIDC-v2.exe` e versão **v2.0.0-RC1**.
+- Alinhamento matriz ↔ loja (2026-05): matriz em `portfolio.html#reino-oidc`; vitrine canónica em **oidc.caracore.com.br**; URL legada `/delivery/oidc/` → redirect para a loja.
 
 ---
 
@@ -51,13 +52,13 @@ Cada versão inclui uma nota de **Impacto** para o público-alvo e para seguran�
 ### [App Desktop]
 
 #### Adicionado
-- Suporte a releases do **ReinoOIDC.exe** via GitHub Releases (script de delivery no workspace privado; token: TOKEN_DELIVERY_REINO_OIDC_TO_REALEASES).
+- Suporte a releases do **ReinoOIDC.exe** via GitHub Releases (script de publicação no workspace privado; token: TOKEN_DELIVERY_REINO_OIDC_TO_REALEASES).
 
 ### [DevOps/Automação]
 
 #### Adicionado
-- Integração com o portfólio da Cara Core Informática e delivery centralizado em `delivery/oidc`.
-- Documentação de delivery (DELIVERY.md no workspace) e script de sincronização para `delivery/oidc` e `docs/`.
+- Integração com o portfólio da Cara Core Informática e vitrine pública em **oidc.caracore.com.br** (modelo actual desde 2026-05; antes existia espelho em `delivery/oidc` na matriz — descontinuado).
+- Script de sincronização workspace → `docs/` da loja (histórico: também espelhava `delivery/oidc` na matriz).
 
 ### Notas
 
