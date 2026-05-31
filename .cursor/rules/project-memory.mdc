@@ -1,0 +1,29 @@
+---
+description: Memória da loja Reino OIDC — caracore-oidc-releases; vitrine oidc.caracore.com.br; v2.0.0-RC1
+alwaysApply: true
+---
+
+# Memória da Loja — caracore-oidc-releases
+
+## Repositório e papel
+- **caracore-oidc-releases:** loja (vitrine e releases) do **Reino OIDC**.
+- **URL:** https://oidc.caracore.com.br/
+- **Publicação:** GitHub Pages a partir de **docs/**.
+- **Oficina:** caracore-oidc
+- **Versão:** 2.0.0-RC1 (`VERSION`)
+
+## Matriz
+- **Portfólio:** `portfolio.html#reino-oidc`
+- **Espelho:** `docs/mirror-delivery.html`
+
+## Estrutura (docs/)
+- index · download · conteudo-free · wiki/ · licenca-uso · canal-feedback
+- Conteúdo educativo v2 sincronizado da oficina (`sync_v2_app_to_store.py`)
+- **Páginas só da loja** (não sobrescrever no sync): index, download, conteudo-free, feedback, licença, wiki/
+
+## Releases
+- Download oficial via GitHub Releases; `docs/assets/js/release-links.js` (atualizar tag ao publicar)
+
+## Convenções
+- Footer → portfólio `#reino-oidc`
+- Premium Trono: R$ 29,90 PIX — ver vitrine upgrade-trono.html
