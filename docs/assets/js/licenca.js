@@ -2,14 +2,15 @@
     'use strict';
 
     var apiRoot = '/__reino_license';
-    var localApp = window.location.protocol === 'http:' &&
+    var paidModuleIncluded = !!(window.REINO_OIDC_CONFIG && window.REINO_OIDC_CONFIG.paidModuleIncluded === true);
+    var localApp = paidModuleIncluded && window.location.protocol === 'http:' &&
         ['127.0.0.1', 'localhost', '::1'].indexOf(window.location.hostname) !== -1;
     var status = {
         active: false,
         available: localApp,
         device_id: null,
         box_pub: null,
-        message: 'Edição Free ativa. Esta versão não inclui o módulo pago.'
+        message: 'Edição Free ativa. A edição paga não faz parte desta versão.'
     };
 
     function notify() {
@@ -64,7 +65,7 @@
 
     function premiumDecks() {
         if (!localApp || !status.active) {
-            return Promise.reject(new Error('Uma licença Premium válida é necessária.'));
+            return Promise.reject(new Error('Esta Edição Free não inclui licenciamento.'));
         }
         return fetch(apiRoot + '/decks', { cache: 'no-store' })
             .then(readResponse)
@@ -72,7 +73,7 @@
                 if (!body.decks || !['3', '4', '5'].every(function (id) {
                     return Array.isArray(body.decks[id]) && body.decks[id].length > 0;
                 })) {
-                    throw new Error('O aplicativo não retornou os três decks Premium validados.');
+                    throw new Error('O aplicativo não retornou baralhos adicionais.');
                 }
                 return body.decks;
             });

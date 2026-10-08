@@ -1,6 +1,6 @@
 /**
  * Reino OIDC — Componente de Celebração: Coroação (sucesso na ativação da licença).
- * Vitral dourado, Selo Pawlowsky, partículas de ouro, mensagem épica.
+ * Overlay de progresso da Edição Free.
  * Som opcional: sino de catedral / fanfarra real (se assets/audio disponível).
  */
 (function () {
@@ -15,8 +15,7 @@
 
     /**
      * Dispara ao validar a chave de licença com sucesso.
-     * Tela escurece, Vitral Dourado ilumina no centro com Selo Pawlowsky,
-     * partículas de ouro, mensagem épica e botão para Mineração de Chaves.
+     * Confirma um progresso já registrado no currículo gratuito.
      */
     function exibirCoronacao() {
         if (document.getElementById(OVERLAY_ID)) return;
@@ -32,11 +31,10 @@
         overlay.innerHTML =
             '<div class="reino-coronacao-backdrop"></div>' +
             '<div class="reino-coronacao-vitral">' +
-            '  <div class="reino-coronacao-selo-pawlowsky">P</div>' +
-            '  <h2 id="coronacao-titulo" class="reino-coronacao-titulo">O Trono da Identidade agora é seu, Soberana!</h2>' +
-            '  <p class="reino-coronacao-subtitulo">O Protocolo de Mineração de Chaves foi desbloqueado. Seus súditos (identidades) estão seguros sob sua nova governança.</p>' +
+            '  <h2 id="coronacao-titulo" class="reino-coronacao-titulo">Progresso registrado</h2>' +
+            '  <p class="reino-coronacao-subtitulo">O currículo das três Eras continua disponível nesta Edição Free.</p>' +
             '  <div class="reino-coronacao-actions">' +
-            '    <a href="mapa_evolucao.html" class="reino-coronacao-btn-mineracao">Ir para a Mineração de Chaves</a>' +
+            '    <a href="mapa_evolucao.html" class="reino-coronacao-btn-mineracao">Voltar ao mapa</a>' +
             '    <button type="button" class="reino-coronacao-btn-fechar" aria-label="Fechar">Fechar</button>' +
             '  </div>' +
             '</div>' +

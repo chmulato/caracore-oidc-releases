@@ -14,13 +14,13 @@ Cada versão inclui uma nota de **Impacto** para o público-alvo e para seguran�
 
 ### [App Desktop]
 - Edição Free `v2.0.1-free` para Windows. As três Eras abrem sem chave de ativação.
-- O módulo pago não faz parte desta versão.
+- A edição paga está em desenvolvimento e não faz parte desta versão. A loja não combina PIX nesta etapa.
 - O executável não traz certificado digital. A conferência do download é o SHA-256 da release.
 
 ### [Web/Conteúdo]
 - A loja aponta o download para a release `v2.0.1-free`.
 - A vitrine deixa de oferecer pagamento, PIX e importação de pacote Premium nesta edição.
-- O CTA principal é Baixar Free (2.0.1). A edição paga fica para depois; o PIX é combinado pelo WhatsApp ou pelo Telegram.
+- O CTA principal é Baixar Free (2.0.1). A edição paga está em desenvolvimento; a loja não combina PIX nesta etapa. A tag v2.0.0 não é oferecida na página de download.
 
 ---
 

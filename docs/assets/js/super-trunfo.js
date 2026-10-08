@@ -1,9 +1,7 @@
 /**
  * Reino OIDC — Motor de Cálculo Super Trunfo
  * compareCards(attr): valida quem tem maior valor no atributo.
- * FREE: currículo das três Eras e decks 1 e 2. PREMIUM: decks 3, 4 e 5 adicionais.
- * Log [BATALHA], tremer tela + Selo Pawlowsky dourado em carta Premium.
- * check_license(HID): Cara-Core; sem license.key → pergaminho com QR PIX.
+ * Edição Free: dois baralhos gratuitos (9 personagens + 5 cartas da Aliança Federada).
  */
 
 (function () {
@@ -56,12 +54,9 @@
     ];
 
     const DECK_BY_ID = { 1: DECK_1, 2: DECK_2 };
-    const DECK_NAMES = { 1: 'Personagens do Reino', 2: 'Aliança Federada', 3: 'Mineração de Chaves I', 4: 'Mineração de Chaves II', 5: 'Mineração de Chaves III' };
+    const DECK_NAMES = { 1: 'Personagens do Reino', 2: 'Aliança Federada' };
 
     const CONFIG = {
-        CNPJ: '23.969.028/0001-37',
-        VALOR: 29.90,
-        UPGRADE_URL: 'upgrade-trono.html',
         STORAGE_LAST_ERA_KEY: 'reino_oidc_last_era_seen'
     };
 
@@ -195,53 +190,6 @@
         return config.paidModuleIncluded === true;
     }
 
-    function renderPergaminhoPIX(container) {
-        if (!paidModuleIncluded() || !window.ReinoQR) return;
-        var pixPayload = window.ReinoQR.buildPixPayload({
-            key: CONFIG.CNPJ,
-            amount: CONFIG.VALOR,
-            merchantName: 'CARA CORE INFORMATICA',
-            merchantCity: 'CAMPO LARGO',
-            txid: '***'
-        });
-        var div = document.createElement('div');
-        div.className = 'trunfo-card pergaminho-pix';
-        div.innerHTML =
-            '<span class="badge-locked">🔒 LICENÇA</span>' +
-            '<div class="card-name">Pergaminho de Selagem</div>' +
-            '<div class="card-subtitle">Desbloqueie com R$ 29,90 — PIX CNPJ</div>' +
-            '<div class="pergaminho-qr"><img class="pergaminho-qr-img" alt="QR PIX" width="100" height="100"></div>' +
-            '<code class="pergaminho-cnpj">' + escapeHtml(CONFIG.CNPJ) + '</code>' +
-            '<label class="pergaminho-hint" for="pergaminho-pix-payload">Pix Copia e Cola</label>' +
-            '<textarea class="pergaminho-pix-payload" readonly rows="3" aria-label="Pix Copia e Cola">' + escapeHtml(pixPayload) + '</textarea>' +
-            '<button type="button" class="pergaminho-pix-copy">Copiar Pix Copia e Cola</button>' +
-            '<span class="pergaminho-pix-copy-status" role="status" aria-live="polite"></span>' +
-            '<p class="pergaminho-hint">Chave PIX · R$ 29,90 · Cara Core Informática</p>';
-        container.appendChild(div);
-        var qrImg = div.querySelector('.pergaminho-qr-img');
-        if (qrImg && window.ReinoQR && window.ReinoQR.applyToImg) {
-            window.ReinoQR.applyToImg(qrImg, pixPayload, 100);
-        }
-        var copyButton = div.querySelector('.pergaminho-pix-copy');
-        var payloadInput = div.querySelector('.pergaminho-pix-payload');
-        var copyStatus = div.querySelector('.pergaminho-pix-copy-status');
-        if (copyButton && payloadInput && copyStatus) {
-            copyButton.addEventListener('click', function () {
-                payloadInput.focus();
-                payloadInput.select();
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                    navigator.clipboard.writeText(pixPayload).then(function () {
-                        copyStatus.textContent = 'Pix Copia e Cola copiado.';
-                    }, function () {
-                        copyStatus.textContent = 'Texto selecionado. Pressione Ctrl+C para copiar.';
-                    });
-                } else {
-                    copyStatus.textContent = 'Texto selecionado. Pressione Ctrl+C para copiar.';
-                }
-            });
-        }
-    }
-
     function attrBarHtml(attrKey, value) {
         var label = ATTR_DISPLAY_NAMES[attrKey] || attrKey;
         var pct = (value != null && value > 10) ? Math.min(100, Math.max(0, value)) : Math.min(100, Math.max(0, value) * 10);
@@ -252,18 +200,13 @@
     }
 
     /**
-     * Renderiza uma carta. Se isLocked e !isPremium(), exibe cadeado e ao clicar redireciona ao checkout (Cara-Core).
-     * Inclui flavor_text místico-técnico e Selo Pawlowsky em toda carta.
+     * Renderiza uma carta dos baralhos gratuitos.
      */
     function renderCard(card, container, isMachine) {
         if (!card) return;
         var isPremiumCard = (card.deckId >= 3 || card.elite) && (card.deckId !== undefined || card.elite);
-        if (isPremiumCard && !paidModuleIncluded()) return;
-        if (isPremiumCard && !check_license(getHardwareId())) {
-            renderPergaminhoPIX(container);
-            return;
-        }
-        var premium = check_license(getHardwareId());
+        if (isPremiumCard) return;
+        var premium = check_license();
         var locked = card.isLocked && (card.reinoDeck || !premium);
         var div = document.createElement('div');
         div.className = 'trunfo-card' + (card.elite ? ' elite' : '') + (locked ? ' trunfo-card-locked' : '');
@@ -557,7 +500,7 @@
                 } else {
                     tab.classList.add('locked');
                     tab.onclick = function () {
-                        logTelemetria('Tentativa de acesso ao deck ' + (DECK_NAMES[id] || id) + '. Upgrade R$ 29,90 necessário.');
+                        logTelemetria('O baralho ' + (DECK_NAMES[id] || id) + ' não faz parte desta Edição Free.');
                     };
                 }
             }
@@ -587,8 +530,8 @@
             var era = eras[e];
             var done = e === 1 ? state.part1 : e === 2 ? state.part2 : state.part3;
             var span = document.createElement('span');
-            span.className = 'timeline-era' + (done ? ' active' : '') + (e === 3 ? ' timeline-era-premium' : '');
-            span.setAttribute('title', era.title + (e === 3 ? ' (Premium)' : ''));
+            span.className = 'timeline-era' + (done ? ' active' : '');
+            span.setAttribute('title', era.title);
             span.innerHTML = '<span class="timeline-era-dot"></span><span class="timeline-era-label">Era ' + e + '</span>';
             if (e < 3) {
                 var link = document.createElement('a');
@@ -687,7 +630,7 @@
                 renderTimeline();
             })
             .catch(function (error) {
-                logTelemetria('Não foi possível carregar os decks Premium: ' + error.message, 'ERROR');
+                logTelemetria('Não foi possível preparar os baralhos: ' + error.message, 'ERROR');
                 state.premiumDecks = {};
                 initDeckTabs();
                 setDeck('deck1');

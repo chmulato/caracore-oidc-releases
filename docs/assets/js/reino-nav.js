@@ -69,6 +69,34 @@
             });
         });
 
+        var storyLabels = {
+            "historia_p1.html": "Parte I — A Era das Senhas e a Chegada de Lady OAuth",
+            "historia_p2.html": "Parte II — A Era da Confiança e o Mago OIDC",
+            "historia_p3.html": "Parte III — A Nova Ordem Digital e a Aprendiz Devia"
+        };
+        collapse.querySelectorAll("a.dropdown-item").forEach(function (link) {
+            var href = link.getAttribute("href");
+            if (href && storyLabels[href]) {
+                link.textContent = storyLabels[href];
+            }
+        });
+
+        if (document.body.classList.contains("cc-i-page")) {
+            var list = collapse.querySelector(".navbar-nav");
+            if (list && !list.querySelector('a[href="download.html"]')) {
+                var downloadItem = document.createElement("li");
+                downloadItem.className = "nav-item";
+                downloadItem.innerHTML = '<a class="nav-link" href="download.html">⬇️ Download</a>';
+                list.insertBefore(downloadItem, list.firstChild ? list.firstChild.nextSibling : null);
+            }
+            if (list && !list.querySelector('a[href="canal-feedback.html"]')) {
+                var feedbackItem = document.createElement("li");
+                feedbackItem.className = "nav-item";
+                feedbackItem.innerHTML = '<a class="nav-link" href="canal-feedback.html">Feedback</a>';
+                list.appendChild(feedbackItem);
+            }
+        }
+
         collapse.querySelectorAll(".nav-link").forEach(function (link) {
             if (link.classList.contains("dropdown-toggle")) {
                 return;

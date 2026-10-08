@@ -6,9 +6,6 @@
 <title>Download — Reino OIDC v2.0.1-free | Cara Core Informática</title>
     <meta name="description" content="Baixe ReinoOIDC-v2.exe (v2.0.1-free) — aplicativo Windows FREE sobre OAuth 2.1 e OIDC. Release oficial no GitHub com checksums SHA-256. Sem certificado digital.">
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/loja.css">
     <link rel="stylesheet" href="assets/evolution-status/evolution-status.css">
     <link rel="stylesheet" href="assets/caracore-core-typography.css">
@@ -22,8 +19,8 @@
             <span>Download</span>
         </nav>
         <header>
-            <h1>Download — Reino OIDC <span class="text-muted">v2.0.1-free</span></h1>
-            <p>Aplicativo Windows da edição Free sobre OAuth 2.1 e OpenID Connect. Esta versão não inclui o módulo pago nem certificado digital. Entrega oficial na <a href="https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.1-free" target="_blank" rel="noopener noreferrer">release v2.0.1-free no GitHub</a>.</p>
+            <h1>Download — Reino da Identidade Federada <span class="text-muted">Edição Free 2.0.1</span></h1>
+            <p>Aplicativo Windows da Edição Free sobre OAuth 2.1 e OpenID Connect. A edição paga está em desenvolvimento e não faz parte deste arquivo. O executável não tem certificado digital. Entrega oficial na <a id="reino-release-page" href="https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.1-free" target="_blank" rel="noopener noreferrer">tag v2.0.1-free no GitHub</a>.</p>
         </header>
 
         <section class="download-hero">
@@ -31,11 +28,9 @@
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 Baixar Free (2.0.1)
             </a>
-            <p class="version">Versão <strong><a href="https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.1-free" target="_blank" rel="noopener noreferrer">v2.0.1-free</a></strong> · Canal v2 · Windows 10/11 · FREE</p>
-            <p class="version" style="margin-top:12px;">
-                <a href="https://github.com/chmulato/caracore-oidc-releases/releases" target="_blank" rel="noopener noreferrer">Todas as releases no GitHub</a>
-                · Release anterior: <a href="https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.0" target="_blank" rel="noopener noreferrer">v2.0.0</a>
-            </p>
+            <p class="version">Edição Free · versão <strong>2.0.1</strong> · tag <strong>v2.0.1-free</strong> · Canal v2 · <span id="reino-requirements">Windows 10/11 64 bits com Microsoft Edge WebView2 Runtime</span></p>
+            <p class="version" id="reino-integrity" style="margin-top:12px;">Tamanho: <strong id="reino-size">18.157.874 bytes</strong> · SHA-256: <code id="reino-sha256">067352c7201f2e3478d11abcf3a87f212fad6dc1c02768ccebd6ad78de2992b5</code></p>
+            <p class="version" style="margin-top:12px;">Esta página oferece somente a Edição Free 2.0.1. A tag v2.0.0 não é distribuída aqui.</p>
         </section>
 
         <div class="download-meta" id="historico-releases">
@@ -45,6 +40,8 @@
                 <li><a href="https://github.com/chmulato/caracore-oidc-releases/releases/download/v2.0.1-free/checksum.sha256" rel="noopener noreferrer">checksum.sha256</a> — verificação recomendada</li>
                 <li><a href="https://github.com/chmulato/caracore-oidc-releases/releases/download/v2.0.1-free/checksum.md5" rel="noopener noreferrer">checksum.md5</a> — verificação alternativa</li>
                 <li><a href="https://github.com/chmulato/caracore-oidc-releases/releases/download/v2.0.1-free/INSTALACAO.md" rel="noopener noreferrer">INSTALACAO.md</a> — guia de início rápido</li>
+                <li><a href="https://github.com/chmulato/caracore-oidc-releases/releases/download/v2.0.1-free/VERSION" rel="noopener noreferrer">VERSION</a> — versão do pacote</li>
+                <li><a href="https://github.com/chmulato/caracore-oidc-releases/releases/download/v2.0.1-free/CHANNEL" rel="noopener noreferrer">CHANNEL</a> — canal v2</li>
             </ul>
             <p style="margin-top: 16px;">Verificar SHA-256 no PowerShell após o download:</p>
             <p><code style="font-size: 0.85em;">Get-FileHash -Path .\ReinoOIDC-v2.exe -Algorithm SHA256</code></p>
@@ -58,8 +55,9 @@
             </ul>
         </div>
 
-        <p class="download-meta" style="margin-top: 16px;"><strong>As três Eras e o currículo principal são gratuitos para estudo pessoal.</strong> Esta edição Free não inclui o módulo pago. A edição paga será entregue depois. O PIX é combinado pelo <a href="https://wa.me/5541999097797?text=Ol%C3%A1.%20Quero%20falar%20sobre%20a%20edi%C3%A7%C3%A3o%20paga%20do%20Reino%20OIDC." target="_blank" rel="noopener noreferrer">WhatsApp</a> ou pelo <a href="https://t.me/+5541999097797" target="_blank" rel="noopener noreferrer">Telegram</a>. O executável não tem certificado digital; confira o SHA-256 antes de abrir.</p>
-        <p class="download-back"><a href="index.html">← Voltar ao balcão</a> · <a href="conteudo-free.html">Conteúdo FREE</a> · <a href="https://github.com/chmulato/caracore-oidc-releases/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a></p>
+        <p class="download-meta" style="margin-top: 16px;"><strong>As três Eras e o currículo principal são gratuitos para estudo pessoal.</strong> A edição paga está em desenvolvimento. Quem quiser ser avisado pode escrever pelo <a href="https://wa.me/5541999097797?text=Ol%C3%A1.%20Quero%20ser%20avisado%20quando%20a%20edi%C3%A7%C3%A3o%20paga%20do%20Reino%20OIDC%20existir." target="_blank" rel="noopener noreferrer">WhatsApp</a>, sem pagamento nesta etapa. O executável não tem certificado digital; confira o SHA-256 antes de abrir.</p>
+        <p class="download-back"><a href="index.html">← Voltar ao balcão</a> · <a href="conteudo-free.html">Conteúdo FREE</a> · <a href="politica-privacidade.html">Privacidade</a></p>
+        <p class="download-meta reino-supplier">Cara Core Informática · CNPJ 23.969.028/0001-37 · Campo Largo/PR · o endereço completo é informado na confirmação do atendimento · <a href="mailto:suporte@caracore.com.br">suporte@caracore.com.br</a> · +55 41 9 9909-7797 · +55 41 9 9896-4818</p>
     </div>
     <script src="assets/js/release-links.js"></script>
     <script src="assets/js/loja.js"></script>

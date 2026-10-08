@@ -1,7 +1,7 @@
 /**
  * Reino OIDC — Motor de Eras (Níveis de Consciência)
  * Progressão por prompt_eras_historia.txt: Era 1 → 2 → 3 (Devia = nosso presente).
- * Sincronizado com as três partes gratuitas da história; os decks de Mineração são Premium.
+ * As três Eras e os dois baralhos gratuitos fazem parte da Edição Free.
  */
 (function () {
     'use strict';
