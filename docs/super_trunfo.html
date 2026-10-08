@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Reino OIDC — Edição Super Trunfo | Proteja seu Reino</title>
     <meta name="description" content="Jogo de cartas Super Trunfo do Reino da Identidade Federada. Segurança, Complexidade, Escalabilidade e Privacidade (LGPD). Cara Core Informática.">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/evolution-status/evolution-status.css">
-  <link rel="stylesheet" href="assets/caracore-core-typography.css">
-  <link rel="stylesheet" href="assets/caracore-institutional-components.css">
+  <link rel="stylesheet" href="/assets/caracore-core-typography.css">
+  <link rel="stylesheet" href="/assets/caracore-institutional-components.css">
     <link rel="stylesheet" href="assets/css/super-trunfo.css">
     <link rel="stylesheet" href="assets/css/sucesso-ativacao.css">
     <link rel="stylesheet" href="assets/css/reino-responsive.css">
@@ -21,7 +21,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark reino-site-nav sticky-top reino-nav-super-trunfo">
         <div class="container">
             <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menu de navegação">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -75,27 +75,12 @@
             <div class="deck-tabs">
                 <button type="button" class="deck-tab active" id="deck-1" data-deck="deck1">1. Personagens do Reino</button>
                 <button type="button" class="deck-tab" id="deck-2" data-deck="deck2">2. Aliança Federada</button>
-                <button type="button" class="deck-tab locked" id="deck-3" data-deck="deck3">3. Mineração de Chaves I</button>
-                <button type="button" class="deck-tab locked" id="deck-4" data-deck="deck4">4. Mineração de Chaves II</button>
-                <button type="button" class="deck-tab locked" id="deck-5" data-deck="deck5">5. Mineração de Chaves III</button>
             </div>
             <p class="small mb-0 deck-attr-legend">Atributos das cartas: <strong>Fortificação</strong> · <strong>Nobreza</strong> (menor é melhor) · <strong>Linhagem</strong> · <strong>Sigilo</strong>. <a href="personagens.html" class="link-personagens">Conheça os personagens do Reino</a>.</p>
         </section>
 
         <div class="alert alert-info era-3-cta" id="era-3-premium-cta">
             A história completa e os personagens das três Eras fazem parte do conteúdo educacional gratuito.
-        </div>
-
-        <!-- Upgrade — Mineração de Chaves (monetização Cara-Core) -->
-        <div class="upgrade-elite-box">
-            <h3>🔐 Módulo de elite: Mineração de Chaves</h3>
-            <p>O upgrade opcional de <strong>R$ 29,90</strong> (valor único) desbloqueia decks didáticos adicionais de <strong>Mineração de Chaves</strong>. O módulo é educativo e não implementa proteção criptográfica. PIX para CNPJ <span id="display-cnpj">23.969.028/0001-37</span>, com chave vinculada ao dispositivo.</p>
-            <ul class="benefits">
-                <li>Criptografia de Curva Elíptica</li>
-                <li>Selo de Identidade Federada</li>
-                <li>Acesso atrelado ao seu dispositivo (Hardware ID)</li>
-            </ul>
-            <button type="button" class="btn-upgrade" id="btn-upgrade-trono-secondary">Upgrade — R$ 29,90 (Pergaminho de Selagem)</button>
         </div>
 
         <!-- Selo de Qualidade Pawlowsky -->
@@ -129,25 +114,6 @@
                 </div>
             </div>
 
-            <!-- Gatilho Premium: carta sombreada após cada rodada -->
-            <div id="carta-sombreada-premium" class="carta-sombreada-premium">
-                <div class="locked-card-wrapper">
-                    <div class="trunfo-card locked-card">
-                        <span class="badge-locked">🔒 BLOQUEADA</span>
-                        <div class="card-name">A Guardiã da Biometria</div>
-                        <div class="card-subtitle">Protocolo de Mineração de Chaves</div>
-                        <div class="card-emoji">🛡️</div>
-                        <div class="attr-row"><span class="attr-name">Fortificação</span><span class="attr-value">—</span></div>
-                        <div class="attr-row"><span class="attr-name">Nobreza</span><span class="attr-value">—</span></div>
-                        <div class="attr-row"><span class="attr-name">Linhagem</span><span class="attr-value">—</span></div>
-                        <div class="attr-row"><span class="attr-name">Sigilo</span><span class="attr-value">—</span></div>
-                        <div class="card-seal-pawlowsky" aria-hidden="true">P</div>
-                    </div>
-                </div>
-                <p class="cta-premium-msg">Conheça os decks didáticos adicionais sobre Mineração de Chaves no módulo opcional.</p>
-                <button type="button" class="btn-upgrade btn-abrir-pergaminho" id="btn-abrir-pergaminho">Desbloquear — R$ 29,90</button>
-            </div>
-
             <!-- Resultado da rodada -->
             <div id="round-result" class="round-result">
                 <div class="result-msg"></div>
@@ -176,216 +142,16 @@
         </div>
     </footer>
 
-    <!-- Modal: Checkout Gótico — O Trono da Identidade (Cara Core Informática) -->
-    <div class="modal fade" id="modal-pergaminho" tabindex="-1" aria-labelledby="checkout-gothic-title" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content checkout-gothic">
-                <div class="checkout-gothic-header">
-                    <h2 class="checkout-gothic-title" id="checkout-gothic-title">O Trono da Identidade</h2>
-                    <button type="button" class="btn-close-dagger" data-bs-dismiss="modal" aria-label="Fechar">
-                        <span class="dagger-icon" aria-hidden="true">✕</span>
-                    </button>
-                </div>
-                <div class="checkout-gothic-body">
-                    <p class="checkout-epic-text">
-                        Para invocar o poder da <strong>Rainha OIDC</strong> e minerar chaves lendárias, realize a oferenda de <strong id="checkout-valor-display">R$ 29,90</strong> via PIX e envie sua <strong>Assinatura de Máquina</strong> ao Conselho (WhatsApp).
-                    </p>
-
-                    <div class="checkout-sinete-wrap">
-                        <button type="button" class="btn-sinete" id="btn-sinete-hwid" aria-live="polite">
-                            <span class="sinete-face"></span>
-                            <span class="sinete-label">Extrair Assinatura da Máquina</span>
-                        </button>
-                        <code id="pergaminho-hwid" class="hwid-hidden" aria-hidden="true">—</code>
-                    </div>
-
-                    <div class="checkout-vitral">
-                        <div class="vitral-frame">
-                            <img id="checkout-qr-pix" class="vitral-qr" src="" width="180" height="180" alt="QR Code PIX">
-                        </div>
-                        <p class="vitral-dados">
-                            <span class="vitral-empresa">Cara Core Informática</span>
-                            <span class="vitral-sep">|</span>
-                            <span class="vitral-cnpj">CNPJ: 23.969.028/0001-37</span>
-                        </p>
-                    </div>
-
-                    <div class="checkout-ativar-chave">
-                        <p class="checkout-ativar-label">Já possui Chave de Soberania? Cole abaixo e ative o reino.</p>
-                        <div class="checkout-ativar-row">
-                            <input type="text" id="checkout-chave-input" class="checkout-chave-input" placeholder="REINO-OIDC-xxxxxxxx-xxxxxxxxxxxx" autocomplete="off" spellcheck="false">
-                            <button type="button" class="btn-ativar-chave" id="btn-ativar-chave">Ativar</button>
-                        </div>
-                        <p id="checkout-chave-msg" class="checkout-chave-msg" role="alert" aria-live="polite"></p>
-                    </div>
-
-                    <a href="upgrade-trono.html" class="btn-pergaminho-full">Abrir página completa do upgrade</a>
-                </div>
-                <footer class="checkout-gothic-footer">
-                    <div class="selo-pawlowsky-modal">
-                        <span class="selo-pawlowsky-modal-title">Selo de Qualidade Pawlowsky</span>
-                        <span class="selo-pawlowsky-modal-desc">Garantia de origem científica — Guardião da Matemática Hídrica e Digital</span>
-                    </div>
-                </footer>
-            </div>
-        </div>
-    </div>
     <div id="spark-container" class="spark-container" aria-hidden="true"></div>
 
         <script src="assets/js/reino-nav.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/footer-propriedade.js"></script>
     <script src="assets/js/runtime-config.js"></script>
     <script src="assets/js/game-engine.js"></script>
     <script src="assets/js/licenca.js"></script>
     <script src="assets/js/sucesso_ativacao.js"></script>
-    <script src="assets/js/qrcode.min.js"></script>
-    <script src="assets/js/reino-qr.js"></script>
     <script src="assets/js/super-trunfo.js"></script>
-    <script>
-        (function() {
-            // Constante única para alterar valor em todo o fluxo (Cara Core Informática)
-            var CONFIG = {
-                CNPJ: '23.969.028/0001-37',
-                VALOR: 29.90,
-                EMPRESA: 'Cara Core Informática'
-            };
-            var LOCAL_BASELINE = window.isReinoLocalMode && window.isReinoLocalMode();
-            CONFIG.VALOR_FMT = 'R$ ' + CONFIG.VALOR.toFixed(2).replace('.', ',');
-
-            var el = document.getElementById('display-cnpj');
-            if (el) el.textContent = CONFIG.CNPJ;
-
-            function getHwid() {
-                try {
-                    var stored = localStorage.getItem('reino_oidc_hwid');
-                    if (stored) return stored;
-                    var s = navigator.userAgent + navigator.language + screen.width + screen.height;
-                    var h = 'reino_' + s.split('').reduce(function(a, b) { a = ((a << 5) - a) + b.charCodeAt(0); return a & a; }, 0).toString(16);
-                    localStorage.setItem('reino_oidc_hwid', h);
-                    return h;
-                } catch (e) { return 'browser_' + Date.now(); }
-            }
-
-            function triggerSpark(btn) {
-                var rect = btn.getBoundingClientRect();
-                var cx = rect.left + rect.width / 2;
-                var cy = rect.top + rect.height / 2;
-                var container = document.getElementById('spark-container');
-                if (!container) return;
-                container.innerHTML = '';
-                for (var i = 0; i < 12; i++) {
-                    var s = document.createElement('span');
-                    s.className = 'spark';
-                    var angle = (i / 12) * Math.PI * 2;
-                    var tx = Math.cos(angle) * 80;
-                    var ty = Math.sin(angle) * 80;
-                    s.style.left = (cx - 4) + 'px';
-                    s.style.top = (cy - 4) + 'px';
-                    s.style.setProperty('--tx', tx + 'px');
-                    s.style.setProperty('--ty', ty + 'px');
-                    container.appendChild(s);
-                }
-                container.classList.add('spark-visible');
-                setTimeout(function() { container.classList.remove('spark-visible'); container.innerHTML = ''; }, 600);
-            }
-
-            function openPergaminho() {
-                var modal = document.getElementById('modal-pergaminho');
-                var hwidEl = document.getElementById('pergaminho-hwid');
-                if (hwidEl) hwidEl.textContent = getHwid();
-
-                var valorEl = document.getElementById('checkout-valor-display');
-                if (valorEl) valorEl.textContent = CONFIG.VALOR_FMT;
-
-                var qrEl = document.getElementById('checkout-qr-pix');
-                if (qrEl && window.ReinoQR && window.ReinoQR.applyToImg) {
-                    window.ReinoQR.applyToImg(qrEl, CONFIG.CNPJ, 180);
-                }
-
-                var sineteBtn = document.getElementById('btn-sinete-hwid');
-                if (sineteBtn) {
-                    sineteBtn.classList.remove('copied');
-                    var lbl = sineteBtn.querySelector('.sinete-label');
-                    if (lbl) lbl.textContent = 'Extrair Assinatura da Máquina';
-                }
-
-                if (modal && window.bootstrap) {
-                    var m = new bootstrap.Modal(modal);
-                    m.show();
-                }
-            }
-
-            if (!LOCAL_BASELINE) {
-                document.getElementById('btn-upgrade-trono') && document.getElementById('btn-upgrade-trono').addEventListener('click', openPergaminho);
-                document.getElementById('btn-upgrade-trono-secondary') && document.getElementById('btn-upgrade-trono-secondary').addEventListener('click', openPergaminho);
-                document.getElementById('btn-abrir-pergaminho') && document.getElementById('btn-abrir-pergaminho').addEventListener('click', openPergaminho);
-            } else {
-                ['era-3-premium-cta', 'btn-upgrade-trono', 'btn-upgrade-trono-secondary', 'carta-sombreada-premium'].forEach(function(id) {
-                    var el = document.getElementById(id);
-                    if (el) el.style.display = 'none';
-                });
-                document.querySelectorAll('.upgrade-elite-box').forEach(function(el) {
-                    el.style.display = 'none';
-                });
-            }
-
-            if (!LOCAL_BASELINE && window.location.hash === '#ritual') {
-                setTimeout(openPergaminho, 500);
-            }
-
-            document.getElementById('btn-ativar-chave') && document.getElementById('btn-ativar-chave').addEventListener('click', (function() {
-                var ativando = false;
-                var DEBOUNCE_MS = 2500;
-                return function() {
-                    if (ativando) return;
-                    var input = document.getElementById('checkout-chave-input');
-                    var msg = document.getElementById('checkout-chave-msg');
-                    var btn = document.getElementById('btn-ativar-chave');
-                    if (!input || !window.ativarReino) return;
-                    var chave = input.value.trim();
-                    msg.textContent = '';
-                    msg.className = 'checkout-chave-msg';
-                    if (!chave) { msg.textContent = 'Digite a chave enviada pela Cara Core.'; msg.classList.add('err'); return; }
-                    ativando = true;
-                    if (btn) { btn.disabled = true; }
-                    if (window.ativarReino(chave)) {
-                        msg.textContent = 'Chave válida. Ativando…'; msg.classList.add('ok');
-                    } else {
-                        msg.textContent = 'Chave inválida ou não compatível com esta máquina.'; msg.classList.add('err');
-                        ativando = false;
-                        if (btn) { btn.disabled = false; }
-                        return;
-                    }
-                    setTimeout(function() {
-                        ativando = false;
-                        if (btn) { btn.disabled = false; }
-                    }, DEBOUNCE_MS);
-                };
-            })());
-
-            document.getElementById('btn-sinete-hwid') && document.getElementById('btn-sinete-hwid').addEventListener('click', function() {
-                var hwidEl = document.getElementById('pergaminho-hwid');
-                var btn = this;
-                var lbl = btn.querySelector('.sinete-label');
-                var text = hwidEl ? hwidEl.textContent : '';
-                if (!text || text === '—') return;
-                try {
-                    navigator.clipboard.writeText(text).then(function() {
-                        triggerSpark(btn);
-                        btn.classList.add('copied');
-                        if (lbl) lbl.textContent = 'Assinatura Copiada!';
-                        setTimeout(function() {
-                            btn.classList.remove('copied');
-                            if (lbl) lbl.textContent = 'Extrair Assinatura da Máquina';
-                        }, 2500);
-                    });
-                } catch (e) {
-                    if (lbl) lbl.textContent = 'Assinatura Copiada!';
-                }
-            });
-        })();
-    </script>
     <script src="assets/js/loja.js"></script>
 </body>
 </html>

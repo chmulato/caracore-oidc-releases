@@ -1,7 +1,7 @@
 /**
  * Reino OIDC — Motor de Cálculo Super Trunfo
  * compareCards(attr): valida quem tem maior valor no atributo.
- * FREE: decks 1 e 2. PREMIUM (R$ 29,90): decks 3, 4 e 5 com Poderes Especiais.
+ * FREE: currículo das três Eras e decks 1 e 2. PREMIUM: decks 3, 4 e 5 adicionais.
  * Log [BATALHA], tremer tela + Selo Pawlowsky dourado em carta Premium.
  * check_license(HID): Cara-Core; sem license.key → pergaminho com QR PIX.
  */
@@ -30,7 +30,7 @@
 
     /**
      * REINO_DECK — Os 9 personagens (prompt_eras_historia.txt). Cada um tem era em que 'despertou'.
-     * isLocked por progresso: as três Eras e seus personagens fazem parte do currículo gratuito.
+     * isLocked por era: a progressão da história libera as cartas das três Eras no plano Free.
      */
     const REINO_DECK = [
         { id: 'lady-oauth', name: 'Lady OAuth', subtitle: 'Guardiã das Portas', emoji: '👑', seguranca: 72, escalabilidade: 65, privacidade: 62, complexidade: 58, deckId: 1, reinoDeck: true, era: 1, flavor_text: 'Ela guarda as Portas do Reino; quem não tem o selo de autorização não passa.' },
@@ -55,31 +55,13 @@
         { id: 'jwt', name: 'JWT', subtitle: 'Token Assinado', emoji: '🎫', seguranca: 8, complexidade: 5, escalabilidade: 9, privacidade: 8, deckId: 2 }
     ];
 
-    /* Decks 3, 4, 5 — PREMIUM. Poderes Especiais (matemática inquebrável). */
-    const DECK_3 = [
-        { id: 'rainha-oidc', name: 'Rainha OIDC', subtitle: 'Soberana da Identidade', emoji: '👑', seguranca: 10, complexidade: 5, escalabilidade: 10, privacidade: 10, deckId: 3, elite: true, poder: 'Espelho da Verdade' },
-        { id: 'ecdh', name: 'Criptografia de Curva Elíptica', subtitle: 'Mineração de Chaves', emoji: '🔐', seguranca: 10, complexidade: 9, escalabilidade: 8, privacidade: 10, deckId: 3, elite: true, poder: 'Chave Inquebrável' }
-    ];
-    const DECK_4 = [
-        { id: 'selo-federada', name: 'Selo de Identidade Federada', subtitle: 'Protocolo de Mineração', emoji: '🏅', seguranca: 10, complexidade: 6, escalabilidade: 9, privacidade: 10, deckId: 4, elite: true, poder: 'Selo do Conselho' },
-        { id: 'guardiã-biometria', name: 'A Guardiã da Biometria', subtitle: 'Proteção Quântica', emoji: '🛡️', seguranca: 10, complexidade: 7, escalabilidade: 9, privacidade: 10, deckId: 4, elite: true, poder: 'Escudo Criptográfico' }
-    ];
-    const DECK_5 = [
-        { id: 'arquiteta-acesso', name: 'Arquiteta do Acesso', subtitle: 'Mestre OIDC', emoji: '🧙‍♀️', seguranca: 10, complexidade: 5, escalabilidade: 10, privacidade: 10, deckId: 5, elite: true, poder: 'Linhagem do Trono' },
-        { id: 'defensora-tokens', name: 'Defensora dos Tokens', subtitle: 'Validação Assinada', emoji: '⚔️', seguranca: 10, complexidade: 6, escalabilidade: 10, privacidade: 10, deckId: 5, elite: true, poder: 'Revocação do Invasor' }
-    ];
-
-    const DECK_BY_ID = { 1: DECK_1, 2: DECK_2, 3: DECK_3, 4: DECK_4, 5: DECK_5 };
+    const DECK_BY_ID = { 1: DECK_1, 2: DECK_2 };
     const DECK_NAMES = { 1: 'Personagens do Reino', 2: 'Aliança Federada', 3: 'Mineração de Chaves I', 4: 'Mineração de Chaves II', 5: 'Mineração de Chaves III' };
-    /* Compatibilidade: basico = deck 1, elite = deck 3 (ou 4,5 conforme seleção) */
-    var DECK_BASICO = DECK_1;
-    var DECK_ELITE_MINERACAO = DECK_3.concat(DECK_4).concat(DECK_5);
 
     const CONFIG = {
         CNPJ: '23.969.028/0001-37',
         VALOR: 29.90,
         UPGRADE_URL: 'upgrade-trono.html',
-        STORAGE_HWID_KEY: 'reino_oidc_hwid',
         STORAGE_LAST_ERA_KEY: 'reino_oidc_last_era_seen'
     };
 
@@ -92,43 +74,14 @@
         rodadaAtiva: false,
         eliteUnlocked: false,
         licenseChecked: false,
+        premiumDecks: {},
         currentEra: 1
     };
 
-    function getHardwareId() {
-        try {
-            var stored = localStorage.getItem(CONFIG.STORAGE_HWID_KEY);
-            if (stored) return stored;
-            var h = 'reino_' + (navigator.userAgent + navigator.language + screen.width + screen.height).split('').reduce(function (a, b) {
-                a = ((a << 5) - a) + b.charCodeAt(0);
-                return a & a;
-            }, 0).toString(16);
-            localStorage.setItem(CONFIG.STORAGE_HWID_KEY, h);
-            return h;
-        } catch (e) {
-            return 'browser_' + Date.now();
-        }
-    }
-
-    /**
-     * Verificação de licença Cara-Core. Antes de carregar cartas 3, 4 e 5.
-     * Somente uma chave validada por isPremium() libera os decks pagos.
-     * @param {string} HID - Hardware ID (simbiose com checkout)
-     * @returns {boolean}
-     */
-    function check_license(HID) {
-        try {
-            if (typeof window.isPremium === 'function' && window.isPremium()) {
-                state.eliteUnlocked = true;
-                state.licenseChecked = true;
-                return true;
-            }
-            state.eliteUnlocked = false;
-            state.licenseChecked = true;
-            return false;
-        } catch (e) {
-            return false;
-        }
+    function check_license() {
+        state.eliteUnlocked = typeof window.isPremium === 'function' && window.isPremium();
+        state.licenseChecked = true;
+        return state.eliteUnlocked;
     }
 
     /**
@@ -163,6 +116,9 @@
         var label = ATTR_LABELS[attr] || attr;
         var vJ = cardJ && cardJ[attr] != null ? cardJ[attr] : 0;
         var vM = cardM && cardM[attr] != null ? cardM[attr] : 0;
+        if (result === 0) {
+            return "Comparação " + label + ": empate — Jogadora " + vJ + " = Conselho " + vM + ".";
+        }
         var who = result === 1 ? (cardJ && cardJ.name) || 'Jogadora' : (cardM && cardM.name) || 'Conselho';
         var power = result === 1 && cardJ && cardJ.poder ? cardJ.poder : (cardM && cardM.poder) || null;
         if (power) {
@@ -170,6 +126,21 @@
         }
         return "Comparação " + label + ": " + (result === 1 ? "Jogadora " + vJ + " vence Conselho " + vM + "." : "Conselho " + vM + " vence Jogadora " + vJ + ".");
     }
+
+    function getResultPresentation(result) {
+        if (result === 1) {
+            return { className: 'win', message: 'Você venceu esta rodada! Governa suas identidades.' };
+        }
+        if (result === -1) {
+            return { className: 'lose', message: 'O Conselho da Confiança venceu. Proteja seu Reino na próxima.' };
+        }
+        return { className: 'tie', message: 'Empate! Ninguém leva a carta.' };
+    }
+
+    window.ReinoSuperTrunfoResults = Object.freeze({
+        getBattleNarrative: getBattleNarrative,
+        getResultPresentation: getResultPresentation
+    });
 
     function escapeHtml(s) {
         var div = document.createElement('div');
@@ -219,8 +190,20 @@
         }, 400);
     }
 
+    function paidModuleIncluded() {
+        var config = window.REINO_OIDC_CONFIG || {};
+        return config.paidModuleIncluded === true;
+    }
+
     function renderPergaminhoPIX(container) {
-        var pixPayload = 'PIX+' + CONFIG.CNPJ + '+R%2429%2C90';
+        if (!paidModuleIncluded() || !window.ReinoQR) return;
+        var pixPayload = window.ReinoQR.buildPixPayload({
+            key: CONFIG.CNPJ,
+            amount: CONFIG.VALOR,
+            merchantName: 'CARA CORE INFORMATICA',
+            merchantCity: 'CAMPO LARGO',
+            txid: '***'
+        });
         var div = document.createElement('div');
         div.className = 'trunfo-card pergaminho-pix';
         div.innerHTML =
@@ -229,11 +212,33 @@
             '<div class="card-subtitle">Desbloqueie com R$ 29,90 — PIX CNPJ</div>' +
             '<div class="pergaminho-qr"><img class="pergaminho-qr-img" alt="QR PIX" width="100" height="100"></div>' +
             '<code class="pergaminho-cnpj">' + escapeHtml(CONFIG.CNPJ) + '</code>' +
+            '<label class="pergaminho-hint" for="pergaminho-pix-payload">Pix Copia e Cola</label>' +
+            '<textarea class="pergaminho-pix-payload" readonly rows="3" aria-label="Pix Copia e Cola">' + escapeHtml(pixPayload) + '</textarea>' +
+            '<button type="button" class="pergaminho-pix-copy">Copiar Pix Copia e Cola</button>' +
+            '<span class="pergaminho-pix-copy-status" role="status" aria-live="polite"></span>' +
             '<p class="pergaminho-hint">Chave PIX · R$ 29,90 · Cara Core Informática</p>';
         container.appendChild(div);
         var qrImg = div.querySelector('.pergaminho-qr-img');
         if (qrImg && window.ReinoQR && window.ReinoQR.applyToImg) {
             window.ReinoQR.applyToImg(qrImg, pixPayload, 100);
+        }
+        var copyButton = div.querySelector('.pergaminho-pix-copy');
+        var payloadInput = div.querySelector('.pergaminho-pix-payload');
+        var copyStatus = div.querySelector('.pergaminho-pix-copy-status');
+        if (copyButton && payloadInput && copyStatus) {
+            copyButton.addEventListener('click', function () {
+                payloadInput.focus();
+                payloadInput.select();
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(pixPayload).then(function () {
+                        copyStatus.textContent = 'Pix Copia e Cola copiado.';
+                    }, function () {
+                        copyStatus.textContent = 'Texto selecionado. Pressione Ctrl+C para copiar.';
+                    });
+                } else {
+                    copyStatus.textContent = 'Texto selecionado. Pressione Ctrl+C para copiar.';
+                }
+            });
         }
     }
 
@@ -253,12 +258,13 @@
     function renderCard(card, container, isMachine) {
         if (!card) return;
         var isPremiumCard = (card.deckId >= 3 || card.elite) && (card.deckId !== undefined || card.elite);
+        if (isPremiumCard && !paidModuleIncluded()) return;
         if (isPremiumCard && !check_license(getHardwareId())) {
             renderPergaminhoPIX(container);
             return;
         }
         var premium = check_license(getHardwareId());
-        var locked = card.isLocked && !premium;
+        var locked = card.isLocked && (card.reinoDeck || !premium);
         var div = document.createElement('div');
         div.className = 'trunfo-card' + (card.elite ? ' elite' : '') + (locked ? ' trunfo-card-locked' : '');
         if (locked) div.setAttribute('role', 'button');
@@ -280,7 +286,10 @@
                 div.innerHTML += attrBarHtml(key, card[key] != null ? card[key] : 0);
             });
         } else {
-            div.innerHTML += '<p class="card-desbloqueie">Desbloqueie com a Chave de Soberania (R$ 29,90)</p>';
+            var lockMessage = card.reinoDeck
+                ? 'Conclua a parte anterior da história para liberar esta carta.'
+                : 'Desbloqueie com a chave do módulo opcional.';
+            div.innerHTML += '<p class="card-desbloqueie">' + escapeHtml(lockMessage) + '</p>';
         }
         div.innerHTML += flavorHtml + deviaTransitionHtml;
         /* Foco Técnico no rodapé (subtítulo discreto por era) */
@@ -288,24 +297,30 @@
             var foco = window.ReinoEras.getFocoTecnicoEra(card.era);
             div.innerHTML += '<div class="card-foco-tecnico">' + escapeHtml(foco) + '</div>';
         }
-        /* A narrativa gratuita da Era 3 permanece acessível sem Premium. */
+        /* Mantém o destaque visual da carta da Era 3 sem confundir currículo com upgrade. */
         if (card.integradoraSuprema) {
             div.classList.add('devia-glitch-card');
-            if (locked) {
-                div.innerHTML += '<button type="button" class="btn-assuma-trono" data-cta-checkout>Assuma seu trono por R$ 29,90</button>';
-            }
         }
         div.innerHTML += '<div class="card-seal-pawlowsky" aria-hidden="true">P</div>';
+        var openLockedCard = function () {
+            if (card.reinoDeck) {
+                var eras = window.ReinoEras && window.ReinoEras.ERAS;
+                var previousEra = eras && eras[card.era - 1];
+                if (previousEra && previousEra.storyPage) window.location.href = previousEra.storyPage;
+                return;
+            }
+            if (typeof window.openRitualAtivacao === 'function') window.openRitualAtivacao();
+        };
         if (locked) {
             div.addEventListener('click', function (e) {
                 if (e.target && e.target.getAttribute && e.target.getAttribute('data-cta-checkout') !== null) return;
                 e.preventDefault();
-                if (typeof window.openRitualAtivacao === 'function') window.openRitualAtivacao();
+                openLockedCard();
             });
             div.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    if (typeof window.openRitualAtivacao === 'function') window.openRitualAtivacao();
+                    openLockedCard();
                 }
             });
         }
@@ -320,7 +335,7 @@
     }
 
     /**
-     * Renderiza o deck (personagens por era) conforme o progresso educacional.
+     * Renderiza o deck de personagens com base na progressão gratuita da história.
      */
     function renderDeck(container) {
         if (!container) return;
@@ -341,15 +356,15 @@
 
     function buildDeck(deckId) {
         var id = typeof deckId === 'string' ? parseInt(deckId.replace('deck', ''), 10) : deckId;
-        if (!id || !DECK_BY_ID[id]) return shuffle(DECK_1.slice());
+        if (!id || (id < 3 && !DECK_BY_ID[id])) return shuffle(DECK_1.slice());
         var list;
         if (id === 1) {
             list = getReinoDeckForEra().slice();
+        } else if (id >= 3 && check_license()) {
+            list = (state.premiumDecks[String(id)] || []).slice();
+            if (!list.length) return shuffle(DECK_1.slice());
         } else {
             list = DECK_BY_ID[id].slice();
-            if (id >= 3 && !check_license(getHardwareId())) {
-                list = list.filter(function (c) { return !c.isLocked; });
-            }
         }
         return shuffle(list);
     }
@@ -359,7 +374,7 @@
         var deckKey = (activeTab && activeTab.dataset.deck) || 'deck1';
         state.deckAtivo = deckKey;
         state.deckId = parseInt(deckKey.replace('deck', ''), 10) || 1;
-        if (state.deckId >= 3 && !check_license(getHardwareId())) {
+        if (state.deckId >= 3 && !check_license()) {
             state.deckId = 1;
             state.deckAtivo = 'deck1';
             document.querySelectorAll('.deck-tab').forEach(function (t) {
@@ -410,22 +425,21 @@
     function hideResult() {
         var r = document.getElementById('round-result');
         if (r) {
-            r.classList.remove('show', 'win', 'lose');
+            r.classList.remove('show', 'win', 'lose', 'tie');
             r.style.display = 'none';
         }
     }
 
-    function showResult(won, attr) {
+    function showResult(result, attr) {
         var r = document.getElementById('round-result');
         if (!r) return;
-        r.classList.remove('win', 'lose');
-        r.classList.add(won ? 'win' : 'lose', 'show');
+        var presentation = getResultPresentation(result);
+        r.classList.remove('win', 'lose', 'tie');
+        r.classList.add(presentation.className, 'show');
         r.style.display = 'block';
         var msg = r.querySelector('.result-msg');
         if (msg) {
-            msg.textContent = won
-                ? 'Você venceu esta rodada! Governa suas identidades.'
-                : 'O Conselho da Confiança venceu. Proteja seu Reino na próxima.';
+            msg.textContent = presentation.message;
         }
         var detail = r.querySelector('.result-detail');
         if (detail) {
@@ -454,7 +468,7 @@
 
         if (hasPremium) triggerPremiumEffect();
 
-        showResult(result === 1, attr);
+        showResult(result, attr);
         state.rodadaAtiva = false;
 
         var attrBtns = document.querySelectorAll('.attr-btn');
@@ -490,7 +504,7 @@
             if (btnProxima) btnProxima.style.display = 'none';
             var r = document.getElementById('round-result');
             if (r) {
-                r.classList.remove('win', 'lose');
+                r.classList.remove('win', 'lose', 'tie');
                 r.classList.add('show', 'win');
                 var msg = r.querySelector('.result-msg');
                 if (msg) msg.textContent = 'Partida encerrada. Torne-se a Arquiteta do Acesso!';
@@ -527,13 +541,15 @@
     }
 
     function initDeckTabs() {
-        var unlocked = check_license(getHardwareId());
+        var unlocked = check_license();
         [1, 2, 3, 4, 5].forEach(function (id) {
             var tab = document.getElementById('deck-' + id);
             if (!tab) return;
             if (id <= 2) {
                 tab.classList.remove('locked');
                 tab.onclick = function () { setDeck('deck' + id); };
+            } else if (!paidModuleIncluded()) {
+                tab.hidden = true;
             } else {
                 if (unlocked) {
                     tab.classList.remove('locked');
@@ -550,7 +566,8 @@
 
     function setDeck(deckId) {
         var id = typeof deckId === 'string' ? parseInt(deckId.replace('deck', ''), 10) : deckId;
-        if (id >= 3 && !check_license(getHardwareId())) return;
+        if (id >= 3 && !paidModuleIncluded()) return;
+        if (id >= 3 && (!check_license() || !state.premiumDecks[String(id)])) return;
         state.deckAtivo = 'deck' + id;
         state.deckId = id;
         document.querySelectorAll('.deck-tab').forEach(function (t) {
@@ -593,12 +610,11 @@
 
     /**
      * Overlay dos Contos das Eras: título gótico + texto técnico sem-serifa.
-     * Quando currentEra muda, exibe o texto da era; os personagens da Era 3 são gratuitos.
+     * Quando currentEra muda, exibe o texto educativo correspondente à Era.
      */
     function showEraOverlay(era) {
         if (typeof window.ReinoEras === 'undefined') return;
         var narrativa = window.ReinoEras.getNarrativaEra(era);
-        var premium = check_license(getHardwareId());
         var isEra3 = era === 3;
 
         var overlay = document.getElementById('reino-era-overlay');
@@ -629,14 +645,6 @@
         overlay.querySelector('.reino-era-overlay-fechar').addEventListener('click', function () {
             overlay.classList.remove('show');
         });
-        var ctaOverlay = overlay.querySelector('.btn-assuma-trono-overlay[data-cta-checkout]');
-        if (ctaOverlay) {
-            ctaOverlay.addEventListener('click', function (e) {
-                e.preventDefault();
-                overlay.classList.remove('show');
-                if (typeof window.openRitualAtivacao === 'function') window.openRitualAtivacao();
-            });
-        }
     }
 
     function checkEraTransitionAndShowOverlay() {
@@ -655,20 +663,35 @@
     }
 
     function init() {
-        var hid = getHardwareId();
-        logTelemetria('Reino da Identidade Federada — Super Trunfo iniciado. Proteja seu Reino. Hardware ID: ' + hid.substring(0, 8) + '…');
-        check_license(hid);
+        logTelemetria('Reino da Identidade Federada — Super Trunfo iniciado. Proteja seu Reino.');
         applyEraTheme();
         renderTimeline();
         checkEraTransitionAndShowOverlay();
-        initDeckTabs();
-        setDeck('deck1');
 
         var btnIniciar = document.getElementById('btn-iniciar');
         if (btnIniciar) btnIniciar.onclick = startGame;
 
         var btnProxima = document.getElementById('btn-proxima');
         if (btnProxima) btnProxima.onclick = nextRound;
+
+        Promise.resolve(paidModuleIncluded() ? window.reinoLicenseReady : null)
+            .then(function () {
+                return paidModuleIncluded() && check_license() && window.ReinoLicense ?
+                    window.ReinoLicense.premiumDecks() : {};
+            })
+            .then(function (decks) {
+                state.premiumDecks = decks || {};
+                initDeckTabs();
+                setDeck('deck1');
+                applyEraTheme();
+                renderTimeline();
+            })
+            .catch(function (error) {
+                logTelemetria('Não foi possível carregar os decks Premium: ' + error.message, 'ERROR');
+                state.premiumDecks = {};
+                initDeckTabs();
+                setDeck('deck1');
+            });
     }
 
     if (document.readyState === 'loading') {

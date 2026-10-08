@@ -4,9 +4,9 @@
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Upgrade — O Trono da Identidade | Reino OIDC | Cara Core Informática</title>
-    <meta name="description" content="Upgrade do Reino OIDC: O Trono da Identidade. R$ 29,90 — valor único. Pagamento PIX. Cara Core Informática.">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <title>Módulo pago — Reino OIDC | Cara Core Informática</title>
+    <meta name="description" content="A edição Free do Reino OIDC não inclui o módulo pago. O currículo das três Eras permanece gratuito.">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root {
             --bg: #1a0e2e;
@@ -49,6 +49,9 @@
         .pix-box .cnpj { font-family: ui-monospace, monospace; font-size: 1rem; color: var(--gold); letter-spacing: 0.02em; }
         .pix-box .hint { font-size: 0.8rem; color: var(--dim); margin-top: 10px; }
         .pix-box .valor { font-size: 1.1rem; font-weight: 600; color: var(--green); margin-top: 8px; }
+        .pix-box .pix-qr { display: block; width: 220px; height: 220px; margin: 18px auto; background: #fff; }
+        .pix-box .pix-copy-paste { display: block; width: 100%; margin-top: 8px; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 6px; font: 0.75rem/1.4 ui-monospace, monospace; overflow-wrap: anywhere; }
+        .pix-box .copy-status { display: block; min-height: 1.4em; margin-top: 8px; color: var(--green); font-size: 0.8rem; }
         .steps { list-style: none; }
         .steps li { position: relative; padding-left: 28px; margin-bottom: 14px; font-size: 0.9rem; color: var(--text); line-height: 1.5; }
         .steps li::before { content: attr(data-step); position: absolute; left: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--cyan); color: var(--bg); font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
@@ -63,7 +66,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark reino-site-nav sticky-top bg-primary">
         <div class="container">
             <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menu de navegação">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -93,80 +96,23 @@
     </nav>
     <div class="wrapper">
         <header>
-            <span class="badge">Pergaminho de Selagem — Reino OIDC</span>
-            <h1>O Trono da Identidade</h1>
-            <p>Adquira acesso aos <strong>decks adicionais do módulo educacional Mineração de Chaves</strong> no Super Trunfo. A história e as três Eras do currículo continuam gratuitas. Valor único.</p>
+            <span class="badge">Edição Free — Reino OIDC</span>
+            <h1>Módulo pago fora desta versão</h1>
+            <p>Esta edição Free entrega o currículo das três Eras. O módulo pago não faz parte deste aplicativo e será desenvolvido em um momento seguinte.</p>
         </header>
 
-        <div class="block pergaminho-block">
-            <h2>📜 Selagem do seu dispositivo</h2>
-            <p>O Reino identifica seu dispositivo para vincular a Chave de Soberania. Este é seu <strong>Hardware ID</strong> (gerado automaticamente):</p>
-            <div class="pix-box hwid-box">
-                <div class="name">Hardware ID</div>
-                <code id="display-hwid" class="cnpj">—</code>
-                <p class="hint">Envie este valor junto ao comprovante para ativação.</p>
-            </div>
-        </div>
-
         <div class="block">
-            <h2>Pagamento PIX</h2>
-            <p>Utilize a chave PIX (CNPJ) abaixo para realizar o pagamento. Valor único do upgrade:</p>
-            <div class="pix-box" id="pix-box">
-                <div class="name">Cara Core Informática</div>
-                <div class="cnpj" id="display-cnpj">23.969.028/0001-37</div>
-                <div class="valor" id="display-valor">R$ 29,90</div>
-                <p class="hint">Chave PIX: CNPJ — copie e cole no app do seu banco</p>
-            </div>
+            <h2>O que esta versão inclui</h2>
+            <p>História, academia, glossário, mapas e os baralhos gratuitos do Super Trunfo. Não há pagamento, chave de ativação nem importação de pacote Premium nesta versão.</p>
         </div>
-
-        <div class="block">
-            <h2>Como concluir o upgrade</h2>
-            <ol class="steps">
-                <li data-step="1">Realize o pagamento de <strong>R$ 29,90</strong> via PIX usando a chave CNPJ acima.</li>
-                <li data-step="2">Envie o <strong>comprovante de pagamento</strong> e seu <strong>e-mail</strong> (ou contato) pelo canal indicado no portfólio ou no GitHub (Reino OIDC — Cara Core Informática).</li>
-                <li data-step="3"><strong>Após o envio do pergaminho (comprovante)</strong>, sua <strong>Chave de Soberania</strong> será enviada via <strong>Corvo Digital</strong> (WhatsApp/Telegram) no contato que você informar.</li>
-            </ol>
-        </div>
-
-        <div class="block corvo-block">
-            <h2>🦅 Corvo Digital</h2>
-            <p>Envie o comprovante PIX e seu e-mail ou número (WhatsApp/Telegram) pelo canal da Cara Core Informática. A equipe processa a ativação e envia sua Chave de Soberania pelo mesmo canal.</p>
-        </div>
-
-        <div class="block">
-            <h2>Canais de venda e suporte</h2>
-            <p>Para enviar o comprovante e solicitar a ativação dos decks adicionais, utilize o canal de contato da Cara Core Informática (portfólio ou repositório Reino OIDC). A equipe processa o pagamento e entrega a chave de acesso ao módulo.</p>
-        </div>
-
-        <p class="lgpd">
-            <strong>Privacidade (LGPD):</strong> Seus dados de contato são usados apenas para processar o pagamento e enviar a chave de acesso ao módulo. Não compartilhamos com terceiros. O tratamento segue a Lei Geral de Proteção de Dados.
-        </p>
 
         <p class="nav-links">
-            <a href="index.html">← Voltar ao Reino OIDC</a> · <span title="Cara Core Informática">Cara Core Informática</span> · <a href="https://github.com/chmulato/caracore-oidc" target="_blank" rel="noopener">GitHub (dev)</a> · <a href="https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.0" target="_blank" rel="noopener">Release v2.0.0</a>
+            <a href="index.html">← Voltar ao Reino OIDC</a>
         </p>
     </div>
-
-        <script src="assets/js/reino-nav.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/reino-nav.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/footer-propriedade.js"></script>
-    <script>
-        (function() {
-            var CONFIG = { CNPJ: '23.969.028/0001-37', VALOR: 29.90 };
-            document.getElementById('display-cnpj').textContent = CONFIG.CNPJ;
-            document.getElementById('display-valor').textContent = 'R$ ' + CONFIG.VALOR.toFixed(2).replace('.', ',');
-            try {
-                var h = localStorage.getItem('reino_oidc_hwid');
-                if (!h) {
-                    var s = navigator.userAgent + navigator.language + screen.width + screen.height;
-                    h = 'reino_' + s.split('').reduce(function(a, b) { a = ((a << 5) - a) + b.charCodeAt(0); return a & a; }, 0).toString(16);
-                    localStorage.setItem('reino_oidc_hwid', h);
-                }
-                var el = document.getElementById('display-hwid');
-                if (el) el.textContent = h;
-            } catch (e) {}
-        })();
-    </script>
     <script src="assets/js/loja.js"></script>
 </body>
 </html>

@@ -797,6 +797,12 @@ body.super-trunfo.era-3 .reino-title { color: var(--gothic-gold); text-shadow: 0
     color: #ef5350;
 }
 
+.round-result.tie {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: var(--gothic-gold);
+    color: var(--gothic-gold);
+}
+
 .round-result .result-msg { font-weight: 600; margin-bottom: 8px; }
 
 /* ----- Deck tabs ----- */

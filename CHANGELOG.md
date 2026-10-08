@@ -10,6 +10,19 @@ Cada versão inclui uma nota de **Impacto** para o público-alvo e para seguran�
 
 ---
 
+## [2.0.1-free] — 2026-10-08
+
+### [App Desktop]
+- Edição Free `v2.0.1-free` para Windows. As três Eras abrem sem chave de ativação.
+- O módulo pago não faz parte desta versão.
+- O executável não traz certificado digital. A conferência do download é o SHA-256 da release.
+
+### [Web/Conteúdo]
+- A loja aponta o download para a release `v2.0.1-free`.
+- A vitrine deixa de oferecer pagamento, PIX e importação de pacote Premium nesta edição.
+
+---
+
 ## [2.0.0] — 2026-10-07
 
 ### [Web/Conteúdo]

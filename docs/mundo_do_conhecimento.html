@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Reino da Identidade Federada - Mundo do Conhecimento</title>
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/evolution-status/evolution-status.css">
-  <link rel="stylesheet" href="assets/caracore-core-typography.css">
-  <link rel="stylesheet" href="assets/caracore-institutional-components.css">
+  <link rel="stylesheet" href="/assets/caracore-core-typography.css">
+  <link rel="stylesheet" href="/assets/caracore-institutional-components.css">
 </head>
 <body class="page-mundo-conhecimento cc-i-page">
     <nav class="navbar navbar-expand-lg navbar-dark reino-site-nav sticky-top bg-primary">
         <div class="container">
             <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menu de navegação">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -52,8 +52,8 @@
                 <p class="lead text-center">Estude OpenID Connect com foco em padrão, arquitetura, segurança e implementação técnica.</p>
 <div class="reino-media-block reino-media-content">
                     <picture class="reino-media-frame">
-                        <source srcset="docs/img/cenario-12-arquitetura-final-integrada-mobile.webp 900w, docs/img/cenario-12-arquitetura-final-integrada.webp 2048w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" type="image/webp">
-                        <img src="docs/img/cenario-12-arquitetura-final-integrada.png" srcset="docs/img/cenario-12-arquitetura-final-integrada-mobile.png 900w, docs/img/cenario-12-arquitetura-final-integrada.png 2048w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" class="reino-media-image" loading="eager" decoding="async" alt="Arquitetura integrada do ecossistema OIDC conectando cliente, provedor de identidade e resource server" title="Arquitetura OIDC de ponta a ponta">
+                        <source srcset="docs/img/cenario-12-arquitetura-final-integrada-mobile.webp 800w, docs/img/cenario-12-arquitetura-final-integrada.webp 1536w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" type="image/webp">
+                        <img src="docs/img/cenario-12-arquitetura-final-integrada.webp" srcset="docs/img/cenario-12-arquitetura-final-integrada-mobile.webp 800w, docs/img/cenario-12-arquitetura-final-integrada.webp 1536w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" class="reino-media-image" loading="eager" decoding="async" alt="Arquitetura integrada do ecossistema OIDC conectando cliente, provedor de identidade e resource server" title="Arquitetura OIDC de ponta a ponta" width="1536" height="1024">
                     </picture>
                     <p class="reino-media-caption">Visão macro da arquitetura OIDC com foco em autenticação, autorização e proteção de APIs.</p>
                 </div>
@@ -276,7 +276,7 @@
                             <div class="accordion-body">
                                 <div class="alert alert-danger">
                                     <h6><strong>🏛️ Os Portais Sagrados do Reino:</strong></h6>
-                                    <p class="mb-1"><em>Lord OIDC ergue sua varinha e revela os portais mágicos de seu castelo: "Cada portal tem sua função! O '/authorize' é onde os visitantes batem à porta, o '/token' é onde as trocas secretas acontecem, o '/userinfo' revela segredos pessoais, e o '/.well-known' é meu livro de regras aberto a todos. Ah, e no '/jwks.json' ficam minhas chaves públicas - sem elas, ninguém pode verificar a autenticidade dos meus selos!"</em></p>
+                                    <p class="mb-1"><em>Lord OIDC ergue sua varinha e revela os portais mágicos de seu castelo: "Cada portal tem sua função! O '/authorize' é onde os visitantes batem à porta, o '/token' é onde as trocas secretas acontecem, o '/userinfo' revela segredos pessoais, e o '/.well-known/openid-configuration' é meu livro de regras aberto a todos. Nele, publico o jwks_uri, a URL exata do cofre das chaves públicas — que pode variar conforme o provedor!"</em></p>
                                 </div>
                                 
                                 <p><strong>Principais endpoints:</strong></p>
@@ -285,7 +285,7 @@
                                     <li><code>/token</code> - 🔄 <em>A Câmara Secreta onde códigos viram tokens preciosos</em></li>
                                     <li><code>/userinfo</code> - 👤 <em>O Espelho Mágico que revela detalhes do usuário autenticado</em></li>
                                     <li><code>/.well-known/openid-configuration</code> - 📋 <em>O Pergaminho das Regras do Reino</em></li>
-                                    <li><code>/jwks.json</code> - 🗝️ <em>O Cofre das Chaves Públicas de Lord OIDC</em></li>
+                                    <li><code>jwks_uri</code> - 🗝️ <em>URL do cofre de chaves públicas, publicada pelo provedor no documento de Discovery</em></li>
                                 </ul>
                                 <p><strong>Escopo obrigatório:</strong><br>
                                 <code>openid</code> - <em>🎫 A senha mágica que transforma OAuth em OIDC. Sem ela, Lady OAuth trabalha sozinha!</em></p>
@@ -306,37 +306,26 @@
                             <div class="accordion-body">
                                 <div class="alert alert-info">
                                     <h6><strong>🛤️ Os Caminhos Sagrados da Jornada:</strong></h6>
-                                    <p class="mb-1"><em>Alex Client se aproxima de Pixie PKCE: "Quais são os caminhos para chegar aos tokens?" Pixie sorri e aponta para quatro trilhas: "A Estrada Real (Authorization Code) é a mais segura, a Trilha Protegida (Code + PKCE) é para mensageiros móveis, a Ponte Perigosa (Implicit) está fechada para reformas, e o Caminho Híbrido é para aventureiros experientes!"</em></p>
+                                    <p class="mb-1"><em>Alex Client se aproxima de Pixie PKCE: "Qual caminho nos leva aos tokens?" Pixie sorri: "A Estrada Real (Authorization Code + PKCE) é o caminho de todos os mensageiros, com ou sem segredo de cliente; a Ponte Perigosa (Implicit) foi demolida; o Caminho Híbrido é legado para casos específicos."</em></p>
                                 </div>
                                 <div class="reino-media-block">
                                     <picture class="reino-media-frame">
-                                        <source srcset="docs/img/cenario-03-authorization-code-pkce-mobile.webp 900w, docs/img/cenario-03-authorization-code-pkce.webp 2048w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" type="image/webp">
-                                        <img src="docs/img/cenario-03-authorization-code-pkce.png" srcset="docs/img/cenario-03-authorization-code-pkce-mobile.png 900w, docs/img/cenario-03-authorization-code-pkce.png 2048w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" class="reino-media-image" loading="lazy" decoding="async" alt="Fluxo Authorization Code com PKCE em etapas sequenciais no Reino OIDC" title="Authorization Code Flow com PKCE">
+                                        <source srcset="docs/img/cenario-03-authorization-code-pkce-mobile.webp 800w, docs/img/cenario-03-authorization-code-pkce.webp 1536w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" type="image/webp">
+                                        <img src="docs/img/cenario-03-authorization-code-pkce.webp" srcset="docs/img/cenario-03-authorization-code-pkce-mobile.webp 800w, docs/img/cenario-03-authorization-code-pkce.webp 1536w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" class="reino-media-image" loading="lazy" decoding="async" alt="Fluxo Authorization Code com PKCE em etapas sequenciais no Reino OIDC" title="Authorization Code Flow com PKCE" width="1536" height="1024">
                                     </picture>
                                 </div>
                                 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>🏰 Authorization Code Flow</strong></h6>
-                                        <p><small><em>A Estrada Real - mais segura, para castelos server-side</em></small></p>
+                                        <h6><strong>🛡️ Authorization Code + PKCE</strong></h6>
+                                        <p><small><em>A Estrada Real - o caminho padrão para todos os tipos de cliente</em></small></p>
                                         <ul class="small">
                                             <li>Usuário → Authorization Server</li>
-                                            <li>Authorization Code → Client</li>
-                                            <li>Client troca code por tokens</li>
-                                            <li>Tokens não expostos ao browser</li>
+                                            <li>Authorization Server devolve o code pelo redirect do navegador</li>
+                                            <li>Client troca o code por tokens no back-channel, usando PKCE</li>
+                                            <li>Clientes confidenciais também autenticam-se no token endpoint</li>
                                         </ul>
-                                        <p class="small"><em>🎭 Alex Client usa a entrada dos fundos do castelo - mais discreta e segura!</em></p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h6><strong>🛡️ Authorization Code + PKCE</strong></h6>
-                                        <p><small><em>A Trilha Protegida - Pixie sempre acompanha Alex</em></small></p>
-                                        <ul class="small">
-                                            <li>Proof Key for Code Exchange</li>
-                                            <li>Code verifier + Code challenge</li>
-                                            <li>Proteção contra ataques MITM</li>
-                                            <li>Não requer client secret</li>
-                                        </ul>
-                                        <p class="small"><em>✨ Pixie PKCE sussurra encantamentos protetores durante toda a jornada!</em></p>
+                                        <p class="small"><em>✨ Pixie PKCE protege o code em toda a jornada; a autenticação do cliente confidencial continua sendo uma proteção adicional.</em></p>
                                     </div>
                                 </div>
                                 <div class="row mt-3">
@@ -479,7 +468,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>Web App (Server)</td>
-                                                        <td>Authorization Code</td>
+                                                        <td>Authorization Code + PKCE</td>
                                                         <td>✅ Sim</td>
                                                         <td>Session/Memory</td>
                                                         <td><em>🏰 Castelo Fortificado</em></td>
@@ -584,8 +573,8 @@
                                 </div>
                                 <div class="reino-media-block">
                                     <picture class="reino-media-frame">
-                                        <source srcset="docs/img/cenario-10-erros-e-diagnostico-mobile.webp 900w, docs/img/cenario-10-erros-e-diagnostico.webp 2048w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" type="image/webp">
-                                        <img src="docs/img/cenario-10-erros-e-diagnostico.png" srcset="docs/img/cenario-10-erros-e-diagnostico-mobile.png 900w, docs/img/cenario-10-erros-e-diagnostico.png 2048w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" class="reino-media-image" loading="lazy" decoding="async" alt="Painel de diagnóstico de erros comuns do protocolo OIDC com causas e correções" title="Troubleshooting OIDC">
+                                        <source srcset="docs/img/cenario-10-erros-e-diagnostico-mobile.webp 800w, docs/img/cenario-10-erros-e-diagnostico.webp 1536w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" type="image/webp">
+                                        <img src="docs/img/cenario-10-erros-e-diagnostico.webp" srcset="docs/img/cenario-10-erros-e-diagnostico-mobile.webp 800w, docs/img/cenario-10-erros-e-diagnostico.webp 1536w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px" class="reino-media-image" loading="lazy" decoding="async" alt="Painel de diagnóstico de erros comuns do protocolo OIDC com causas e correções" title="Troubleshooting OIDC" width="1536" height="1024">
                                     </picture>
                                 </div>
                                 
@@ -746,29 +735,76 @@ const config = {
 };
 
 // Gerar PKCE
-function generateCodeVerifier() {
-  return btoa(String.fromCharCode(...crypto.getRandomValues(new Uint8Array(32))))
-    .replace(/[+/]/g, '-').replace(/=/g, '');
+function base64url(bytes) {
+  const byteArray = bytes instanceof Uint8Array ? bytes : new Uint8Array(bytes);
+  const binary = Array.from(byteArray, byte => String.fromCharCode(byte)).join('');
+  return btoa(binary)
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=+$/, '');
 }
 
 // Iniciar login
 async function login() {
-  const codeVerifier = generateCodeVerifier();
-  const codeChallenge = btoa(String.fromCharCode(...new Uint8Array(
-    await crypto.subtle.digest('SHA-256', new TextEncoder().encode(codeVerifier))
-  ))).replace(/[+/]/g, '-').replace(/=/g, '');
-  
+  const codeVerifier = base64url(crypto.getRandomValues(new Uint8Array(32)));
+  const digest = await crypto.subtle.digest(
+    'SHA-256',
+    new TextEncoder().encode(codeVerifier)
+  );
+  const codeChallenge = base64url(digest);
+  const state = crypto.randomUUID();
+  const nonce = crypto.randomUUID();
+
   sessionStorage.setItem('code_verifier', codeVerifier);
-  
+  sessionStorage.setItem('oidc_state', state);
+  sessionStorage.setItem('oidc_nonce', nonce);
+
   const params = new URLSearchParams({
-    ...config,
-    state: crypto.randomUUID(),
-    nonce: crypto.randomUUID(),
+    response_type: config.response_type,
+    client_id: config.client_id,
+    redirect_uri: config.redirect_uri,
+    scope: config.scope,
+    state,
+    nonce,
     code_challenge: codeChallenge,
     code_challenge_method: 'S256'
   });
   
   window.location.href = `${config.authority}/authorize?${params}`;
+}
+
+// No callback, valide state antes de trocar o code por tokens.
+function readAuthorizationResponse() {
+  const params = new URLSearchParams(window.location.search);
+  const expectedState = sessionStorage.getItem('oidc_state');
+
+  if (!expectedState || params.get('state') !== expectedState) {
+    throw new Error('Resposta OAuth com state ausente ou inválido.');
+  }
+
+  const code = params.get('code');
+  const codeVerifier = sessionStorage.getItem('code_verifier');
+  const expectedNonce = sessionStorage.getItem('oidc_nonce');
+  if (!code || !codeVerifier) {
+    throw new Error('Resposta OAuth sem code ou code_verifier.');
+  }
+  if (!expectedNonce) {
+    throw new Error('Nonce da solicitação OIDC não encontrado.');
+  }
+
+  return { code, codeVerifier, expectedNonce };
+}
+
+// Após a troca, passe o ID Token já validado por uma biblioteca OIDC confiável.
+function validateCallback(validatedIdToken, expectedNonce) {
+  if (!expectedNonce || validatedIdToken.nonce !== expectedNonce) {
+    throw new Error('ID Token com nonce ausente ou inválido.');
+  }
+
+  sessionStorage.removeItem('oidc_state');
+  sessionStorage.removeItem('oidc_nonce');
+  sessionStorage.removeItem('code_verifier');
+  return true;
 }</code></pre>
                                         </div>
                                     </div>
@@ -783,47 +819,28 @@ async function login() {
                                             </div>
                                             <pre class="code-school-pre"><code class="small">import jwt
 import requests
-from jwt.algorithms import RSAAlgorithm
 
-def validate_id_token(id_token, issuer, client_id):
-    # Buscar chaves públicas
-    jwks_uri = f"{issuer}/.well-known/jwks.json"
-    jwks = requests.get(jwks_uri).json()
-    
-    # Decodificar header para pegar kid
-    header = jwt.get_unverified_header(id_token)
-    kid = header['kid']
-    
-    # Encontrar chave correspondente
-    key = None
-    for jwk in jwks['keys']:
-        if jwk['kid'] == kid:
-            key = RSAAlgorithm.from_jwk(jwk)
-            break
-    
-    if not key:
-        raise ValueError("Chave não encontrada")
-    
-    # Validar token
-    try:
-        payload = jwt.decode(
-            id_token,
-            key=key,
-            algorithms=['RS256'],
-            issuer=issuer,
-            audience=client_id
-        )
-        return payload
-    except jwt.InvalidTokenError as e:
-        raise ValueError(f"Token inválido: {e}")
+def validate_id_token(token, issuer, client_id, nonce):
+    discovery_response = requests.get(
+        f"{issuer}/.well-known/openid-configuration", timeout=5
+    )
+    discovery_response.raise_for_status()
+    config = discovery_response.json()
+    jwks = jwt.PyJWKClient(config["jwks_uri"], cache_keys=True, timeout=5)
+    key = jwks.get_signing_key_from_jwt(token).key
+    claims = jwt.decode(
+        token,
+        key,
+        algorithms=["RS256", "ES256"],
+        audience=client_id,
+        issuer=issuer,
+        options={"require": ["iss", "sub", "aud", "exp", "iat", "nonce"]},
+    )
+    if claims.get("nonce") != nonce:
+        raise ValueError("nonce inválido")
+    return claims
 
-# Uso
-try:
-    claims = validate_id_token(id_token, "https://your-idp.com", "your-client-id")
-    user_id = claims['sub']
-    user_email = claims.get('email')
-except ValueError as e:
-    print(f"Erro na validação: {e}")</code></pre>
+# Passe o nonce aleatório enviado na solicitação de autenticação.</code></pre>
                                         </div>
                                     </div>
                                 </div>
@@ -872,14 +889,13 @@ except ValueError as e:
                 </div>
                 <div class="col-md-6 text-md-end">
                     <p class="mb-1 small">© 2025 Reino OIDC. Conteúdo gratuito para estudo pessoal; propriedade exclusiva da Cara Core Informática.</p>
-                    <p class="mb-0 small"><a href="licenca-uso.html" class="text-light">Licença de uso</a> · © Cara Core Informática</p>
                 </div>
             </div>
         </div>
     </footer>
 
         <script src="assets/js/reino-nav.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/footer-propriedade.js"></script>
     <script src="assets/js/loja.js"></script>
 </body>

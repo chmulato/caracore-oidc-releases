@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Parte II - Reino da Identidade Federada</title>
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/evolution-status/evolution-status.css">
-  <link rel="stylesheet" href="assets/caracore-core-typography.css">
-  <link rel="stylesheet" href="assets/caracore-institutional-components.css">
+  <link rel="stylesheet" href="/assets/caracore-core-typography.css">
+  <link rel="stylesheet" href="/assets/caracore-institutional-components.css">
 </head>
 <body class="page-historia page-historia-p2 cc-i-page">
     <nav class="navbar navbar-expand-lg navbar-dark reino-site-nav sticky-top bg-primary">
         <div class="container">
             <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menu de navegação">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -54,9 +54,9 @@
                 
                 <!-- Imagem da Parte II -->
                 <div class="text-center my-4">
-                    <img src="assets/images/imagem_parte_ii.png" 
+                    <img src="assets/images/imagem_parte_ii-800.webp"
                          alt="A Era da Confiança - Lord OIDC e Lady OAuth trabalhando juntos com todos os personagens em harmonia" 
-                         class="img-fluid rounded shadow-lg w-100">
+                         class="img-fluid rounded shadow-lg w-100" srcset="assets/images/imagem_parte_ii-800.webp 800w, assets/images/imagem_parte_ii-1600.webp 1536w" sizes="(max-width: 768px) 100vw, 66vw" width="800" height="533">
                     <p class="text-muted small mt-2 fst-italic">
                         A Era da Confiança: Lord OIDC e Lady OAuth estabelecem a harmonia no reino, 
                         criando um sistema onde autenticação e autorização trabalham em perfeita sintonia.
@@ -89,9 +89,9 @@
                     <p>No fim, apenas quem conhece o verifier pode trocar o código por tokens. Segurança reforçada, confiança consolidada.</p>
                 </div>
 
-                <!-- Concluir Parte II para avançar ao conteúdo educacional gratuito da Era 3. -->
+                <!-- Concluir Parte II libera a progressão gratuita para a Era 3. -->
                 <div class="alert alert-info mt-4" id="concluir-parte-2-box">
-                    <p class="mb-2">Marque como lida para avançar ao conteúdo educacional gratuito da <strong>Era 3</strong> (Devia, Seraph Resource e Ace Token). Os decks adicionais de Mineração de Chaves são opcionais e pagos.</p>
+                    <p class="mb-2">Marque como lida para avançar. A <strong>Era 3</strong> (Devia, Seraph Resource e Ace Token) faz parte do conteúdo educacional gratuito.</p>
                     <button type="button" class="btn btn-outline-primary" id="btn-concluir-parte-2">✓ Concluí esta parte</button>
                     <span class="ms-2 text-success d-none" id="concluido-parte-2">Parte II registrada.</span>
                 </div>
@@ -133,14 +133,13 @@
                 </div>
                 <div class="col-md-6 text-md-end">
                     <p class="mb-1 small">© 2025 Reino OIDC. Conteúdo gratuito para estudo pessoal; propriedade exclusiva da Cara Core Informática.</p>
-                    <p class="mb-0 small"><a href="licenca-uso.html" class="text-light">Licença de uso</a> · © Cara Core Informática</p>
                 </div>
             </div>
         </div>
     </footer>
 
         <script src="assets/js/reino-nav.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/footer-propriedade.js"></script>
     <script src="assets/js/game-engine.js"></script>
     <script>
@@ -154,9 +153,15 @@
                     if (box) box.classList.remove('alert-info'), box.classList.add('alert-success');
                 }
                 btn.addEventListener('click', function() {
-                    window.ReinoEras.setStoryPartDone(2);
-                    if (doneEl) doneEl.classList.remove('d-none');
-                    if (box) box.classList.remove('alert-info'), box.classList.add('alert-success');
+                    btn.disabled = true;
+                    window.ReinoEras.setStoryPartDone(2).then(function() {
+                        if (doneEl) doneEl.classList.remove('d-none');
+                        if (box) box.classList.remove('alert-info'), box.classList.add('alert-success');
+                    }).catch(function(error) {
+                        btn.disabled = false;
+                        if (window.ReinoOIDCProgress) window.ReinoOIDCProgress.reportError(error);
+                        else console.error('Não foi possível salvar o progresso.', error);
+                    });
                 });
             }
         })();

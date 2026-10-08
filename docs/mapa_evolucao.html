@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Mapa do Reino — Evolução | Reino OIDC</title>
     <meta name="description" content="Dashboard de evolução do Reino da Identidade Federada. Áreas acendem conforme você aprende e desbloqueia o Trono.">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/evolution-status/evolution-status.css">
-  <link rel="stylesheet" href="assets/caracore-core-typography.css">
-  <link rel="stylesheet" href="assets/caracore-institutional-components.css">
+  <link rel="stylesheet" href="/assets/caracore-core-typography.css">
+  <link rel="stylesheet" href="/assets/caracore-institutional-components.css">
     <style>
         .evolucao-map { max-width: 900px; margin: 0 auto; padding: 24px 0; }
         .evolucao-title { text-align: center; margin-bottom: 8px; }
@@ -50,6 +50,10 @@
         }
         .area-card .area-name { font-weight: 700; font-size: 1.1rem; }
         .area-card .area-desc { font-size: 0.9rem; color: #6c757d; margin-top: 4px; margin-bottom: 0; }
+        .area-card.locked .area-desc::after {
+            content: '';
+            font-style: italic;
+        }
         .trono-cta {
             margin-top: 32px;
             padding: 24px;
@@ -90,6 +94,9 @@
                 font-size: 0.86rem;
                 margin-top: 8px;
             }
+            .area-card.locked .area-desc::after {
+                content: '';
+            }
             .trono-cta {
                 margin-top: 18px;
                 padding: 14px;
@@ -103,23 +110,10 @@
 <body class="page-mapa-evolucao cc-i-page">
     <script src="assets/js/runtime-config.js"></script>
     <script src="assets/js/licenca.js"></script>
-    <script>
-        (function() {
-            if (window.isReinoLocalMode && window.isReinoLocalMode()) {
-                try {
-                    localStorage.setItem('reino_oidc_elite_unlocked', '1');
-                } catch (e) {}
-                return;
-            }
-            if (typeof window.isPremium !== 'function' || !window.isPremium()) {
-                window.location.replace('acesso_negado.html?from=mapa_evolucao');
-            }
-        })();
-    </script>
     <nav class="navbar navbar-expand-lg navbar-dark reino-site-nav sticky-top bg-primary">
         <div class="container">
             <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menu de navegação">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -150,22 +144,22 @@
 
     <div class="container evolucao-map">
         <h1 class="evolucao-title">Mapa do Reino</h1>
-        <p class="evolucao-subtitle">As três Eras educacionais são gratuitas. O módulo opcional de Mineração de Chaves libera decks adicionais.</p>
+        <p class="evolucao-subtitle">Acompanhe o currículo gratuito desta edição Free.</p>
         <div class="reino-media-block reino-media-content">
             <picture class="reino-media-frame">
                 <source
-                    srcset="docs/img/mapa-evolucao-aprendizado-mobile.webp 900w, docs/img/mapa-evolucao-aprendizado.webp 2048w"
+                    srcset="docs/img/mapa-evolucao-aprendizado-mobile.webp 800w, docs/img/mapa-evolucao-aprendizado.webp 1536w"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px"
                     type="image/webp">
                 <img
-                    src="docs/img/mapa-evolucao-aprendizado.png"
-                    srcset="docs/img/mapa-evolucao-aprendizado-mobile.png 900w, docs/img/mapa-evolucao-aprendizado.png 2048w"
+                    src="docs/img/mapa-evolucao-aprendizado.webp"
+                    srcset="docs/img/mapa-evolucao-aprendizado-mobile.webp 800w, docs/img/mapa-evolucao-aprendizado.webp 1536w"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 920px"
                     class="reino-media-image"
                     loading="eager"
                     decoding="async"
                     alt="Mapa visual de evolução do aprendizado OIDC com trilhas Easy, Medium e Hard"
-                    title="Mapa de evolução do aprendizado no Reino OIDC">
+                    title="Mapa de evolução do aprendizado no Reino OIDC" width="1536" height="1024">
             </picture>
             <p class="reino-media-caption">Acompanhe o progresso por trilhas, personagens e domínio de conceitos OIDC.</p>
         </div>
@@ -222,16 +216,14 @@
                 <div class="area-card locked" id="area-mineracao">
                     <span class="area-badge">🔐</span>
                     <span class="area-name">Mineração de Chaves</span>
-                    <p class="area-desc">Módulo educacional opcional com decks adicionais do Super Trunfo.</p>
-                    <a href="upgrade-trono.html" class="btn btn-primary mt-3">Conhecer módulo — R$ 29,90</a>
+                    <p class="area-desc">O módulo pago não faz parte desta edição Free.</p>
                 </div>
 </div>
             </div>
         </div>
 
         <div class="trono-cta">
-            <p class="mb-0">O upgrade de <strong>R$ 29,90</strong> libera apenas os decks adicionais do módulo educacional Mineração de Chaves. A história e as três Eras do currículo continuam gratuitas.</p>
-            <a href="upgrade-trono.html" class="btn btn-primary btn-lg mt-3">Conhecer o módulo opcional</a>
+            <p class="mb-0">O currículo das três Eras faz parte desta edição Free. O módulo pago será entregue em um momento seguinte de desenvolvimento.</p>
         </div>
     </div>
 
@@ -243,23 +235,8 @@
     </footer>
 
         <script src="assets/js/reino-nav.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/footer-propriedade.js"></script>
-    <script>
-        (function() {
-            try {
-                var unlocked = typeof window.isPremium === 'function' && window.isPremium();
-                var card = document.getElementById('area-mineracao');
-                if (card && unlocked) {
-                    card.classList.remove('locked');
-                    card.classList.add('unlocked');
-                    card.querySelector('.area-desc').textContent = 'Decks adicionais do módulo educacional Mineração de Chaves ativados.';
-                    var btn = card.querySelector('.btn');
-                    if (btn) btn.outerHTML = '<span class="badge bg-success mt-2">Desbloqueado</span>';
-                }
-            } catch (e) {}
-        })();
-    </script>
     <script src="assets/js/loja.js"></script>
 </body>
 </html>

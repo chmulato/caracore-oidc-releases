@@ -11,7 +11,8 @@
             localMode: true,
             selfContained: true,
             requireLogin: false,
-            unlockAllLearningContent: true
+            unlockAllLearningContent: true,
+            paidModuleIncluded: false
         },
         window.REINO_OIDC_CONFIG || {}
     );

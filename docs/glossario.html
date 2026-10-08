@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Glossário - Reino OIDC</title>
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/evolution-status/evolution-status.css">
-  <link rel="stylesheet" href="assets/caracore-core-typography.css">
-  <link rel="stylesheet" href="assets/caracore-institutional-components.css">
+  <link rel="stylesheet" href="/assets/caracore-core-typography.css">
+  <link rel="stylesheet" href="/assets/caracore-institutional-components.css">
 </head>
 <body class="page-glossario cc-i-page">
     <nav class="navbar navbar-expand-lg navbar-dark reino-site-nav sticky-top bg-primary">
         <div class="container">
             <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menu de navegação">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -248,7 +248,7 @@
                                             <li><strong>Vida útil:</strong> 10 minutos (máximo)</li>
                                             <li><strong>Uso único:</strong> Invalidado após troca</li>
                                             <li><strong>Vinculado:</strong> client_id + redirect_uri</li>
-                                            <li><strong>Não exposição:</strong> Nunca vai para o browser</li>
+                                            <li><strong>Redirect pelo navegador:</strong> O code chega ao client pela URL de retorno; é de uso único, tem vida curta e fica vinculado ao PKCE. Os tokens são trocados no back-channel e não devem passar pela URL.</li>
                                         </ul>
                                         
                                         <h6><strong>🔄 Fluxo típico:</strong></h6>
@@ -376,7 +376,7 @@
                                             <li><strong>/token:</strong> Troca códigos por tokens</li>
                                             <li><strong>/userinfo:</strong> Retorna dados do usuário</li>
                                             <li><strong>/.well-known/openid-configuration:</strong> Metadados</li>
-                                            <li><strong>/jwks.json:</strong> Chaves públicas</li>
+                                            <li><strong>jwks_uri:</strong> URL das chaves públicas, publicada pelo provedor no documento de Discovery</li>
                                         </ul>
                                         
                                         <h6><strong>💻 Exemplo:</strong></h6>
@@ -872,14 +872,13 @@ grant_type=refresh_token&refresh_token=abc123</code></pre>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <p class="mb-1 small">© 2025 Reino OIDC. Conteúdo gratuito para estudo pessoal; propriedade exclusiva da Cara Core Informática.</p>
-                    <p class="mb-0 small"><a href="licenca-uso.html" class="text-light">Licença de uso</a> · © Cara Core Informática</p>
                 </div>
             </div>
         </div>
     </footer>
 
         <script src="assets/js/reino-nav.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/footer-propriedade.js"></script>
     <script src="assets/js/loja.js"></script>
 </body>

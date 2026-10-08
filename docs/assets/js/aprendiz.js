@@ -321,7 +321,7 @@ const flashcardData = {
                 character: "🏦",
                 question: "Como Seraph deve gerenciar chaves públicas para validação JWT?",
                 leigo: "Seraph mantém uma lista atualizada das 'digitais' válidas dos emissores de tokens, verificando periodicamente se não mudaram.",
-                tecnico: "Implementar JWKS (JSON Web Key Set) endpoint caching com refresh automático, validação de chaves, e fallback para descoberta via .well-known/openid_configuration."
+                tecnico: "Implementar JWKS (JSON Web Key Set) endpoint caching com refresh automático, validação de chaves, e fallback para descoberta via /.well-known/openid-configuration."
             },
             {
                 character: "👩‍💻",
@@ -363,7 +363,7 @@ const flashcardData = {
                 character: "👩‍💻",
                 question: "Como Devia deve implementar descoberta automática de configurações OIDC?",
                 leigo: "Em vez de configurar tudo manualmente, Devia pode pedir para o provedor se apresentar: 'Quais são suas URLs e como você funciona?'",
-                tecnico: "Usar .well-known/openid_configuration endpoint para descobrir authorization_endpoint, token_endpoint, jwks_uri e supported features automaticamente."
+                tecnico: "Usar /.well-known/openid-configuration endpoint para descobrir authorization_endpoint, token_endpoint, jwks_uri e supported features automaticamente."
             },
             {
                 character: "🏦",
@@ -380,8 +380,8 @@ const flashcardData = {
             {
                 character: "🏦",
                 question: "Como Seraph deve implementar token introspection?",
-                leigo: "Quando Seraph não consegue verificar um token sozinho, ele pode perguntar diretamente para quem emitiu: 'Este token ainda é válido?'",
-                tecnico: "Implementar RFC 7662 token introspection endpoint para tokens opacos, com cache adequado e fallback para casos onde validação local falha."
+                leigo: "Para tokens opacos, Seraph consulta de forma autenticada o endpoint de introspecção de Lady OAuth, que informa se o token ainda está ativo.",
+                tecnico: "Consultar, como Resource Server e com autenticação, o endpoint RFC 7662 do Authorization Server para tokens opacos; usar cache curto que não ultrapasse exp e rejeitar respostas active=false."
             },
             {
                 character: "👩‍💻",
@@ -395,6 +395,7 @@ const flashcardData = {
 
 // Funções de gerenciamento de localStorage
 function getCompletedPaths() {
+    if (window.ReinoOIDCProgress) return window.ReinoOIDCProgress.get('reino_oidc_completed_paths');
     const completed = localStorage.getItem('reino_oidc_completed_paths');
     return completed ? JSON.parse(completed) : [];
 }
@@ -403,14 +404,42 @@ function saveCompletedPath(pathName) {
     const completed = getCompletedPaths();
     if (!completed.includes(pathName)) {
         completed.push(pathName);
-        localStorage.setItem('reino_oidc_completed_paths', JSON.stringify(completed));
     }
-    gameState.completedPaths = completed;
+    const persist = window.ReinoOIDCProgress
+        ? window.ReinoOIDCProgress.set('reino_oidc_completed_paths', completed)
+        : Promise.resolve().then(function() {
+            localStorage.setItem('reino_oidc_completed_paths', JSON.stringify(completed));
+        });
+    return persist.then(function() {
+        gameState.completedPaths = completed;
+        return completed;
+    });
 }
 
 function resetProgress() {
-    localStorage.removeItem('reino_oidc_completed_paths');
-    gameState.completedPaths = [];
+    const persist = window.ReinoOIDCProgress
+        ? window.ReinoOIDCProgress.set('reino_oidc_completed_paths', [])
+        : Promise.resolve().then(function() {
+            localStorage.removeItem('reino_oidc_completed_paths');
+        });
+    return persist.then(function() {
+        gameState.completedPaths = [];
+    });
+}
+
+function resetAndReturnToSelection() {
+    resetProgress().then(goBackToSelection).catch(reportProgressFailure);
+}
+
+function resetAndReload() {
+    resetProgress().then(function() {
+        location.reload();
+    }).catch(reportProgressFailure);
+}
+
+function reportProgressFailure(error) {
+    if (window.ReinoOIDCProgress) window.ReinoOIDCProgress.reportError(error);
+    else console.error('Não foi possível salvar o progresso.', error);
 }
 
 function allPathsCompleted() {
@@ -546,16 +575,12 @@ function previousCard() {
 
 // Função para completar caminho atual
 function completeCurrentPath() {
-    saveCompletedPath(gameState.currentPath);
-    
-    const pathData = flashcardData[gameState.currentPath];
-    
-    // Update progress to 100%
-    document.getElementById('progressBar').style.width = '100%';
-    document.getElementById('progressBar').setAttribute('aria-valuenow', 100);
-    
-    // Mostrar tela de conclusão customizada
-    showPathCompletion(pathData);
+    saveCompletedPath(gameState.currentPath).then(function() {
+        const pathData = flashcardData[gameState.currentPath];
+        document.getElementById('progressBar').style.width = '100%';
+        document.getElementById('progressBar').setAttribute('aria-valuenow', 100);
+        showPathCompletion(pathData);
+    }).catch(reportProgressFailure);
 }
 
 // Função para mostrar tela de conclusão do caminho
@@ -636,7 +661,7 @@ function showPathCompletion(pathData) {
                                 </a>
                             </div>
                             <div class="col-md-6 mb-2">
-                                <button class="btn btn-warning btn-lg w-100 shadow" onclick="resetProgress(); goBackToSelection();">
+                                <button class="btn btn-warning btn-lg w-100 shadow" onclick="resetAndReturnToSelection();">
                                     🔄 Nova Jornada
                                 </button>
                             </div>
@@ -859,7 +884,7 @@ document.addEventListener('DOMContentLoaded', function() {
         resetButton.innerHTML = `
             <div class="alert alert-success">
                 <h5>🏆 Todos os caminhos conquistados!</h5>
-                <button class="btn btn-warning" onclick="resetProgress(); location.reload();">
+                <button class="btn btn-warning" onclick="resetAndReload();">
                     🔄 Reiniciar Jornada Completa
                 </button>
             </div>

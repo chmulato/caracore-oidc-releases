@@ -1,7 +1,7 @@
 /**
  * Reino OIDC — Motor de Eras (Níveis de Consciência)
  * Progressão por prompt_eras_historia.txt: Era 1 → 2 → 3 (Devia = nosso presente).
- * As três Eras são gratuitas; Premium libera apenas os decks adicionais de Mineração de Chaves.
+ * Sincronizado com as três partes gratuitas da história; os decks de Mineração são Premium.
  */
 (function () {
     'use strict';
@@ -96,8 +96,9 @@
     }
 
     function getStoryPartDone(part) {
+        var key = part === 1 ? STORAGE_STORY_P1 : part === 2 ? STORAGE_STORY_P2 : STORAGE_STORY_P3;
+        if (window.ReinoOIDCProgress) return window.ReinoOIDCProgress.get(key) === true;
         try {
-            var key = part === 1 ? STORAGE_STORY_P1 : part === 2 ? STORAGE_STORY_P2 : STORAGE_STORY_P3;
             return localStorage.getItem(key) === 'true' || localStorage.getItem(key) === '1';
         } catch (e) {
             return false;
@@ -105,17 +106,19 @@
     }
 
     function setStoryPartDone(part) {
+        var key = part === 1 ? STORAGE_STORY_P1 : part === 2 ? STORAGE_STORY_P2 : STORAGE_STORY_P3;
+        if (window.ReinoOIDCProgress) return window.ReinoOIDCProgress.set(key, true);
         try {
-            var key = part === 1 ? STORAGE_STORY_P1 : part === 2 ? STORAGE_STORY_P2 : STORAGE_STORY_P3;
             localStorage.setItem(key, 'true');
-            return true;
+            return Promise.resolve(true);
         } catch (e) {
-            return false;
+            return Promise.reject(e);
         }
     }
 
     function isPremium() {
-        return typeof window.isPremium === 'function' && window.isPremium();
+        if (typeof window.isPremium === 'function') return window.isPremium();
+        return false;
     }
 
     function hasFullLearningContent() {
@@ -139,7 +142,7 @@
         return false;
     }
 
-    /** Lista de personagens educacionais liberados pelo progresso da história. */
+    /** Lista os personagens educacionais liberados pelo progresso da história. */
     function getUnlockedCharacterIds() {
         var era = getCurrentEra();
         var ids = [];
