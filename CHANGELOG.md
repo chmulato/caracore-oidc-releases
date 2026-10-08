@@ -20,6 +20,7 @@ Cada versão inclui uma nota de **Impacto** para o público-alvo e para seguran�
 ### [Web/Conteúdo]
 - A loja aponta o download para a release `v2.0.1-free`.
 - A vitrine deixa de oferecer pagamento, PIX e importação de pacote Premium nesta edição.
+- O CTA principal é Baixar Free (2.0.1). A edição paga fica para depois; o PIX é combinado pelo WhatsApp ou pelo Telegram.
 
 ---
 
