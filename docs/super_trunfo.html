@@ -82,22 +82,14 @@
             <p class="small mb-0 deck-attr-legend">Atributos das cartas: <strong>Fortificação</strong> · <strong>Nobreza</strong> (menor é melhor) · <strong>Linhagem</strong> · <strong>Sigilo</strong>. <a href="personagens.html" class="link-personagens">Conheça os personagens do Reino</a>.</p>
         </section>
 
-        <!-- Era 3 = Premium: Chegar ao Presente (Devia + Seraph Resource) -->
-        <div class="upgrade-elite-box era-3-cta" id="era-3-premium-cta">
-            <h3>👑 Chegar ao Presente — Era 3 (O Presente Soberano)</h3>
-            <p>Para desbloquear <strong>Devia</strong> (Integradora Suprema), <strong>Seraph Resource</strong> (Guardião das APIs) e <strong>Ace Token</strong>, e dominar as APIs modernas, é necessário o <strong>Selo de Soberania da Cara-Core</strong> (R$ 29,90 — valor único).</p>
-            <ul class="benefits">
-                <li>Devia: a programadora do futuro — única que usa o poder de todos os personagens</li>
-                <li>Seraph Resource: validação de tokens e proteção das APIs</li>
-                <li>Acesso atrelado ao seu dispositivo (Hardware ID)</li>
-            </ul>
-            <button type="button" class="btn-upgrade" id="btn-upgrade-trono">Selo de Soberania — R$ 29,90 (Pergaminho de Selagem)</button>
+        <div class="alert alert-info era-3-cta" id="era-3-premium-cta">
+            A história completa e os personagens das três Eras fazem parte do conteúdo educacional gratuito.
         </div>
 
         <!-- Upgrade — Mineração de Chaves (monetização Cara-Core) -->
         <div class="upgrade-elite-box">
             <h3>🔐 Módulo de elite: Mineração de Chaves</h3>
-            <p>O upgrade de <strong>R$ 29,90</strong> (valor único) desbloqueia o deck <strong>Mineração de Chaves</strong>: <strong>Criptografia de Curva Elíptica</strong> e <strong>Selo de Identidade Federada</strong>. Mesma lógica de licenciamento: PIX para CNPJ <span id="display-cnpj">23.969.028/0001-37</span> vinculado ao Hardware ID da jogadora.</p>
+            <p>O upgrade opcional de <strong>R$ 29,90</strong> (valor único) desbloqueia decks didáticos adicionais de <strong>Mineração de Chaves</strong>. O módulo é educativo e não implementa proteção criptográfica. PIX para CNPJ <span id="display-cnpj">23.969.028/0001-37</span>, com chave vinculada ao dispositivo.</p>
             <ul class="benefits">
                 <li>Criptografia de Curva Elíptica</li>
                 <li>Selo de Identidade Federada</li>
@@ -152,7 +144,7 @@
                         <div class="card-seal-pawlowsky" aria-hidden="true">P</div>
                     </div>
                 </div>
-                <p class="cta-premium-msg">Sua defesa atual é vulnerável a ataques quânticos. Desbloqueie o <strong>Protocolo de Mineração de Chaves</strong> por R$ 29,90 para proteger o Trono.</p>
+                <p class="cta-premium-msg">Conheça os decks didáticos adicionais sobre Mineração de Chaves no módulo opcional.</p>
                 <button type="button" class="btn-upgrade btn-abrir-pergaminho" id="btn-abrir-pergaminho">Desbloquear — R$ 29,90</button>
             </div>
 
@@ -260,12 +252,6 @@
             };
             var LOCAL_BASELINE = window.isReinoLocalMode && window.isReinoLocalMode();
             CONFIG.VALOR_FMT = 'R$ ' + CONFIG.VALOR.toFixed(2).replace('.', ',');
-
-            if (LOCAL_BASELINE) {
-                try {
-                    localStorage.setItem('reino_oidc_elite_unlocked', '1');
-                } catch (e) {}
-            }
 
             var el = document.getElementById('display-cnpj');
             if (el) el.textContent = CONFIG.CNPJ;

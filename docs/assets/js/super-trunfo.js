@@ -30,7 +30,7 @@
 
     /**
      * REINO_DECK — Os 9 personagens (prompt_eras_historia.txt). Cada um tem era em que 'despertou'.
-     * isLocked por era: Era 1 só Lady OAuth; Era 2 desbloqueia Lord OIDC, Rex, Pixie, Alex, IDA; Era 3 (Premium) desbloqueia Devia, Seraph, Ace.
+     * isLocked por progresso: as três Eras e seus personagens fazem parte do currículo gratuito.
      */
     const REINO_DECK = [
         { id: 'lady-oauth', name: 'Lady OAuth', subtitle: 'Guardiã das Portas', emoji: '👑', seguranca: 72, escalabilidade: 65, privacidade: 62, complexidade: 58, deckId: 1, reinoDeck: true, era: 1, flavor_text: 'Ela guarda as Portas do Reino; quem não tem o selo de autorização não passa.' },
@@ -79,7 +79,6 @@
         CNPJ: '23.969.028/0001-37',
         VALOR: 29.90,
         UPGRADE_URL: 'upgrade-trono.html',
-        STORAGE_ELITE_KEY: 'reino_oidc_elite_unlocked',
         STORAGE_HWID_KEY: 'reino_oidc_hwid',
         STORAGE_LAST_ERA_KEY: 'reino_oidc_last_era_seen'
     };
@@ -111,19 +110,9 @@
         }
     }
 
-    function isEliteUnlocked() {
-        try {
-            var v = localStorage.getItem(CONFIG.STORAGE_ELITE_KEY);
-            state.eliteUnlocked = v === 'true' || v === '1';
-            return state.eliteUnlocked;
-        } catch (e) {
-            return false;
-        }
-    }
-
     /**
      * Verificação de licença Cara-Core. Antes de carregar cartas 3, 4 e 5.
-     * Usa isPremium() (reino_oidc_license) quando disponível; senão localStorage elite.
+     * Somente uma chave validada por isPremium() libera os decks pagos.
      * @param {string} HID - Hardware ID (simbiose com checkout)
      * @returns {boolean}
      */
@@ -134,13 +123,7 @@
                 state.licenseChecked = true;
                 return true;
             }
-            if (state.licenseChecked) return state.eliteUnlocked;
-            var local = localStorage.getItem(CONFIG.STORAGE_ELITE_KEY);
-            if (local === 'true' || local === '1') {
-                state.eliteUnlocked = true;
-                state.licenseChecked = true;
-                return true;
-            }
+            state.eliteUnlocked = false;
             state.licenseChecked = true;
             return false;
         } catch (e) {
@@ -305,7 +288,7 @@
             var foco = window.ReinoEras.getFocoTecnicoEra(card.era);
             div.innerHTML += '<div class="card-foco-tecnico">' + escapeHtml(foco) + '</div>';
         }
-        /* Era 3 Devia: glitch dourado + CTA para não-Premium */
+        /* A narrativa gratuita da Era 3 permanece acessível sem Premium. */
         if (card.integradoraSuprema) {
             div.classList.add('devia-glitch-card');
             if (locked) {
@@ -337,7 +320,7 @@
     }
 
     /**
-     * Renderiza o deck (personagens por era). Cartas da era atual desbloqueadas; Era 3 requer Premium.
+     * Renderiza o deck (personagens por era) conforme o progresso educacional.
      */
     function renderDeck(container) {
         if (!container) return;
@@ -610,7 +593,7 @@
 
     /**
      * Overlay dos Contos das Eras: título gótico + texto técnico sem-serifa.
-     * Quando currentEra muda, exibe o texto da era. Era 3 + não-Premium: glitch Devia + CTA.
+     * Quando currentEra muda, exibe o texto da era; os personagens da Era 3 são gratuitos.
      */
     function showEraOverlay(era) {
         if (typeof window.ReinoEras === 'undefined') return;
@@ -629,9 +612,9 @@
         }
 
         var deviaText = window.ReinoEras.getDeviaTransitionText();
-        var deviaBlock = (isEra3 && !premium)
-            ? '<p class="reino-era-devia-glitch">' + escapeHtml(deviaText) + '</p><button type="button" class="btn-assuma-trono btn-assuma-trono-overlay" data-cta-checkout>Assuma seu trono por R$ 29,90</button>'
-            : (isEra3 ? '<p class="reino-era-devia-glitch">' + escapeHtml(deviaText) + '</p>' : '');
+        var deviaBlock = isEra3
+            ? '<p class="reino-era-devia-glitch">' + escapeHtml(deviaText) + '</p>'
+            : '';
 
         overlay.innerHTML =
             '<div class="reino-era-overlay-inner">' +

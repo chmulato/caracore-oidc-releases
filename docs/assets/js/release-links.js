@@ -5,12 +5,12 @@
 (function (global) {
   "use strict";
 
-  var TAG = "v2.0.0-RC1";
+  var TAG = "v2.0.0";
   var REPO = "https://github.com/chmulato/caracore-oidc-releases";
 
   global.REINO_RELEASE = {
     tag: TAG,
-    version: "2.0.0-RC1",
+    version: "2.0.0",
     exeName: "ReinoOIDC-v2.exe",
     releasesIndex: REPO + "/releases",
     releasePage: REPO + "/releases/tag/" + TAG,

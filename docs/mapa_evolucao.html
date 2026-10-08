@@ -50,10 +50,6 @@
         }
         .area-card .area-name { font-weight: 700; font-size: 1.1rem; }
         .area-card .area-desc { font-size: 0.9rem; color: #6c757d; margin-top: 4px; margin-bottom: 0; }
-        .area-card.locked .area-desc::after {
-            content: ' (Desbloqueie com o Protocolo de Mineração de Chaves — R$ 29,90)';
-            font-style: italic;
-        }
         .trono-cta {
             margin-top: 32px;
             padding: 24px;
@@ -93,9 +89,6 @@
             .area-card .area-desc {
                 font-size: 0.86rem;
                 margin-top: 8px;
-            }
-            .area-card.locked .area-desc::after {
-                content: ' (Desbloqueio premium)';
             }
             .trono-cta {
                 margin-top: 18px;
@@ -157,7 +150,7 @@
 
     <div class="container evolucao-map">
         <h1 class="evolucao-title">Mapa do Reino</h1>
-        <p class="evolucao-subtitle">As áreas acendem conforme você aprende. Desbloqueie o Trono para iluminar a Mineração de Chaves.</p>
+        <p class="evolucao-subtitle">As três Eras educacionais são gratuitas. O módulo opcional de Mineração de Chaves libera decks adicionais.</p>
         <div class="reino-media-block reino-media-content">
             <picture class="reino-media-frame">
                 <source
@@ -229,16 +222,16 @@
                 <div class="area-card locked" id="area-mineracao">
                     <span class="area-badge">🔐</span>
                     <span class="area-name">Mineração de Chaves</span>
-                    <p class="area-desc">Protocolo de Mineração de Chaves. Acende após confirmação do pagamento (Chave de Soberania no portal de licenças).</p>
-                    <a href="upgrade-trono.html" class="btn btn-primary mt-3">Desbloquear — R$ 29,90</a>
+                    <p class="area-desc">Módulo educacional opcional com decks adicionais do Super Trunfo.</p>
+                    <a href="upgrade-trono.html" class="btn btn-primary mt-3">Conhecer módulo — R$ 29,90</a>
                 </div>
 </div>
             </div>
         </div>
 
         <div class="trono-cta">
-            <p class="mb-0"><strong>O pagamento de R$ 29,90 não é uma taxa</strong> — é a aquisição da <strong>Espada Lendária</strong> necessária para dominar a tecnologia OIDC e iluminar a área de Mineração de Chaves no mapa.</p>
-            <a href="upgrade-trono.html" class="btn btn-primary btn-lg mt-3">Proteger o Trono — Pergaminho de Selagem</a>
+            <p class="mb-0">O upgrade de <strong>R$ 29,90</strong> libera apenas os decks adicionais do módulo educacional Mineração de Chaves. A história e as três Eras do currículo continuam gratuitas.</p>
+            <a href="upgrade-trono.html" class="btn btn-primary btn-lg mt-3">Conhecer o módulo opcional</a>
         </div>
     </div>
 
@@ -255,12 +248,12 @@
     <script>
         (function() {
             try {
-                var unlocked = (typeof window.isPremium === 'function' && window.isPremium()) || localStorage.getItem('reino_oidc_elite_unlocked') === 'true' || localStorage.getItem('reino_oidc_elite_unlocked') === '1';
+                var unlocked = typeof window.isPremium === 'function' && window.isPremium();
                 var card = document.getElementById('area-mineracao');
                 if (card && unlocked) {
                     card.classList.remove('locked');
                     card.classList.add('unlocked');
-                    card.querySelector('.area-desc').textContent = 'Protocolo de Mineração de Chaves desbloqueado. Criptografia de Curva Elíptica e Selo de Identidade Federada.';
+                    card.querySelector('.area-desc').textContent = 'Decks adicionais do módulo educacional Mineração de Chaves ativados.';
                     var btn = card.querySelector('.btn');
                     if (btn) btn.outerHTML = '<span class="badge bg-success mt-2">Desbloqueado</span>';
                 }

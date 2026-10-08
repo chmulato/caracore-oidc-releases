@@ -28,20 +28,12 @@
     /** Status global do reino: 'SOBERANO' | 'VASSALO' */
     window.reinoStatus = 'VASSALO';
 
-    /**
-     * Identificação da licença Premium.
-     * Verifica se existe chave válida reino_oidc_license no localStorage.
-     * Para teste: qualquer string com mais de 10 caracteres é considerada válida.
-     * Em produção pode ser trocado por validação completa (ex.: validarChave).
-     */
+    /** Premium unlocks optional key-mining decks; free learning content is configured separately. */
     function isPremium() {
-        if (isLocalBaselineMode() && getRuntimeConfig().unlockAllLearningContent !== false) {
-            return true;
-        }
         try {
             var raw = localStorage.getItem(STORAGE_LICENSE);
             if (!raw || typeof raw !== 'string') return false;
-            return raw.trim().length > 10;
+            return validarChave(raw);
         } catch (e) {
             return false;
         }
@@ -104,13 +96,6 @@
      * Se válida (e compatível com HID), define SOBERANO e desbloqueia elite.
      */
     function verificarStatusReino() {
-        if (isLocalBaselineMode()) {
-            window.reinoStatus = 'SOBERANO';
-            try {
-                localStorage.setItem(STORAGE_ELITE, '1');
-            } catch (e) {}
-            return true;
-        }
         try {
             var chave = localStorage.getItem(STORAGE_CHAVE);
             if (chave && validarChave(chave)) {
@@ -137,7 +122,10 @@
      * Abre o modal de Ritual de Ativação (Checkout).
      */
     function openRitualAtivacao() {
-        if (isLocalBaselineMode()) return;
+        if (isLocalBaselineMode()) {
+            window.location.href = 'upgrade-trono.html';
+            return;
+        }
         var modal = document.getElementById('modal-pergaminho');
         if (modal && window.bootstrap) {
             var m = new bootstrap.Modal(modal);

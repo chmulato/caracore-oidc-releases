@@ -1,7 +1,7 @@
 /**
  * Reino OIDC — Motor de Eras (Níveis de Consciência)
  * Progressão por prompt_eras_historia.txt: Era 1 → 2 → 3 (Devia = nosso presente).
- * Sincronizado com historia_p1, historia_p2, historia_p3 e Premium (Era 3).
+ * As três Eras são gratuitas; Premium libera apenas os decks adicionais de Mineração de Chaves.
  */
 (function () {
     'use strict';
@@ -9,7 +9,6 @@
     const STORAGE_STORY_P1 = 'reino_oidc_story_part_1_done';
     const STORAGE_STORY_P2 = 'reino_oidc_story_part_2_done';
     const STORAGE_STORY_P3 = 'reino_oidc_story_part_3_done';
-    const STORAGE_ELITE = 'reino_oidc_elite_unlocked';
 
     /** Eras (Níveis de Consciência) — alinhado a prompt_eras_historia.txt */
     const ERAS = {
@@ -35,8 +34,7 @@
             subtitle: 'Nova Era Digital',
             theme: 'gothic-cyber',   /* Ápice Gótico/Cibernético — Roxo e Ouro */
             goal: 'Integrar e dominar APIs',
-            storyPage: 'historia_p3.html',
-            requiresPremium: true
+            storyPage: 'historia_p3.html'
         }
     };
 
@@ -117,17 +115,17 @@
     }
 
     function isPremium() {
-        try {
-            if (typeof window.isPremium === 'function' && window.isPremium()) return true;
-            return localStorage.getItem(STORAGE_ELITE) === 'true' || localStorage.getItem(STORAGE_ELITE) === '1';
-        } catch (e) {
-            return false;
-        }
+        return typeof window.isPremium === 'function' && window.isPremium();
+    }
+
+    function hasFullLearningContent() {
+        var config = window.REINO_OIDC_CONFIG || {};
+        return config.unlockAllLearningContent === true;
     }
 
     /** Retorna a era máxima desbloqueada (1, 2 ou 3). */
     function getCurrentEra() {
-        if (getStoryPartDone(1) && getStoryPartDone(2) && isPremium()) return 3;
+        if (getStoryPartDone(1) && getStoryPartDone(2) && (hasFullLearningContent() || isPremium())) return 3;
         if (getStoryPartDone(1)) return 2;
         return 1;
     }
@@ -137,17 +135,17 @@
         var current = getCurrentEra();
         if (era <= current) return true;
         if (era === 2) return getStoryPartDone(1);
-        if (era === 3) return getStoryPartDone(1) && getStoryPartDone(2) && isPremium();
+        if (era === 3) return getStoryPartDone(1) && getStoryPartDone(2) && (hasFullLearningContent() || isPremium());
         return false;
     }
 
-    /** Lista de IDs de personagens disponíveis no deck segundo a era atual. Era 3 só entra com Premium. */
+    /** Lista de personagens educacionais liberados pelo progresso da história. */
     function getUnlockedCharacterIds() {
         var era = getCurrentEra();
         var ids = [];
         for (var e = 1; e <= era; e++) {
             if (e < 3) ids = ids.concat(ERA_CHARACTER_IDS[e] || []);
-            else if (e === 3 && isPremium()) ids = ids.concat(ERA_CHARACTER_IDS[3] || []);
+            else if (e === 3 && (hasFullLearningContent() || isPremium())) ids = ids.concat(ERA_CHARACTER_IDS[3] || []);
         }
         return ids;
     }

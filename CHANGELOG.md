@@ -10,6 +10,23 @@ Cada versão inclui uma nota de **Impacto** para o público-alvo e para seguran�
 
 ---
 
+## [2.0.0] — 2026-10-07
+
+### [Web/Conteúdo]
+- Release estável GA Free publicada; loja e links de download apontam para `v2.0.0`.
+- Currículo completo das três Eras e progressão narrativa gratuitos para estudo pessoal.
+- Upgrade pago opcional restrito aos decks adicionais de Mineração de Chaves.
+- Removidos indicadores de release candidate da loja.
+
+### [App Desktop]
+- Publicado `ReinoOIDC-v2.exe` autocontido para Windows.
+- Checksums SHA-256 e MD5 e guia de instalação anexados à release.
+
+### [DevOps/Automação]
+- Build validado com 13 testes Python (85,37% cobertura), 11 testes Node, smoke e autocontenção aprovada.
+
+---
+
 ## [2.0.0-RC1] — 2026-05-16
 
 ### Impacto
@@ -68,4 +85,5 @@ Cada versão inclui uma nota de **Impacto** para o público-alvo e para seguran�
 ---
 
 [2.0.0-RC1]: https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.0-RC1
+[2.0.0]: https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.0
 [1.0.0]: https://github.com/chmulato/caracore-oidc-releases/releases/tag/v1.0.0
