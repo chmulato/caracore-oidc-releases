@@ -221,7 +221,11 @@ body.cc-i-page:not(:has(.navbar)) .evo-beta-wrap {
   position: fixed;
   bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
   right: max(1.25rem, env(safe-area-inset-right, 0px));
+  left: max(1.25rem, env(safe-area-inset-left, 0px));
   z-index: 1015;
+  display: flex;
+  justify-content: flex-end;
+  max-width: calc(100vw - 2.5rem);
 }
 
 .evo-feedback-btn {
@@ -238,6 +242,8 @@ body.cc-i-page:not(:has(.navbar)) .evo-beta-wrap {
   box-shadow: var(--evo-shadow);
   border: 1px solid rgba(255, 255, 255, 0.12);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: normal;
+  max-width: min(100%, calc(100vw - 2.5rem));
 }
 
 .evo-feedback-btn:hover {

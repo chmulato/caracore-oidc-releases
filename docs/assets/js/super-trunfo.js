@@ -33,7 +33,7 @@
     const REINO_DECK = [
         { id: 'lady-oauth', name: 'Lady OAuth', subtitle: 'Guardiã das Portas', emoji: '👑', seguranca: 72, escalabilidade: 65, privacidade: 62, complexidade: 58, deckId: 1, reinoDeck: true, era: 1, flavor_text: 'Ela guarda as Portas do Reino; quem não tem o selo de autorização não passa.' },
         { id: 'lord-oidc', name: 'Lord OIDC', subtitle: 'O Mago da Identidade', emoji: '🧙‍♂️', seguranca: 68, escalabilidade: 72, privacidade: 68, complexidade: 65, deckId: 1, reinoDeck: true, era: 2, flavor_text: 'Governa o Baile das Identidades, revelando a verdade através do ID Token.' },
-        { id: 'alex-client', name: 'Alex Client', subtitle: 'O Mensageiro Confiável', emoji: '🧑‍💼', seguranca: 58, escalabilidade: 68, privacidade: 60, complexidade: 55, deckId: 1, reinoDeck: true, era: 2, flavor_text: 'O mensageiro que nunca guarda segredos — apenas entrega os códigos aos porteiros.' },
+        { id: 'alex-client', name: 'Alex Client', subtitle: 'O Mensageiro Confiável', emoji: '🧑‍💼', seguranca: 58, escalabilidade: 68, privacidade: 60, complexidade: 55, deckId: 1, reinoDeck: true, era: 2, flavor_text: 'No cliente público não guarda segredo; o cliente confidencial guarda client_secret ou uma chave.' },
         { id: 'pixie-pkce', name: 'Pixie PKCE', subtitle: 'Guardiã dos Códigos Secretos', emoji: '🧚', seguranca: 92, escalabilidade: 85, privacidade: 94, complexidade: 91, deckId: 1, reinoDeck: true, era: 2, flavor_text: 'O espírito que tece code_verifier e code_challenge antes de cada travessia.' },
         { id: 'ida-token', name: 'IDA Token', subtitle: 'A Mensageira da Verdade', emoji: '🪪', seguranca: 90, escalabilidade: 92, privacidade: 95, complexidade: 93, deckId: 1, reinoDeck: true, era: 2, flavor_text: 'A verdade assinada por Lord OIDC; quem a lê conhece o usuário sem ver a senha.' },
         { id: 'rex-token', name: 'Rex Token', subtitle: 'O Renovador Eterno', emoji: '♾️', seguranca: 89, escalabilidade: 87, privacidade: 91, complexidade: 94, deckId: 1, reinoDeck: true, era: 2, flavor_text: 'Quando Ace e IDA viram pó, ele traz nova vida dos cofres seguros.' },
@@ -70,13 +70,14 @@
         eliteUnlocked: false,
         licenseChecked: false,
         premiumDecks: {},
-        currentEra: 1
+        currentEra: 1,
+        placar: loadPlacar()
     };
 
     function check_license() {
-        state.eliteUnlocked = typeof window.isPremium === 'function' && window.isPremium();
+        state.eliteUnlocked = false;
         state.licenseChecked = true;
-        return state.eliteUnlocked;
+        return false;
     }
 
     /**
@@ -143,6 +144,31 @@
         return div.innerHTML;
     }
 
+    function loadPlacar() {
+        try {
+            var raw = localStorage.getItem('reino_oidc_trunfo_placar');
+            var data = raw ? JSON.parse(raw) : null;
+            if (!data || typeof data.vitorias !== 'number' || typeof data.derrotas !== 'number' || typeof data.empates !== 'number') {
+                throw new Error('empty');
+            }
+            return { vitorias: data.vitorias, derrotas: data.derrotas, empates: data.empates };
+        } catch (e) {
+            return { vitorias: 0, derrotas: 0, empates: 0 };
+        }
+    }
+
+    function savePlacar() {
+        try {
+            localStorage.setItem('reino_oidc_trunfo_placar', JSON.stringify(state.placar));
+        } catch (e) {}
+    }
+
+    function renderPlacar() {
+        var el = document.getElementById('trunfo-placar');
+        if (!el || !state.placar) return;
+        el.textContent = 'Vitórias ' + state.placar.vitorias + ' · Derrotas ' + state.placar.derrotas + ' · Empates ' + state.placar.empates;
+    }
+
     function shuffle(arr) {
         var a = arr.slice();
         for (var i = a.length - 1; i > 0; i--) {
@@ -161,7 +187,7 @@
 
     function compareValues(attr, valorJogadora, valorMaquina, cardJ, cardM) {
         var lowerBetter = LOWER_IS_BETTER[attr];
-        if (attr === 'complexidade' && (cardJ && cardJ.reinoDeck) || (cardM && cardM.reinoDeck)) {
+        if (attr === 'complexidade' && ((cardJ && cardJ.reinoDeck) || (cardM && cardM.reinoDeck))) {
             lowerBetter = false;
         }
         if (lowerBetter) {
@@ -174,14 +200,11 @@
         return 0;
     }
 
-    function triggerPremiumEffect() {
+    function triggerRoundEffect() {
         var body = document.body;
-        var selo = document.querySelector('.selo-pawlowsky');
         if (body) body.classList.add('screen-shake');
-        if (selo) selo.classList.add('glow-gold');
         setTimeout(function () {
             if (body) body.classList.remove('screen-shake');
-            if (selo) setTimeout(function () { if (selo) selo.classList.remove('glow-gold'); }, 1500);
         }, 400);
     }
 
@@ -204,10 +227,9 @@
      */
     function renderCard(card, container, isMachine) {
         if (!card) return;
-        var isPremiumCard = (card.deckId >= 3 || card.elite) && (card.deckId !== undefined || card.elite);
-        if (isPremiumCard) return;
-        var premium = check_license();
-        var locked = card.isLocked && (card.reinoDeck || !premium);
+        var extraDeck = (card.deckId >= 3 || card.elite) && (card.deckId !== undefined || card.elite);
+        if (extraDeck) return;
+        var locked = !!(card.isLocked && card.reinoDeck);
         var div = document.createElement('div');
         div.className = 'trunfo-card' + (card.elite ? ' elite' : '') + (locked ? ' trunfo-card-locked' : '');
         if (locked) div.setAttribute('role', 'button');
@@ -229,13 +251,10 @@
                 div.innerHTML += attrBarHtml(key, card[key] != null ? card[key] : 0);
             });
         } else {
-            var lockMessage = card.reinoDeck
-                ? 'Conclua a parte anterior da história para liberar esta carta.'
-                : 'Desbloqueie com a chave do módulo opcional.';
+            var lockMessage = 'Conclua a parte anterior da história para liberar esta carta.';
             div.innerHTML += '<p class="card-desbloqueie">' + escapeHtml(lockMessage) + '</p>';
         }
         div.innerHTML += flavorHtml + deviaTransitionHtml;
-        /* Foco Técnico no rodapé (subtítulo discreto por era) */
         if (card.reinoDeck && card.era && typeof window.ReinoEras !== 'undefined') {
             var foco = window.ReinoEras.getFocoTecnicoEra(card.era);
             div.innerHTML += '<div class="card-foco-tecnico">' + escapeHtml(foco) + '</div>';
@@ -244,15 +263,12 @@
         if (card.integradoraSuprema) {
             div.classList.add('devia-glitch-card');
         }
-        div.innerHTML += '<div class="card-seal-pawlowsky" aria-hidden="true">P</div>';
         var openLockedCard = function () {
             if (card.reinoDeck) {
                 var eras = window.ReinoEras && window.ReinoEras.ERAS;
                 var previousEra = eras && eras[card.era - 1];
                 if (previousEra && previousEra.storyPage) window.location.href = previousEra.storyPage;
-                return;
             }
-            if (typeof window.openRitualAtivacao === 'function') window.openRitualAtivacao();
         };
         if (locked) {
             div.addEventListener('click', function (e) {
@@ -309,7 +325,7 @@
         } else {
             list = DECK_BY_ID[id].slice();
         }
-        return shuffle(list);
+        return shuffle(list.filter(function (card) { return !card.isLocked; }));
     }
 
     function startGame() {
@@ -335,7 +351,7 @@
 
         updateUI();
         hideResult();
-        hidePremiumTrigger();
+        hideShadedCard();
         bindAttrButtons();
     }
 
@@ -398,18 +414,23 @@
         var result = compareCards(attr);
         var cardJ = state.cartaJogadoraAtual;
         var cardM = state.cartaMaquina;
-        var hasPremium = (cardJ && (cardJ.poder || cardJ.deckId >= 3)) || (cardM && (cardM.poder || cardM.deckId >= 3));
+        var usesPower = (cardJ && (cardJ.poder || cardJ.deckId >= 3)) || (cardM && (cardM.poder || cardM.deckId >= 3));
 
         logBatalha(getBattleNarrative(result, attr, cardJ, cardM));
         if (result === 1) {
+            state.placar.vitorias += 1;
             logTelemetria('Protocolo OIDC validado com honras.', 'SUCESSO');
         } else if (result === -1) {
+            state.placar.derrotas += 1;
             logTelemetria('Rodada: vitória do Conselho da Confiança. Defesa registrada no Reino.');
         } else {
+            state.placar.empates += 1;
             logTelemetria('Empate no Reino. Nova rodada disponível.');
         }
+        savePlacar();
+        renderPlacar();
 
-        if (hasPremium) triggerPremiumEffect();
+        if (usesPower) triggerRoundEffect();
 
         showResult(result, attr);
         state.rodadaAtiva = false;
@@ -420,16 +441,16 @@
         var btnProxima = document.getElementById('btn-proxima');
         if (btnProxima) btnProxima.style.display = 'inline-block';
 
-        showPremiumTrigger();
+        showShadedCard();
     }
 
-    function showPremiumTrigger() {
+    function showShadedCard() {
         var zone = document.getElementById('carta-sombreada-premium');
         if (!zone) return;
         zone.classList.add('show');
     }
 
-    function hidePremiumTrigger() {
+    function hideShadedCard() {
         var zone = document.getElementById('carta-sombreada-premium');
         if (zone) zone.classList.remove('show');
     }
@@ -465,7 +486,7 @@
         }
         state.rodadaAtiva = true;
         hideResult();
-        hidePremiumTrigger();
+        hideShadedCard();
         updateUI();
         bindAttrButtons();
         var btnProxima = document.getElementById('btn-proxima');
@@ -606,6 +627,7 @@
     }
 
     function init() {
+        renderPlacar();
         logTelemetria('Reino da Identidade Federada — Super Trunfo iniciado. Proteja seu Reino.');
         applyEraTheme();
         renderTimeline();

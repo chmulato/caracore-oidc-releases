@@ -2,10 +2,12 @@
 <html lang="pt-BR">
 <head>
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Mapa do Reino — Evolução | Reino OIDC</title>
     <meta name="description" content="Mapa de evolução do Reino da Identidade Federada. As áreas acendem conforme você avança nas três Eras.">
+    <link rel="canonical" href="https://oidc.caracore.com.br/mapa_evolucao.html">
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -13,7 +15,8 @@
   <link rel="stylesheet" href="/assets/caracore-core-typography.css">
   <link rel="stylesheet" href="/assets/caracore-institutional-components.css">
     <style>
-        .evolucao-map { max-width: 900px; margin: 0 auto; padding: 24px 0; }
+        .evolucao-areas { margin: 0; max-width: 100%; }
+        body.page-mapa-evolucao { overflow-x: clip; }
         .evolucao-title { text-align: center; margin-bottom: 8px; }
         .evolucao-subtitle { text-align: center; color: #6c757d; margin-bottom: 32px; font-size: 1rem; }
         .area-card {
@@ -54,16 +57,15 @@
             content: '';
             font-style: italic;
         }
-        .trono-cta {
+        .evolucao-nota {
             margin-top: 32px;
             padding: 24px;
-            background: linear-gradient(135deg, rgba(143, 110, 213, 0.15) 0%, rgba(255, 45, 149, 0.08) 100%);
-            border: 2px solid #8f6ed5;
+            background: #f4f7fb;
+            border: 2px solid #2457a6;
             border-radius: 12px;
             text-align: center;
+            color: #1b2838;
         }
-        .trono-cta p { margin-bottom: 16px; }
-        .trono-cta .btn { font-weight: 600; }
 
         @media (max-width: 768px) {
             .evolucao-map {
@@ -97,12 +99,9 @@
             .area-card.locked .area-desc::after {
                 content: '';
             }
-            .trono-cta {
+            .evolucao-nota {
                 margin-top: 18px;
                 padding: 14px;
-            }
-            .trono-cta .btn {
-                width: 100%;
             }
         }
     </style>
@@ -119,13 +118,12 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">🏠 Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="download.html">⬇️ Download</a></li>
                     <li class="nav-item"><a class="nav-link" href="personagens.html">👥 Personagens</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">📖 História</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="historia_p1.html">Parte I — A Era das Senhas e a Chegada de Lady OAuth</a></li>
-                            <li><a class="dropdown-item" href="historia_p2.html">Parte II — A Era da Confiança e o Mago OIDC</a></li>
+                            <li><a class="dropdown-item" href="historia_p2.html">Parte II — A Era da Confiança e o Lord OIDC</a></li>
                             <li><a class="dropdown-item" href="historia_p3.html">Parte III — A Nova Ordem Digital e a Aprendiz Devia</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="conclusao.html">Conclusão</a></li>
@@ -138,7 +136,6 @@
                     <li class="nav-item"><a class="nav-link" href="glossario.html">📚 Glossário</a></li>
                     <li class="nav-item"><a class="nav-link" href="mapas.html">🗺️ Mapas</a></li>
                     <li class="nav-item"><a class="nav-link active" href="mapa_evolucao.html">📜 Evolução</a></li>
-                    <li class="nav-item"><a class="nav-link" href="canal-feedback.html">Feedback</a></li>
                 </ul>
             </div>
         </div>
@@ -165,8 +162,8 @@
             </picture>
             <p class="reino-media-caption">Acompanhe o progresso por trilhas, personagens e domínio de conceitos OIDC.</p>
         </div>
-<div class="row">
-            <div class="col-12">
+<div class="evolucao-areas">
+            <div>
                 <div class="reino-mapa-area-block" id="bloco-area-porta">
 
                 <a href="index.html" class="area-card unlocked" id="area-porta">
@@ -212,19 +209,10 @@
                 </a>
 </div>
 
-                <div class="reino-mapa-area-block" id="bloco-area-mineracao">
-
-
-                <div class="area-card locked" id="area-mineracao">
-                    <span class="area-badge">🔐</span>
-                    <span class="area-name">Edição paga</span>
-                    <p class="area-desc">Em desenvolvimento. Esta Edição Free não cobra.</p>
-                </div>
-</div>
             </div>
         </div>
 
-        <div class="trono-cta">
+        <div class="evolucao-nota">
             <p class="mb-0">O currículo das três Eras faz parte desta Edição Free. A edição paga está em desenvolvimento, sem pagamento nesta etapa.</p>
         </div>
     </div>

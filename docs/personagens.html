@@ -2,9 +2,12 @@
 <html lang="pt-BR">
 <head>
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Personagens - Reino da Identidade Federada</title>
+    <meta name="description" content="Personagens do Reino OIDC: Lady OAuth, Lord OIDC, Alex Client, Pixie PKCE, IDA Token, Ace Token, Rex Token, Seraph Resource e Devia.">
+    <link rel="canonical" href="https://oidc.caracore.com.br/personagens.html">
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -27,7 +30,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">📖 História</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="historia_p1.html">Parte I — A Era das Senhas e a Chegada de Lady OAuth</a></li>
-                            <li><a class="dropdown-item" href="historia_p2.html">Parte II — A Era da Confiança e o Mago OIDC</a></li>
+                            <li><a class="dropdown-item" href="historia_p2.html">Parte II — A Era da Confiança e o Lord OIDC</a></li>
                             <li><a class="dropdown-item" href="historia_p3.html">Parte III — A Nova Ordem Digital e a Aprendiz Devia</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="conclusao.html">Conclusão</a></li>
@@ -83,6 +86,26 @@
                                 <img src="docs/img/personagem-pixie-pkce.webp" srcset="docs/img/personagem-pixie-pkce-mobile.webp 800w, docs/img/personagem-pixie-pkce.webp 1536w" sizes="(max-width: 768px) 50vw, 33vw" class="reino-media-image" loading="lazy" decoding="async" alt="Pixie PKCE protegendo o Authorization Code Flow com code challenge e code verifier" title="Pixie PKCE - proteção do fluxo" width="1536" height="1024">
                             </picture>
                             <div class="card-body py-2"><p class="small mb-0">Pixie PKCE</p></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <div class="card h-100">
+                            <div class="reino-media-image d-flex align-items-center justify-content-center" style="min-height: 140px; font-size: 3rem;" role="img" aria-label="Alex Client, o mensageiro confiável">🧑‍💼</div>
+                            <div class="card-body py-2"><p class="small mb-0">Alex Client</p></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <div class="card h-100">
+                            <div class="reino-media-image d-flex align-items-center justify-content-center" style="min-height: 140px; font-size: 3rem;" role="img" aria-label="IDA Token, a mensageira da verdade">🪪</div>
+                            <div class="card-body py-2"><p class="small mb-0">IDA Token</p></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <div class="card h-100">
+                            <div class="reino-media-image d-flex align-items-center justify-content-center" style="min-height: 140px; font-size: 3rem;" role="img" aria-label="Rex Token, o renovador">♾️</div>
+                            <div class="card-body py-2"><p class="small mb-0">Rex Token</p></div>
+                        </div>
+                    </div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
@@ -199,7 +222,7 @@
                                 <p><strong>Título:</strong> Arauto da Identidade</p>
                                 <p><strong>Símbolo:</strong> Um medalhão com o nome e assinatura digital do usuário</p>
                                 <p><strong>Função:</strong> Transmite quem o usuário é, de forma segura e verificável.</p>
-                                <p>IDA (ID Token) é rápida e precisa. Ela traz informações essenciais — nome, e-mail, ID único — e uma assinatura digital (JWKS) que garante sua autenticidade.</p>
+                                <p>IDA (ID Token) é rápida e precisa. Ela traz informações essenciais — nome, e-mail, ID único — e claims assinados. JWKS é o conjunto de chaves públicas usado para verificar a assinatura.</p>
                                 <p><em>“Sou a verdade assinada por Lord OIDC. Quem me lê sabe quem é o usuário, sem jamais ver sua senha.”</em></p>
                                 <p><strong>Representa:</strong> O ID Token do OIDC, que identifica o usuário autenticado.</p>
                             </div>
@@ -297,7 +320,6 @@
                     <p class="mb-0 small">Material educacional sobre OAuth 2.1 e OpenID Connect</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <p class="mb-1 small">© 2025 Reino OIDC. Conteúdo gratuito para estudo pessoal; propriedade exclusiva da Cara Core Informática.</p>
                 </div>
             </div>
         </div>

@@ -5,17 +5,17 @@
 (function (global) {
   "use strict";
 
-  var TAG = "v2.0.1-free";
+  var TAG = "v2.0.2-free";
   var REPO = "https://github.com/chmulato/caracore-oidc-releases";
 
   global.REINO_RELEASE = {
     tag: TAG,
-    version: "2.0.1-free",
+    version: "2.0.2-free",
     edition: "Free",
-    versionLabel: "2.0.1",
-    exeName: "ReinoOIDC-v2.exe",
-    sizeBytes: 18157874,
-    sha256: "067352c7201f2e3478d11abcf3a87f212fad6dc1c02768ccebd6ad78de2992b5",
+    versionLabel: "2.0.2",
+    exeName: "ReinoOIDC-2.0.2-free.exe",
+    sizeBytes: 17861640,
+    sha256: "d5c6121e921dedab678b056129653870ebb6fbfa28a75b12074f3d4fbc131bcc",
     requirements: "Windows 10/11 64 bits com Microsoft Edge WebView2 Runtime",
     releasesIndex: REPO + "/releases",
     releasePage: REPO + "/releases/tag/" + TAG,

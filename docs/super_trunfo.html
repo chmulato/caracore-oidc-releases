@@ -2,10 +2,12 @@
 <html lang="pt-BR">
 <head>
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Reino OIDC — Edição Super Trunfo | Proteja seu Reino</title>
-    <meta name="description" content="Jogo de cartas Super Trunfo do Reino da Identidade Federada. Segurança, Complexidade, Escalabilidade e Privacidade (LGPD). Cara Core Informática.">
+    <meta name="description" content="Super Trunfo do Reino da Identidade Federada: dois baralhos gratuitos. Fortificação (Segurança), Nobreza (Complexidade), Linhagem (Escalabilidade) e Sigilo (Privacidade).">
+    <link rel="canonical" href="https://oidc.caracore.com.br/super_trunfo.html">
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -13,7 +15,6 @@
   <link rel="stylesheet" href="/assets/caracore-core-typography.css">
   <link rel="stylesheet" href="/assets/caracore-institutional-components.css">
     <link rel="stylesheet" href="assets/css/super-trunfo.css">
-    <link rel="stylesheet" href="assets/css/sucesso-ativacao.css">
     <link rel="stylesheet" href="assets/css/reino-responsive.css">
 </head>
 <body class="super-trunfo cc-i-page">
@@ -27,13 +28,12 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">🏠 Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="download.html">⬇️ Download</a></li>
                     <li class="nav-item"><a class="nav-link" href="personagens.html">👥 Personagens</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">📖 História</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="historia_p1.html">Parte I — A Era das Senhas e a Chegada de Lady OAuth</a></li>
-                            <li><a class="dropdown-item" href="historia_p2.html">Parte II — A Era da Confiança e o Mago OIDC</a></li>
+                            <li><a class="dropdown-item" href="historia_p2.html">Parte II — A Era da Confiança e o Lord OIDC</a></li>
                             <li><a class="dropdown-item" href="historia_p3.html">Parte III — A Nova Ordem Digital e a Aprendiz Devia</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="conclusao.html">Conclusão</a></li>
@@ -46,7 +46,6 @@
                     <li class="nav-item"><a class="nav-link" href="glossario.html">📚 Glossário</a></li>
                     <li class="nav-item"><a class="nav-link" href="mapas.html">🗺️ Mapas</a></li>
                     <li class="nav-item"><a class="nav-link" href="mapa_evolucao.html">📜 Evolução</a></li>
-                    <li class="nav-item"><a class="nav-link" href="canal-feedback.html">Feedback</a></li>
                 </ul>
             </div>
         </div>
@@ -118,6 +117,7 @@
 
             <!-- Controles -->
             <div class="game-controls">
+                <p id="trunfo-placar" class="small mb-2">Vitórias 0 · Derrotas 0 · Empates 0</p>
                 <button type="button" class="btn-arena btn-arena-primary" id="btn-iniciar">Iniciar partida</button>
                 <button type="button" class="btn-arena btn-arena-secondary" id="btn-proxima" style="display: none;">Próxima rodada</button>
             </div>

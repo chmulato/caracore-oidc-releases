@@ -2,9 +2,12 @@
 <html lang="pt-BR">
 <head>
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Parte I - Reino da Identidade Federada</title>
+    <meta name="description" content="Parte I da história do Reino OIDC: a Era das Senhas e a chegada de Lady OAuth com autorização delegada.">
+    <link rel="canonical" href="https://oidc.caracore.com.br/historia_p1.html">
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -27,7 +30,7 @@
                         <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">📖 História</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item active" href="historia_p1.html">Parte I — A Era das Senhas e a Chegada de Lady OAuth</a></li>
-                            <li><a class="dropdown-item" href="historia_p2.html">Parte II — A Era da Confiança e o Mago OIDC</a></li>
+                            <li><a class="dropdown-item" href="historia_p2.html">Parte II — A Era da Confiança e o Lord OIDC</a></li>
                             <li><a class="dropdown-item" href="historia_p3.html">Parte III — A Nova Ordem Digital e a Aprendiz Devia</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="conclusao.html">Conclusão</a></li>
@@ -120,7 +123,6 @@
                     <p class="mb-0 small">Material educacional sobre OAuth 2.1 e OpenID Connect</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <p class="mb-1 small">© 2025 Reino OIDC. Conteúdo gratuito para estudo pessoal; propriedade exclusiva da Cara Core Informática.</p>
                 </div>
             </div>
         </div>
@@ -130,30 +132,7 @@
 <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/footer-propriedade.js"></script>
     <script src="assets/js/game-engine.js"></script>
-    <script>
-        (function() {
-            var btn = document.getElementById('btn-concluir-parte-1');
-            var doneEl = document.getElementById('concluido-parte-1');
-            var box = document.getElementById('concluir-parte-1-box');
-            if (btn && window.ReinoEras) {
-                if (window.ReinoEras.getStoryPartDone(1)) {
-                    if (doneEl) doneEl.classList.remove('d-none');
-                    if (box) box.classList.remove('alert-info'), box.classList.add('alert-success');
-                }
-                btn.addEventListener('click', function() {
-                    btn.disabled = true;
-                    window.ReinoEras.setStoryPartDone(1).then(function() {
-                        if (doneEl) doneEl.classList.remove('d-none');
-                        if (box) box.classList.remove('alert-info'), box.classList.add('alert-success');
-                    }).catch(function(error) {
-                        btn.disabled = false;
-                        if (window.ReinoOIDCProgress) window.ReinoOIDCProgress.reportError(error);
-                        else console.error('Não foi possível salvar o progresso.', error);
-                    });
-                });
-            }
-        })();
-    </script>
+    <script src="assets/js/historia-progress.js"></script>
     <script src="assets/js/loja.js"></script>
 </body>
 </html>

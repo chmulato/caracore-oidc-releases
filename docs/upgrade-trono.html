@@ -2,10 +2,12 @@
 <html lang="pt-BR">
 <head>
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Edição paga em desenvolvimento — Reino OIDC</title>
     <meta name="description" content="A edição paga do Reino OIDC está em desenvolvimento. Esta Edição Free não cobra.">
+    <link rel="canonical" href="https://oidc.caracore.com.br/upgrade-trono.html">
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root {
@@ -72,13 +74,12 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">🏠 Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="download.html">⬇️ Download</a></li>
                     <li class="nav-item"><a class="nav-link" href="personagens.html">👥 Personagens</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">📖 História</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="historia_p1.html">Parte I — A Era das Senhas e a Chegada de Lady OAuth</a></li>
-                            <li><a class="dropdown-item" href="historia_p2.html">Parte II — A Era da Confiança e o Mago OIDC</a></li>
+                            <li><a class="dropdown-item" href="historia_p2.html">Parte II — A Era da Confiança e o Lord OIDC</a></li>
                             <li><a class="dropdown-item" href="historia_p3.html">Parte III — A Nova Ordem Digital e a Aprendiz Devia</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="conclusao.html">Conclusão</a></li>
@@ -91,7 +92,6 @@
                     <li class="nav-item"><a class="nav-link" href="glossario.html">📚 Glossário</a></li>
                     <li class="nav-item"><a class="nav-link" href="mapas.html">🗺️ Mapas</a></li>
                     <li class="nav-item"><a class="nav-link" href="mapa_evolucao.html">📜 Evolução</a></li>
-                    <li class="nav-item"><a class="nav-link" href="canal-feedback.html">Feedback</a></li>
                 </ul>
             </div>
         </div>
@@ -115,6 +115,7 @@
     </div>
     <script src="assets/js/reino-nav.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <footer class="bg-dark text-white py-4 mt-5"><div class="container"></div></footer>
     <script src="assets/js/footer-propriedade.js"></script>
     <script src="assets/js/loja.js"></script>
 </body>

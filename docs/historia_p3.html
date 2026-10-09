@@ -2,9 +2,12 @@
 <html lang="pt-BR">
 <head>
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Parte III - Reino da Identidade Federada</title>
+    <meta name="description" content="Parte III da história do Reino OIDC: a Nova Ordem Digital e a aprendiz Devia integrando os protocolos.">
+    <link rel="canonical" href="https://oidc.caracore.com.br/historia_p3.html">
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -27,7 +30,7 @@
                         <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">📖 História</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="historia_p1.html">Parte I — A Era das Senhas e a Chegada de Lady OAuth</a></li>
-                            <li><a class="dropdown-item" href="historia_p2.html">Parte II — A Era da Confiança e o Mago OIDC</a></li>
+                            <li><a class="dropdown-item" href="historia_p2.html">Parte II — A Era da Confiança e o Lord OIDC</a></li>
                             <li><a class="dropdown-item active" href="historia_p3.html">Parte III — A Nova Ordem Digital e a Aprendiz Devia</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="conclusao.html">Conclusão</a></li>
@@ -67,7 +70,7 @@
                     <p>Séculos digitais se passam, e surge uma nova geração. Entre eles está Devia, a desenvolvedora da Cara Core Informática — curiosa, disciplinada e determinada a dominar o legado de Lady OAuth e Lord OIDC.</p>
                     <p>Devia trabalha em sistemas modernos: aplicações web, APIs, portais corporativos e aplicativos mobile. Ela entende que o segredo está em fazer os personagens trabalharem juntos.</p>
                     
-                    <h4 class="mt-4">Etapas da implementação lógica</h4>
+                    <h2 class="h4 mt-4">Etapas da implementação lógica</h2>
                     <ol>
                         <li>Alex Client (o aplicativo) pede a Lady OAuth uma autorização.</li>
                         <li>Envia seu client_id, redirect_uri, scope e o code_challenge criado por Pixie.</li>
@@ -90,7 +93,7 @@
                         <li>Devia usa os claims para montar o perfil do usuário na aplicação.</li>
                     </ol>
 
-                    <h4 class="mt-4">A sabedoria que Devia aprende</h4>
+                    <h2 class="h4 mt-4">A sabedoria que Devia aprende</h2>
                     <ul>
                         <li><strong>OAuth 2.1</strong> = autorização segura entre sistemas.</li>
                         <li><strong>OpenID Connect</strong> = autenticação sobre o OAuth (prova de quem é o usuário).</li>
@@ -102,13 +105,13 @@
                         <li><strong>Scopes e Claims</strong> = definem o que pode ser acessado e quais dados são revelados.</li>
                     </ul>
 
-                    <h4 class="mt-4">O Ciclo da Renovação — A Dança de Rex Token</h4>
+                    <h2 class="h4 mt-4">O Ciclo da Renovação — A Dança de Rex Token</h2>
                     <p>Devia aprende que um dos aspectos mais elegantes do sistema é como Rex Token trabalha nos bastidores. Diferente de Ace e IDA, que são ativos e visíveis, Rex vive na quietude, esperando sua hora.</p>
                     
                     <div class="alert alert-info">
-                        <h6><strong>🔄 Como funciona o ciclo de renovação:</strong></h6>
+                        <h3 class="h6"><strong>🔄 Como funciona o ciclo de renovação:</strong></h3>
                         <ol class="mb-0">
-                            <li><strong>Ace Token expira</strong> — Vida útil curta (15-60 minutos)</li>
+                            <li><strong>Ace Token expira</strong> — Vida útil curta: minutos, tipicamente 5 a 60</li>
                             <li><strong>Alex Client percebe</strong> — HTTP 401 ou verificação proativa</li>
                             <li><strong>Rex Token desperta</strong> — Sai do cofre seguro</li>
                             <li><strong>Troca silenciosa</strong> — Novo Ace + novo Rex (rotação)</li>
@@ -121,7 +124,7 @@
 
                     <p>Devia percebe que, juntos, esses conceitos formam a Nova Ordem da Confiança Digital — onde identidade, permissão e segurança coexistem em harmonia.</p>
 
-                    <h4 class="mt-4">Epílogo — O Conselho da Confiança</h4>
+                    <h2 class="h4 mt-4">Epílogo — O Conselho da Confiança</h2>
                     <p>No grande salão de Federápolis, Lady OAuth e Lord OIDC entregam a Devia o "Livro dos Tokens". Pixie sorri ao ver as linhas de código que agora ela compreende de verdade. Rex Token, sempre discreto, observa silenciosamente das sombras — sua presença é sentida, mesmo quando não é vista.</p>
                     <blockquote class="blockquote">
                         <p>"A tecnologia muda, Devia," — diz Lady OAuth, "mas os princípios permanecem: confiança, verificação e limite."</p>
@@ -130,7 +133,7 @@
                     </blockquote>
                     <p>Devia volta à sua oficina digital, pronta para construir sistemas que respeitam o usuário, protegem dados e unem mundos através da confiança. Ela agora compreende que cada token tem seu propósito: Ace para o presente, IDA para a identidade, e Rex para o futuro.</p>
 
-                    <h4 class="mt-4">Moral da história</h4>
+                    <h2 class="h4 mt-4">Moral da história</h2>
                     <blockquote class="blockquote">
                         <p>"OAuth 2.1 e OIDC não são apenas protocolos — são uma filosofia de design para um mundo conectado, onde segurança e experiência caminham lado a lado."</p>
                     </blockquote>
@@ -179,7 +182,6 @@
                     <p class="mb-0 small">Material educacional sobre OAuth 2.1 e OpenID Connect</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <p class="mb-1 small">© 2025 Reino OIDC. Conteúdo gratuito para estudo pessoal; propriedade exclusiva da Cara Core Informática.</p>
                 </div>
             </div>
         </div>
@@ -189,30 +191,7 @@
 <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/footer-propriedade.js"></script>
     <script src="assets/js/game-engine.js"></script>
-    <script>
-        (function() {
-            var btn = document.getElementById('btn-concluir-parte-3');
-            var doneEl = document.getElementById('concluido-parte-3');
-            var box = document.getElementById('concluir-parte-3-box');
-            if (btn && window.ReinoEras) {
-                if (window.ReinoEras.getStoryPartDone(3)) {
-                    if (doneEl) doneEl.classList.remove('d-none');
-                    if (box) box.classList.remove('alert-info'), box.classList.add('alert-success');
-                }
-                btn.addEventListener('click', function() {
-                    btn.disabled = true;
-                    window.ReinoEras.setStoryPartDone(3).then(function() {
-                        if (doneEl) doneEl.classList.remove('d-none');
-                        if (box) box.classList.remove('alert-info'), box.classList.add('alert-success');
-                    }).catch(function(error) {
-                        btn.disabled = false;
-                        if (window.ReinoOIDCProgress) window.ReinoOIDCProgress.reportError(error);
-                        else console.error('Não foi possível salvar o progresso.', error);
-                    });
-                });
-            }
-        })();
-    </script>
+    <script src="assets/js/historia-progress.js"></script>
     <script src="assets/js/loja.js"></script>
 </body>
 </html>

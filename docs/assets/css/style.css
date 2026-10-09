@@ -255,7 +255,7 @@ button:focus-visible,
     font-weight: bold !important;
 }
 
-/* Selo Acesso Premium Ativo (licenca.js — status SOBERANO) */
+/* Selo Acesso extra Ativo (licenca.js — status SOBERANO) */
 .reino-seal-premium {
     color: #d4af37 !important;
     font-weight: 700;
@@ -266,7 +266,7 @@ button:focus-visible,
     font-size: 0.85rem;
 }
 
-/* Título do usuário no portal: Aventureira -> Soberana (glow roxo e dourado) */
+/* Título do usuário no portal: Aventureira -> estudante (glow roxo e dourado) */
 .reino-user-title {
     color: rgba(255,255,255,0.9);
     font-size: 0.9rem;
@@ -276,7 +276,7 @@ button:focus-visible,
     text-shadow: 0 0 10px rgba(212, 175, 55, 0.8), 0 0 20px rgba(138, 43, 226, 0.5);
 }
 
-/* Bloqueio Premium: grayscale + ícone de cadeado de ferro (licenca.js) */
+/* Bloqueio extra: grayscale + ícone de cadeado de ferro (licenca.js) */
 .locked-feature {
     filter: grayscale(1);
     position: relative;
@@ -460,3 +460,23 @@ img.reino-img-fallback {
 
 @import url("reino-responsive.css");
 @import url("reino-image-explorer.css");
+
+.text-muted {
+    color: #3f4a57 !important;
+}
+
+#btn-concluir-parte-1,
+#btn-concluir-parte-2,
+#btn-concluir-parte-3 {
+    color: #08306b;
+    border-color: #08306b;
+}
+
+footer a,
+main a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+}

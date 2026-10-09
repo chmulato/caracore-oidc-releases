@@ -2,9 +2,12 @@
 <html lang="pt-BR">
 <head>
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Conclusão</title>
+    <title>Conclusão — Reino OIDC</title>
+    <meta name="description" content="Conclusão da jornada do Reino OIDC, com o que a Edição Free ensina sobre identidade e autorização.">
+    <link rel="canonical" href="https://oidc.caracore.com.br/conclusao.html">
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -27,7 +30,7 @@
                         <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">📖 História</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="historia_p1.html">Parte I — A Era das Senhas e a Chegada de Lady OAuth</a></li>
-                            <li><a class="dropdown-item" href="historia_p2.html">Parte II — A Era da Confiança e o Mago OIDC</a></li>
+                            <li><a class="dropdown-item" href="historia_p2.html">Parte II — A Era da Confiança e o Lord OIDC</a></li>
                             <li><a class="dropdown-item" href="historia_p3.html">Parte III — A Nova Ordem Digital e a Aprendiz Devia</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item active" href="conclusao.html">Conclusão</a></li>
@@ -69,7 +72,7 @@
                     <ul>
                         <li>Lady OAuth: a guardiã das permissões, separando acesso de identidade.</li>
                         <li>Lord OIDC: o mago que autentica e garante quem é o usuário.</li>
-                        <li>Alex Client: o mensageiro que nunca guarda segredos, mas sabe pedir tokens corretamente.</li>
+                        <li>Alex Client: no cliente público não guarda segredo; o cliente confidencial guarda client_secret ou uma chave.</li>
                         <li>Pixie PKCE: a guardiã dos códigos secretos, protegendo contra interceptações.</li>
                         <li>IDA Token: a mensageira da verdade, transmitindo identidade de forma segura.</li>
                         <li>Ace Token: o guerreiro das permissões, concedendo acesso temporário e seguro.</li>
@@ -125,7 +128,6 @@
                     <p class="mb-0 small">Material educacional sobre OAuth 2.1 e OpenID Connect</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <p class="mb-1 small">© 2025 Reino OIDC. Conteúdo gratuito para estudo pessoal; propriedade exclusiva da Cara Core Informática.</p>
                 </div>
             </div>
         </div>

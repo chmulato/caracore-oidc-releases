@@ -96,3 +96,8 @@ header p { color: var(--text-secondary); font-size: 0.95rem; }
 .download-back { margin-top: 32px; }
 .download-back a { color: var(--text-secondary); text-decoration: none; }
 .download-back a:hover { color: var(--accent-gold); }
+
+code {
+    overflow-wrap: anywhere;
+    word-break: break-all;
+}

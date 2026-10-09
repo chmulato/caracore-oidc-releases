@@ -30,24 +30,41 @@
         if (footer.querySelector('.reino-app-version')) return;
         var line = document.createElement('p');
         line.className = 'mb-0 small reino-app-version';
-        line.textContent = 'Edição Free';
         var container = footer.querySelector('.container') || footer;
         container.appendChild(line);
+
+        function showFixed() {
+            var release = window.REINO_RELEASE;
+            var label = release && release.versionLabel ? release.versionLabel : '2.0.2';
+            line.textContent = 'Edição Free · versão ' + label;
+        }
+
+        var host = window.location.hostname;
+        var localApp = host === '127.0.0.1' || host === 'localhost' || host === '::1' || !!window.__REINO_OIDC_LOCAL_STATE__;
+        if (!localApp) {
+            showFixed();
+            return;
+        }
+
+        line.textContent = 'Edição Free';
         fetch('/__reino_health', { cache: 'no-store' })
             .then(function (response) { return response.ok ? response.json() : null; })
             .then(function (body) {
-                if (!body || !body.version) return;
+                if (!body || !body.version) {
+                    showFixed();
+                    return;
+                }
                 var raw = String(body.version);
                 var label = raw.replace(/-free$/, '');
                 line.textContent = 'Edição Free · versão ' + label;
             })
             .catch(function () {
-                line.remove();
+                showFixed();
             });
     }
 
     function ensureFooter() {
-        var footer = document.querySelector('footer');
+        var footer = document.querySelector('body > footer');
         if (!footer) return;
         ensureParagraph(footer, 'reino-copyright', COPYRIGHT);
         ensureParagraph(footer, 'reino-supplier', SUPPLIER);

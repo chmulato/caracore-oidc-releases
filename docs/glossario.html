@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Glossário - Reino OIDC</title>
+    <meta name="description" content="Glossário ilustrado do Reino OIDC: termos de OAuth 2.1, OpenID Connect, PKCE, tokens e endpoints.">
+    <link rel="canonical" href="https://oidc.caracore.com.br/glossario.html">
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -27,7 +30,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">📖 História</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="historia_p1.html">Parte I — A Era das Senhas e a Chegada de Lady OAuth</a></li>
-                            <li><a class="dropdown-item" href="historia_p2.html">Parte II — A Era da Confiança e o Mago OIDC</a></li>
+                            <li><a class="dropdown-item" href="historia_p2.html">Parte II — A Era da Confiança e o Lord OIDC</a></li>
                             <li><a class="dropdown-item" href="historia_p3.html">Parte III — A Nova Ordem Digital e a Aprendiz Devia</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="conclusao.html">Conclusão</a></li>
@@ -55,7 +58,7 @@
                 </header>
 
                 <div class="alert alert-info">
-                    <h5><strong>🧭 Como usar este glossário:</strong></h5>
+                    <h2 class="h5"><strong>🧭 Como usar este glossário:</strong></h2>
                     <ul class="mb-0">
                         <li><strong>👥 Para Leigos:</strong> Foque nas explicações em <em>linguagem simples</em> e nas <em>metáforas do Reino</em></li>
                         <li><strong>🔧 Para Técnicos:</strong> Use as <em>definições precisas</em> e os <em>exemplos de código</em></li>
@@ -68,13 +71,14 @@
                 <!-- Alfabético Index -->
                 <div class="card mb-4">
                     <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">🔤 Índice Alfabético</h5>
+                        <h2 class="h5 mb-0">🔤 Índice Alfabético</h2>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-3">
                                 <strong>A-C</strong><br>
                                 <a href="#access-token" class="text-decoration-none">Access Token</a><br>
+                                <a href="#authentication" class="text-decoration-none">Authentication</a><br>
                                 <a href="#authorization" class="text-decoration-none">Authorization</a><br>
                                 <a href="#authorization-code" class="text-decoration-none">Authorization Code</a><br>
                                 <a href="#claims" class="text-decoration-none">Claims</a><br>
@@ -118,25 +122,25 @@
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <h3 class="h6"><strong>👥 Para Leigos:</strong></h3>
                                         <p>É como um <strong>passe VIP temporário</strong> que permite entrar em áreas específicas de um evento. Você não precisa mostrar seu documento de identidade toda vez - apenas o passe.</p>
                                         
-                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <h3 class="h6"><strong>🎭 No Reino OIDC:</strong></h3>
                                         <p><em><strong>Ace Token - O Guerreiro das Permissões</strong></em><br>
                                         É o guerreiro corajoso que carrega sua espada (permissões) e tem vida limitada. Depois de um tempo, ele precisa descansar e um novo guerreiro assume o posto.</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
-                                        <p>String opaca ou JWT que representa uma <strong>autorização</strong> para acessar recursos protegidos. Tem escopo limitado e tempo de vida curto (15-60 min).</p>
+                                        <h3 class="h6"><strong>🔧 Para Técnicos:</strong></h3>
+                                        <p>String opaca ou JWT que representa uma <strong>autorização</strong> para acessar recursos protegidos. Tem escopo limitado e tempo de vida curto: minutos, tipicamente 5 a 60.</p>
                                         
-                                        <h6><strong>💻 Exemplo:</strong></h6>
+                                        <h3 class="h6"><strong>💻 Exemplo:</strong></h3>
                                         <pre><code>Authorization: Bearer eyJhbGciOiJSUzI1NiIs...</code></pre>
                                         
-                                        <h6><strong>🎯 Usado para:</strong></h6>
+                                        <h3 class="h6"><strong>🎯 Usado para:</strong></h3>
                                         <ul class="small">
                                             <li>Acessar APIs protegidas</li>
                                             <li>Validar permissões (scopes)</li>
-                                            <li>Autenticação stateless</li>
+                                            <li>Autoriza acesso a APIs; a autenticação é papel do ID Token</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -155,25 +159,25 @@
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <h3 class="h6"><strong>👥 Para Leigos:</strong></h3>
                                         <p>É o processo de <strong>provar quem você é</strong>. Como quando você mostra seu RG na entrada de um prédio para comprovar sua identidade.</p>
                                         
-                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
-                                        <p><em><strong>Dama Authen - A Verificadora Real</strong></em><br>
+                                        <h3 class="h6"><strong>🎭 No Reino OIDC:</strong></h3>
+                                        <p><em><strong>Lord OIDC - O Verificador da Identidade</strong></em><br>
                                         Ela é a responsável por verificar se você é realmente quem diz ser. Usa sua lupa mágica para examinar suas credenciais.</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <h3 class="h6"><strong>🔧 Para Técnicos:</strong></h3>
                                         <p>Processo de <strong>verificar a identidade</strong> de um usuário, normalmente através de credenciais como username/password, biometria, ou fatores múltiplos.</p>
                                         
-                                        <h6><strong>🔄 Métodos comuns:</strong></h6>
+                                        <h3 class="h6"><strong>🔄 Métodos comuns:</strong></h3>
                                         <ul class="small">
-                                            <li><strong>Something you know:</strong> senha, PIN</li>
-                                            <li><strong>Something you have:</strong> celular, token</li>
-                                            <li><strong>Something you are:</strong> biometria</li>
+                                            <li><strong>Algo que você sabe</strong> (something you know): senha, PIN</li>
+                                            <li><strong>Algo que você tem</strong> (something you have): celular, token</li>
+                                            <li><strong>Algo que você é</strong> (something you are): biometria</li>
                                         </ul>
                                         
-                                        <h6><strong>⚖️ Diferença importante:</strong></h6>
+                                        <h3 class="h6"><strong>⚖️ Diferença importante:</strong></h3>
                                         <p class="small"><strong>Authentication ≠ Authorization</strong><br>
                                         Autenticação = "Quem é você?"<br>
                                         Autorização = "O que você pode fazer?"</p>
@@ -194,18 +198,18 @@
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <h3 class="h6"><strong>👥 Para Leigos:</strong></h3>
                                         <p>É decidir <strong>o que você pode fazer</strong> depois que sua identidade foi confirmada. Como um funcionário do hotel que, após verificar seu check-in, te dá as chaves dos quartos que você pode acessar.</p>
                                         
-                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <h3 class="h6"><strong>🎭 No Reino OIDC:</strong></h3>
                                         <p><em><strong>Lady OAuth - A Distribuidora de Permissões</strong></em><br>
-                                        Após Dama Authen confirmar quem você é, Lady OAuth decide quais portas você pode abrir e quais tesouros pode acessar no reino.</p>
+                                        Após Lord OIDC confirmar quem você é, Lady OAuth decide quais portas você pode abrir e quais tesouros pode acessar no reino.</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <h3 class="h6"><strong>🔧 Para Técnicos:</strong></h3>
                                         <p>Processo de <strong>determinar as permissões</strong> de um usuário autenticado. Define quais recursos podem ser acessados e que operações podem ser executadas.</p>
                                         
-                                        <h6><strong>🎯 Implementações comuns:</strong></h6>
+                                        <h3 class="h6"><strong>🎯 Implementações comuns:</strong></h3>
                                         <ul class="small">
                                             <li><strong>RBAC:</strong> Role-Based Access Control</li>
                                             <li><strong>ABAC:</strong> Attribute-Based Access Control</li>
@@ -213,7 +217,7 @@
                                             <li><strong>Scopes:</strong> No contexto OAuth</li>
                                         </ul>
                                         
-                                        <h6><strong>💻 Exemplo OAuth:</strong></h6>
+                                        <h3 class="h6"><strong>💻 Exemplo OAuth:</strong></h3>
                                         <pre><code>scope: "read:posts write:comments"</code></pre>
                                     </div>
                                 </div>
@@ -232,18 +236,18 @@
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <h3 class="h6"><strong>👥 Para Leigos:</strong></h3>
                                         <p>É como um <strong>cupom de troca temporário</strong>. Você ganha este cupom após fazer login, mas ele não vale nada sozinho - precisa ser trocado por algo útil (como tokens) em uma loja específica.</p>
                                         
-                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <h3 class="h6"><strong>🎭 No Reino OIDC:</strong></h3>
                                         <p><em><strong>Código Secreto de Alex Client</strong></em><br>
                                         É uma senha temporária que Alex recebe após você fazer login. Ele usa essa senha para buscar seus tokens verdadeiros no cofre de Lady OAuth.</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <h3 class="h6"><strong>🔧 Para Técnicos:</strong></h3>
                                         <p>String temporária e opaca retornada pelo <strong>authorization server</strong> após autenticação bem-sucedida. Deve ser trocada por tokens no endpoint /token.</p>
                                         
-                                        <h6><strong>⏱️ Características:</strong></h6>
+                                        <h3 class="h6"><strong>⏱️ Características:</strong></h3>
                                         <ul class="small">
                                             <li><strong>Vida útil:</strong> 10 minutos (máximo)</li>
                                             <li><strong>Uso único:</strong> Invalidado após troca</li>
@@ -251,7 +255,7 @@
                                             <li><strong>Redirect pelo navegador:</strong> O code chega ao client pela URL de retorno; é de uso único, tem vida curta e fica vinculado ao PKCE. Os tokens são trocados no back-channel e não devem passar pela URL.</li>
                                         </ul>
                                         
-                                        <h6><strong>🔄 Fluxo típico:</strong></h6>
+                                        <h3 class="h6"><strong>🔄 Fluxo típico:</strong></h3>
                                         <pre><code>1. User → /authorize → Login
 2. Server → code=abc123 → Client
 3. Client → POST /token + code → Tokens</code></pre>
@@ -272,19 +276,20 @@
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <h3 class="h6"><strong>👥 Para Leigos:</strong></h3>
                                         <p>São <strong>informações sobre você</strong> que estão "carimbadas" no seu documento digital. Como os dados no seu RG: nome, data de nascimento, etc.</p>
                                         
-                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <h3 class="h6"><strong>🎭 No Reino OIDC:</strong></h3>
                                         <p><em><strong>Segredos gravados no medalhão de IDA Token</strong></em><br>
                                         IDA carrega um medalhão mágico onde estão gravadas informações sobre você: seu nome real, título, missões que pode realizar, quando seu passe expira.</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <h3 class="h6"><strong>🔧 Para Técnicos:</strong></h3>
                                         <p><strong>Key-value pairs</strong> dentro de um JWT que fornecem informações sobre o usuário ou contexto de autenticação.</p>
                                         
-                                        <h6><strong>🏷️ Claims padrão (OIDC):</strong></h6>
+                                        <h3 class="h6"><strong>🏷️ Claims padrão (OIDC):</strong></h3>
                                         <ul class="small">
+                                            <li><strong>iss:</strong> Issuer (quem emitiu)</li>
                                             <li><strong>sub:</strong> Subject (ID único do usuário)</li>
                                             <li><strong>name:</strong> Nome completo</li>
                                             <li><strong>email:</strong> Endereço de email</li>
@@ -293,9 +298,11 @@
                                             <li><strong>iat:</strong> Issued at time</li>
                                         </ul>
                                         
-                                        <h6><strong>💻 Exemplo:</strong></h6>
+                                        <h3 class="h6"><strong>💻 Exemplo:</strong></h3>
                                         <pre><code>{
+  "iss": "https://idp.example",
   "sub": "user123",
+  "aud": "myapp123",
   "name": "João Silva",
   "email": "joao@example.com",
   "exp": 1672531200
@@ -317,25 +324,25 @@
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <h3 class="h6"><strong>👥 Para Leigos:</strong></h3>
                                         <p>É o <strong>aplicativo ou site</strong> que você está usando. Como o app do banco no seu celular ou o site da loja online. Ele precisa "conversar" com outros sistemas para funcionar.</p>
                                         
-                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <h3 class="h6"><strong>🎭 No Reino OIDC:</strong></h3>
                                         <p><em><strong>Alex Client - O Mensageiro Confiável</strong></em><br>
                                         É o mensageiro que trabalha para você. Quando você quer acessar algo, Alex vai até Lady OAuth pedir permissão em seu nome e traz de volta os tokens necessários.</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <h3 class="h6"><strong>🔧 Para Técnicos:</strong></h3>
                                         <p>Aplicação que solicita <strong>autorização em nome do usuário</strong> para acessar recursos protegidos. Registrada no Authorization Server com client_id único.</p>
                                         
-                                        <h6><strong>🏷️ Tipos de Client:</strong></h6>
+                                        <h3 class="h6"><strong>🏷️ Tipos de Client:</strong></h3>
                                         <ul class="small">
                                             <li><strong>Public:</strong> SPA, mobile (sem client_secret)</li>
                                             <li><strong>Confidential:</strong> Server-side (com client_secret)</li>
                                             <li><strong>Native:</strong> Apps instalados no dispositivo</li>
                                         </ul>
                                         
-                                        <h6><strong>📋 Configuração típica:</strong></h6>
+                                        <h3 class="h6"><strong>📋 Configuração típica:</strong></h3>
                                         <pre><code>{
   "client_id": "myapp123",
   "redirect_uris": ["https://app.com/callback"],
@@ -359,18 +366,18 @@
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <h3 class="h6"><strong>👥 Para Leigos:</strong></h3>
                                         <p>É como um <strong>balcão específico</strong> em uma repartição pública. Cada balcão tem uma função: um para tirar RG, outro para pagar multas, outro para informações. Cada um tem seu endereço.</p>
                                         
-                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <h3 class="h6"><strong>🎭 No Reino OIDC:</strong></h3>
                                         <p><em><strong>Os Portais Sagrados de Lord OIDC</strong></em><br>
                                         São as diferentes portas do castelo: a Porta da Autorização (/authorize), a Câmara dos Tokens (/token), o Espelho das Informações (/userinfo).</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <h3 class="h6"><strong>🔧 Para Técnicos:</strong></h3>
                                         <p><strong>URL específica</strong> que aceita requisições HTTP para operações do protocolo OAuth/OIDC. Cada endpoint tem função e parâmetros específicos.</p>
                                         
-                                        <h6><strong>🚪 Endpoints principais:</strong></h6>
+                                        <h3 class="h6"><strong>🚪 Endpoints principais:</strong></h3>
                                         <ul class="small">
                                             <li><strong>/authorize:</strong> Inicia fluxo de autorização</li>
                                             <li><strong>/token:</strong> Troca códigos por tokens</li>
@@ -379,7 +386,7 @@
                                             <li><strong>jwks_uri:</strong> URL das chaves públicas, publicada pelo provedor no documento de Discovery</li>
                                         </ul>
                                         
-                                        <h6><strong>💻 Exemplo:</strong></h6>
+                                        <h3 class="h6"><strong>💻 Exemplo:</strong></h3>
                                         <pre><code>GET https://auth.example.com/authorize?
 response_type=code&client_id=app123</code></pre>
                                     </div>
@@ -399,18 +406,18 @@ response_type=code&client_id=app123</code></pre>
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <h3 class="h6"><strong>👥 Para Leigos:</strong></h3>
                                         <p>É como uma <strong>carteira de identidade digital</strong> que prova quem você é. Diferente do Access Token (que é como um passe), este documento fala sobre você: seu nome, quando nasceu, etc.</p>
                                         
-                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <h3 class="h6"><strong>🎭 No Reino OIDC:</strong></h3>
                                         <p><em><strong>IDA Token - A Mensageira da Verdade</strong></em><br>
                                         Ela carrega um pergaminho oficial assinado por Lord OIDC que conta quem você é. Ninguém pode falsificar esse pergaminho porque tem o selo mágico do reino.</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <h3 class="h6"><strong>🔧 Para Técnicos:</strong></h3>
                                         <p><strong>JWT assinado</strong> que contém claims sobre a autenticação do usuário. Específico do OpenID Connect, sempre no formato JWT.</p>
                                         
-                                        <h6><strong>🔑 Claims obrigatórios:</strong></h6>
+                                        <h3 class="h6"><strong>🔑 Claims obrigatórios:</strong></h3>
                                         <ul class="small">
                                             <li><strong>iss:</strong> Issuer (quem emitiu)</li>
                                             <li><strong>sub:</strong> Subject (ID do usuário)</li>
@@ -419,10 +426,10 @@ response_type=code&client_id=app123</code></pre>
                                             <li><strong>iat:</strong> Issued at time</li>
                                         </ul>
                                         
-                                        <h6><strong>⚠️ Importante:</strong></h6>
+                                        <h3 class="h6"><strong>⚠️ Importante:</strong></h3>
                                         <p class="small"><strong>NÃO enviar em APIs!</strong> ID Token é para o client verificar a autenticação, não para autorizar acesso a recursos.</p>
                                         
-                                        <h6><strong>💻 Estrutura:</strong></h6>
+                                        <h3 class="h6"><strong>💻 Estrutura:</strong></h3>
                                         <pre><code>eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJ1c2VyMTIzIn0.signature</code></pre>
                                     </div>
                                 </div>
@@ -441,18 +448,18 @@ response_type=code&client_id=app123</code></pre>
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <h3 class="h6"><strong>👥 Para Leigos:</strong></h3>
                                         <p>É <strong>quem você é</strong> - como seu nome, sobrenome, onde nasceu, seu e-mail. São as informações que te identificam de forma única no mundo digital.</p>
                                         
-                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
-                                        <p><em><strong>Sire Identi - O Registrador do Reino</strong></em><br>
+                                        <h3 class="h6"><strong>🎭 No Reino OIDC:</strong></h3>
+                                        <p><em><strong>IDA Token - A Mensageira da Identidade</strong></em><br>
                                         Ele mantém os livros sagrados com informações sobre todos os cidadãos: nomes verdadeiros, títulos, origem, características que tornam cada pessoa única no reino.</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <h3 class="h6"><strong>🔧 Para Técnicos:</strong></h3>
                                         <p>Conjunto de <strong>atributos únicos</strong> que descrevem uma entidade (usuário, aplicação, dispositivo). Base para autenticação e autorização.</p>
                                         
-                                        <h6><strong>🏷️ Componentes típicos:</strong></h6>
+                                        <h3 class="h6"><strong>🏷️ Componentes típicos:</strong></h3>
                                         <ul class="small">
                                             <li><strong>Identificador único:</strong> UUID, email, username</li>
                                             <li><strong>Atributos pessoais:</strong> nome, sobrenome, telefone</li>
@@ -460,7 +467,7 @@ response_type=code&client_id=app123</code></pre>
                                             <li><strong>Preferências:</strong> idioma, timezone</li>
                                         </ul>
                                         
-                                        <h6><strong>🔐 Identity vs Authentication:</strong></h6>
+                                        <h3 class="h6"><strong>🔐 Identity vs Authentication:</strong></h3>
                                         <ul class="small">
                                             <li><strong>Identity:</strong> "Eu sou João Silva"</li>
                                             <li><strong>Authentication:</strong> "Prove que você é João"</li>
@@ -482,25 +489,25 @@ response_type=code&client_id=app123</code></pre>
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <h3 class="h6"><strong>👥 Para Leigos:</strong></h3>
                                         <p>É como um <strong>documento oficial</strong> com três partes: o cabeçalho (que tipo de documento é), o conteúdo (suas informações) e a assinatura (para provar que é verdadeiro).</p>
                                         
-                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <h3 class="h6"><strong>🎭 No Reino OIDC:</strong></h3>
                                         <p><em><strong>Os Pergaminhos Mágicos</strong></em><br>
                                         São documentos especiais com três seções: o selo de identificação, o conteúdo com seus dados, e a assinatura mágica que ninguém pode falsificar.</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <h3 class="h6"><strong>🔧 Para Técnicos:</strong></h3>
                                         <p><strong>Padrão aberto (RFC 7519)</strong> para transmitir informações de forma segura entre partes. Formato: header.payload.signature</p>
                                         
-                                        <h6><strong>📋 Estrutura:</strong></h6>
+                                        <h3 class="h6"><strong>📋 Estrutura:</strong></h3>
                                         <ul class="small">
                                             <li><strong>Header:</strong> Algoritmo e tipo (Base64URL)</li>
                                             <li><strong>Payload:</strong> Claims/dados (Base64URL)</li>
                                             <li><strong>Signature:</strong> Assinatura criptográfica</li>
                                         </ul>
                                         
-                                        <h6><strong>✅ Vantagens:</strong></h6>
+                                        <h3 class="h6"><strong>✅ Vantagens:</strong></h3>
                                         <ul class="small">
                                             <li>Auto-contido (não precisa consultar BD)</li>
                                             <li>Stateless</li>
@@ -508,7 +515,7 @@ response_type=code&client_id=app123</code></pre>
                                             <li>Suporte amplo</li>
                                         </ul>
                                         
-                                        <h6><strong>💻 Exemplo:</strong></h6>
+                                        <h3 class="h6"><strong>💻 Exemplo:</strong></h3>
                                         <pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
 eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIn0.
 SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</code></pre>
@@ -529,27 +536,27 @@ SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</code></pre>
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <h3 class="h6"><strong>👥 Para Leigos:</strong></h3>
                                         <p>É um <strong>sistema de permissões</strong> que permite que um app acesse suas informações em outro serviço sem você dar sua senha. Como dar uma chave temporária para alguém entrar na sua casa.</p>
                                         
-                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <h3 class="h6"><strong>🎭 No Reino OIDC:</strong></h3>
                                         <p><em><strong>Lady OAuth - A Guardiã das Portas</strong></em><br>
                                         Ela decide quem pode entrar e o que pode fazer no reino. Dá permissões temporárias sem que você precise entregar suas chaves principais (senhas).</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <h3 class="h6"><strong>🔧 Para Técnicos:</strong></h3>
                                         <p><strong>Framework de autorização</strong> que permite acesso limitado a recursos HTTP sem expor credenciais. OAuth 2.1 consolida boas práticas da versão 2.0.</p>
                                         
-                                        <h6><strong>🆕 Principais mudanças na versão 2.1:</strong></h6>
+                                        <h3 class="h6"><strong>🆕 Principais mudanças na versão 2.1:</strong></h3>
                                         <ul class="small">
                                             <li><strong>PKCE obrigatório</strong> para todos os clients</li>
                                             <li><strong>Implicit Flow removido</strong></li>
                                             <li><strong>Resource Owner Password removido</strong></li>
                                             <li><strong>Redirect URI exato</strong> (sem wildcards)</li>
-                                            <li><strong>Refresh Token rotation</strong> recomendado</li>
+                                            <li><strong>Refresh token:</strong> para clientes públicos, rotação ou vinculação ao remetente é obrigatória (RFC 9700)</li>
                                         </ul>
                                         
-                                        <h6><strong>🎯 Foco:</strong></h6>
+                                        <h3 class="h6"><strong>🎯 Foco:</strong></h3>
                                         <p class="small">OAuth é sobre <strong>AUTORIZAÇÃO</strong> (o que você pode fazer), não autenticação (quem você é).</p>
                                     </div>
                                 </div>
@@ -568,18 +575,18 @@ SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</code></pre>
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <h3 class="h6"><strong>👥 Para Leigos:</strong></h3>
                                         <p>É um <strong>sistema de identidade</strong> que funciona sobre OAuth. Enquanto OAuth diz "o que você pode fazer", OIDC diz "quem você é". Como um RG digital padronizado.</p>
                                         
-                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <h3 class="h6"><strong>🎭 No Reino OIDC:</strong></h3>
                                         <p><em><strong>Lord OIDC - O Mago da Identidade</strong></em><br>
                                         Ele trabalha junto com Lady OAuth. Enquanto ela cuida das permissões, ele cuida da identidade - criando carteiras de identidade mágicas (ID Tokens) para todos.</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
-                                        <p><strong>Camada de identidade</strong> construída sobre OAuth 2.0. Adiciona autenticação padronizada e informações de identidade via ID Token.</p>
+                                        <h3 class="h6"><strong>🔧 Para Técnicos:</strong></h3>
+                                        <p>OIDC é uma camada de identidade sobre o OAuth 2.0, alinhada às práticas do OAuth 2.1. Adiciona autenticação padronizada e o ID Token.</p>
                                         
-                                        <h6><strong>➕ O que OIDC adiciona ao OAuth:</strong></h6>
+                                        <h3 class="h6"><strong>➕ O que OIDC adiciona ao OAuth:</strong></h3>
                                         <ul class="small">
                                             <li><strong>ID Token:</strong> JWT com claims de identidade</li>
                                             <li><strong>UserInfo endpoint:</strong> Dados adicionais do usuário</li>
@@ -588,7 +595,7 @@ SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</code></pre>
                                             <li><strong>Discovery:</strong> /.well-known/openid-configuration</li>
                                         </ul>
                                         
-                                        <h6><strong>🔄 Fluxo básico:</strong></h6>
+                                        <h3 class="h6"><strong>🔄 Fluxo básico:</strong></h3>
                                         <pre><code>1. Client → /authorize?scope=openid
 2. User autentica
 3. Client recebe: Access Token + ID Token
@@ -610,34 +617,34 @@ SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</code></pre>
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <h3 class="h6"><strong>👥 Para Leigos:</strong></h3>
                                         <p>É um <strong>sistema de segurança extra</strong> que funciona como dar metade de uma senha para alguém e guardar a outra metade. Só quando as duas partes se juntam é que funciona.</p>
                                         
-                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <h3 class="h6"><strong>🎭 No Reino OIDC:</strong></h3>
                                         <p><em><strong>Pixie PKCE - A Guardiã dos Códigos Secretos</strong></em><br>
                                         Uma fada protetora que sempre acompanha Alex Client. Ela cria pares de chaves mágicas que impedem que ladrões roubem códigos no caminho.</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <h3 class="h6"><strong>🔧 Para Técnicos:</strong></h3>
                                         <p><strong>Extensão de segurança OAuth</strong> (RFC 7636) que protege contra ataques de interceptação de código de autorização. Obrigatório no OAuth 2.1.</p>
                                         
-                                        <h6><strong>🔑 Como funciona:</strong></h6>
+                                        <h3 class="h6"><strong>🔑 Como funciona:</strong></h3>
                                         <ol class="small">
                                             <li>Client gera <strong>code_verifier</strong> (segredo)</li>
-                                            <li>Client calcula <strong>code_challenge</strong> = SHA256(verifier)</li>
+                                            <li>Client calcula <strong>code_challenge</strong> = BASE64URL(SHA256(code_verifier))</li>
                                             <li>Envia challenge para /authorize</li>
                                             <li>Troca código + verifier no /token</li>
                                             <li>Server valida: SHA256(verifier) = challenge</li>
                                         </ol>
                                         
-                                        <h6><strong>🛡️ Protege contra:</strong></h6>
+                                        <h3 class="h6"><strong>🛡️ Protege contra:</strong></h3>
                                         <ul class="small">
                                             <li>Interceptação de código de autorização</li>
                                             <li>Ataques CSRF</li>
                                             <li>Malware no dispositivo</li>
                                         </ul>
                                         
-                                        <h6><strong>💻 Parâmetros:</strong></h6>
+                                        <h3 class="h6"><strong>💻 Parâmetros:</strong></h3>
                                         <pre><code>code_challenge=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
 code_challenge_method=S256</code></pre>
                                     </div>
@@ -657,18 +664,18 @@ code_challenge_method=S256</code></pre>
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <h3 class="h6"><strong>👥 Para Leigos:</strong></h3>
                                         <p>É como uma <strong>"renovação automática"</strong>. Quando seu passe VIP expira, ao invés de você ter que fazer toda a fila de novo, você tem um cupom especial que renova tudo automaticamente.</p>
                                         
-                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <h3 class="h6"><strong>🎭 No Reino OIDC:</strong></h3>
                                         <p><em><strong>Rex Token - O Renovador Eterno</strong></em><br>
                                         Ele vive nas sombras, sempre vigilante. Quando Ace Token fica cansado, Rex aparece silenciosamente e troca os tokens, renovando tudo sem que você perceba.</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <h3 class="h6"><strong>🔧 Para Técnicos:</strong></h3>
                                         <p><strong>Credential de longa duração</strong> usado para obter novos access tokens sem re-autenticação do usuário. Mais sensível que access token.</p>
                                         
-                                        <h6><strong>🔄 Refresh Token Rotation:</strong></h6>
+                                        <h3 class="h6"><strong>🔄 Refresh Token Rotation:</strong></h3>
                                         <ol class="small">
                                             <li>Access token expira</li>
                                             <li>Client usa refresh token</li>
@@ -676,7 +683,7 @@ code_challenge_method=S256</code></pre>
                                             <li>Refresh token antigo é invalidado</li>
                                         </ol>
                                         
-                                        <h6><strong>🛡️ Boas práticas:</strong></h6>
+                                        <h3 class="h6"><strong>🛡️ Boas práticas:</strong></h3>
                                         <ul class="small">
                                             <li><strong>Armazenamento seguro</strong> (httpOnly cookies)</li>
                                             <li><strong>Rotação</strong> a cada uso</li>
@@ -684,7 +691,7 @@ code_challenge_method=S256</code></pre>
                                             <li><strong>Vida útil limitada</strong> (dias/semanas)</li>
                                         </ul>
                                         
-                                        <h6><strong>💻 Uso:</strong></h6>
+                                        <h3 class="h6"><strong>💻 Uso:</strong></h3>
                                         <pre><code>POST /token
 grant_type=refresh_token&refresh_token=abc123</code></pre>
                                     </div>
@@ -704,18 +711,18 @@ grant_type=refresh_token&refresh_token=abc123</code></pre>
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <h3 class="h6"><strong>👥 Para Leigos:</strong></h3>
                                         <p>É o <strong>guardião dos seus dados</strong>. Como um funcionário de banco que só libera informações da sua conta se você mostrar um documento válido (token).</p>
                                         
-                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <h3 class="h6"><strong>🎭 No Reino OIDC:</strong></h3>
                                         <p><em><strong>Seraph Resource - O Guardião dos Dados</strong></em><br>
                                         É o guerreiro angelical que protege os tesouros do reino. Ele só abre os cofres quando alguém apresenta um token válido assinado por Lady OAuth.</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <h3 class="h6"><strong>🔧 Para Técnicos:</strong></h3>
                                         <p><strong>Servidor HTTP</strong> que hospeda recursos protegidos. Aceita e valida access tokens para autorizar acesso a APIs.</p>
                                         
-                                        <h6><strong>🔍 Responsabilidades:</strong></h6>
+                                        <h3 class="h6"><strong>🔍 Responsabilidades:</strong></h3>
                                         <ul class="small">
                                             <li><strong>Validar access tokens</strong> (assinatura, expiração)</li>
                                             <li><strong>Verificar scopes</strong> e permissões</li>
@@ -723,7 +730,7 @@ grant_type=refresh_token&refresh_token=abc123</code></pre>
                                             <li><strong>Retornar dados autorizados</strong></li>
                                         </ul>
                                         
-                                        <h6><strong>🔐 Validação típica:</strong></h6>
+                                        <h3 class="h6"><strong>🔐 Validação típica:</strong></h3>
                                         <ol class="small">
                                             <li>Extrair token do header Authorization</li>
                                             <li>Verificar assinatura JWT</li>
@@ -731,7 +738,7 @@ grant_type=refresh_token&refresh_token=abc123</code></pre>
                                             <li>Autorizar acesso ao recurso</li>
                                         </ol>
                                         
-                                        <h6><strong>💻 Exemplo header:</strong></h6>
+                                        <h3 class="h6"><strong>💻 Exemplo header:</strong></h3>
                                         <pre><code>Authorization: Bearer eyJhbGciOiJSUzI1NiIs...</code></pre>
                                     </div>
                                 </div>
@@ -750,18 +757,18 @@ grant_type=refresh_token&refresh_token=abc123</code></pre>
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <h3 class="h6"><strong>👥 Para Leigos:</strong></h3>
                                         <p>São as <strong>permissões específicas</strong> que você está dando para um app. Como dizer: "pode ver minhas fotos, mas não pode deletar" ou "pode ler meus emails, mas não pode enviar".</p>
                                         
-                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <h3 class="h6"><strong>🎭 No Reino OIDC:</strong></h3>
                                         <p><em><strong>Cartas de Permissão de Lady OAuth</strong></em><br>
                                         São pergaminhos específicos que Lady OAuth escreve definindo exatamente o que cada visitante pode fazer: "ler na biblioteca", "entrar no jardim", "falar com o rei".</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <h3 class="h6"><strong>🔧 Para Técnicos:</strong></h3>
                                         <p><strong>Strings que definem permissões</strong> específicas que o client está solicitando. Limitam o que pode ser feito com o access token.</p>
                                         
-                                        <h6><strong>🏷️ Scopes OIDC padrão:</strong></h6>
+                                        <h3 class="h6"><strong>🏷️ Scopes OIDC padrão:</strong></h3>
                                         <ul class="small">
                                             <li><strong>openid:</strong> Obrigatório para OIDC (ativa ID Token)</li>
                                             <li><strong>profile:</strong> Nome, sobrenome, nickname, etc.</li>
@@ -770,14 +777,14 @@ grant_type=refresh_token&refresh_token=abc123</code></pre>
                                             <li><strong>phone:</strong> Número de telefone</li>
                                         </ul>
                                         
-                                        <h6><strong>💡 Scopes personalizados:</strong></h6>
+                                        <h3 class="h6"><strong>💡 Scopes personalizados:</strong></h3>
                                         <ul class="small">
                                             <li><strong>read:posts</strong> - Ler postagens</li>
                                             <li><strong>write:comments</strong> - Escrever comentários</li>
                                             <li><strong>admin:users</strong> - Administrar usuários</li>
                                         </ul>
                                         
-                                        <h6><strong>💻 Exemplo de requisição:</strong></h6>
+                                        <h3 class="h6"><strong>💻 Exemplo de requisição:</strong></h3>
                                         <pre><code>scope=openid profile email read:posts</code></pre>
                                     </div>
                                 </div>
@@ -796,18 +803,18 @@ grant_type=refresh_token&refresh_token=abc123</code></pre>
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <h3 class="h6"><strong>👥 Para Leigos:</strong></h3>
                                         <p>É quando você <strong>faz login uma vez</strong> e pode usar vários apps diferentes sem ter que digitar senha novamente. Como ter uma chave mestra que abre várias portas.</p>
                                         
-                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <h3 class="h6"><strong>🎭 No Reino OIDC:</strong></h3>
                                         <p><em><strong>A Magia da Entrada Única</strong></em><br>
                                         Uma vez que você passa pela Grande Porta de Lady OAuth e Lord OIDC, ganha um amuleto mágico que abre todas as outras portas do reino federado.</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <h3 class="h6"><strong>🔧 Para Técnicos:</strong></h3>
                                         <p><strong>Capacidade de um usuário</strong> se autenticar uma vez e acessar múltiplos sistemas sem re-autenticação. OIDC facilita implementação de SSO.</p>
                                         
-                                        <h6><strong>🔄 Como funciona com OIDC:</strong></h6>
+                                        <h3 class="h6"><strong>🔄 Como funciona com OIDC:</strong></h3>
                                         <ol class="small">
                                             <li>User autentica no Identity Provider</li>
                                             <li>Sessão é criada no IdP</li>
@@ -816,14 +823,14 @@ grant_type=refresh_token&refresh_token=abc123</code></pre>
                                             <li>Retorna tokens sem nova autenticação</li>
                                         </ol>
                                         
-                                        <h6><strong>✅ Benefícios:</strong></h6>
+                                        <h3 class="h6"><strong>✅ Benefícios:</strong></h3>
                                         <ul class="small">
                                             <li><strong>UX melhorada:</strong> Login uma vez</li>
                                             <li><strong>Segurança:</strong> Credenciais centralizadas</li>
                                             <li><strong>Administração:</strong> Controle centralizado</li>
                                         </ul>
                                         
-                                        <h6><strong>🔐 Implementação:</strong></h6>
+                                        <h3 class="h6"><strong>🔐 Implementação:</strong></h3>
                                         <p class="small">Usar parâmetro <code>prompt=none</code> para verificação silenciosa de sessão.</p>
                                     </div>
                                 </div>
@@ -835,10 +842,10 @@ grant_type=refresh_token&refresh_token=abc123</code></pre>
 
                 <!-- Seção de Ajuda -->
                 <div class="alert alert-success mt-5">
-                    <h5><strong>💡 Dicas para Aprender:</strong></h5>
+                    <h3 class="h5"><strong>💡 Dicas para Aprender:</strong></h3>
                     <div class="row">
                         <div class="col-md-6">
-                            <h6><strong>👥 Se você é leigo:</strong></h6>
+                            <h4 class="h6"><strong>👥 Se você é leigo:</strong></h4>
                             <ul class="small mb-0">
                                 <li>Comece pelas <em>metáforas do Reino</em></li>
                                 <li>Leia as <em>explicações simples</em> primeiro</li>
@@ -847,7 +854,7 @@ grant_type=refresh_token&refresh_token=abc123</code></pre>
                             </ul>
                         </div>
                         <div class="col-md-6">
-                            <h6><strong>🔧 Se você é técnico:</strong></h6>
+                            <h4 class="h6"><strong>🔧 Se você é técnico:</strong></h4>
                             <ul class="small mb-0">
                                 <li>Use as <em>definições precisas</em></li>
                                 <li>Teste os <em>exemplos de código</em></li>
@@ -871,7 +878,6 @@ grant_type=refresh_token&refresh_token=abc123</code></pre>
                     <p class="mb-0 small">Material educacional sobre OAuth 2.1 e OpenID Connect</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <p class="mb-1 small">© 2025 Reino OIDC. Conteúdo gratuito para estudo pessoal; propriedade exclusiva da Cara Core Informática.</p>
                 </div>
             </div>
         </div>

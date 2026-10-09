@@ -71,7 +71,7 @@
 
         var storyLabels = {
             "historia_p1.html": "Parte I — A Era das Senhas e a Chegada de Lady OAuth",
-            "historia_p2.html": "Parte II — A Era da Confiança e o Mago OIDC",
+            "historia_p2.html": "Parte II — A Era da Confiança e o Lord OIDC",
             "historia_p3.html": "Parte III — A Nova Ordem Digital e a Aprendiz Devia"
         };
         collapse.querySelectorAll("a.dropdown-item").forEach(function (link) {

@@ -2,9 +2,12 @@
 <html lang="pt-BR">
 <head>
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Parte II - Reino da Identidade Federada</title>
+    <meta name="description" content="Parte II da história do Reino OIDC: a Era da Confiança e Lord OIDC com identidade e ID Token.">
+    <link rel="canonical" href="https://oidc.caracore.com.br/historia_p2.html">
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -27,7 +30,7 @@
                         <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">📖 História</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="historia_p1.html">Parte I — A Era das Senhas e a Chegada de Lady OAuth</a></li>
-                            <li><a class="dropdown-item active" href="historia_p2.html">Parte II — A Era da Confiança e o Mago OIDC</a></li>
+                            <li><a class="dropdown-item active" href="historia_p2.html">Parte II — A Era da Confiança e o Lord OIDC</a></li>
                             <li><a class="dropdown-item" href="historia_p3.html">Parte III — A Nova Ordem Digital e a Aprendiz Devia</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="conclusao.html">Conclusão</a></li>
@@ -49,7 +52,7 @@
 <div class="row">
             <div class="col-md-8 offset-md-2">
                 <article id="era-documento" class="">
-                <h1 class="text-center">Parte II — A Era da Confiança e o Mago OIDC</h1>
+                <h1 class="text-center">Parte II — A Era da Confiança e o Lord OIDC</h1>
                 <p class="lead text-center">Onde a identidade ganha forma</p>
                 
                 <!-- Imagem da Parte II -->
@@ -70,7 +73,7 @@
                         <p>“Autorização sem autenticação é um reino sem rosto. Deixem-me assinar a verdade sobre cada viajante.”</p>
                     </blockquote>
                     <p>Lord OIDC trabalha lado a lado com Lady OAuth, criando uma extensão sobre suas regras — o OpenID Connect.</p>
-                    <p>Ele conjura o ID Token, um documento digital assinado com selos mágicos (as chaves públicas JWKS), contendo:</p>
+                    <p>Ele conjura o ID Token, um documento digital assinado. JWKS é o conjunto de chaves públicas usado para verificar a assinatura, contendo:</p>
                     <ul>
                         <li><strong>iss</strong> — quem emitiu o documento;</li>
                         <li><strong>sub</strong> — o identificador único do usuário;</li>
@@ -84,7 +87,7 @@
                     <p>Cada vez que o emissário Alex Client inicia um pedido de autorização, Pixie o acompanha, criando:</p>
                     <ul>
                         <li>um <strong>code_verifier</strong> (segredo que fica com o cliente) e</li>
-                        <li>um <strong>code_challenge</strong> (hash público que vai para o servidor).</li>
+                        <li>um <strong>code_challenge</strong> = BASE64URL(SHA256(code_verifier)), enviado ao servidor.</li>
                     </ul>
                     <p>No fim, apenas quem conhece o verifier pode trocar o código por tokens. Segurança reforçada, confiança consolidada.</p>
                 </div>
@@ -132,7 +135,6 @@
                     <p class="mb-0 small">Material educacional sobre OAuth 2.1 e OpenID Connect</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <p class="mb-1 small">© 2025 Reino OIDC. Conteúdo gratuito para estudo pessoal; propriedade exclusiva da Cara Core Informática.</p>
                 </div>
             </div>
         </div>
@@ -142,30 +144,7 @@
 <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/footer-propriedade.js"></script>
     <script src="assets/js/game-engine.js"></script>
-    <script>
-        (function() {
-            var btn = document.getElementById('btn-concluir-parte-2');
-            var doneEl = document.getElementById('concluido-parte-2');
-            var box = document.getElementById('concluir-parte-2-box');
-            if (btn && window.ReinoEras) {
-                if (window.ReinoEras.getStoryPartDone(2)) {
-                    if (doneEl) doneEl.classList.remove('d-none');
-                    if (box) box.classList.remove('alert-info'), box.classList.add('alert-success');
-                }
-                btn.addEventListener('click', function() {
-                    btn.disabled = true;
-                    window.ReinoEras.setStoryPartDone(2).then(function() {
-                        if (doneEl) doneEl.classList.remove('d-none');
-                        if (box) box.classList.remove('alert-info'), box.classList.add('alert-success');
-                    }).catch(function(error) {
-                        btn.disabled = false;
-                        if (window.ReinoOIDCProgress) window.ReinoOIDCProgress.reportError(error);
-                        else console.error('Não foi possível salvar o progresso.', error);
-                    });
-                });
-            }
-        })();
-    </script>
+    <script src="assets/js/historia-progress.js"></script>
     <script src="assets/js/loja.js"></script>
 </body>
 </html>

@@ -116,11 +116,6 @@
         }
     }
 
-    function isPremium() {
-        if (typeof window.isPremium === 'function') return window.isPremium();
-        return false;
-    }
-
     function hasFullLearningContent() {
         var config = window.REINO_OIDC_CONFIG || {};
         return config.unlockAllLearningContent === true;
@@ -128,27 +123,30 @@
 
     /** Retorna a era máxima desbloqueada (1, 2 ou 3). */
     function getCurrentEra() {
-        if (getStoryPartDone(1) && getStoryPartDone(2) && (hasFullLearningContent() || isPremium())) return 3;
+        if (getStoryPartDone(1) && getStoryPartDone(2) && hasFullLearningContent()) return 3;
         if (getStoryPartDone(1)) return 2;
         return 1;
     }
 
-    /** Indica se uma era específica está desbloqueada para jogar. */
     function isEraUnlocked(era) {
         var current = getCurrentEra();
         if (era <= current) return true;
         if (era === 2) return getStoryPartDone(1);
-        if (era === 3) return getStoryPartDone(1) && getStoryPartDone(2) && (hasFullLearningContent() || isPremium());
+        if (era === 3) return getStoryPartDone(1) && getStoryPartDone(2) && hasFullLearningContent();
         return false;
     }
 
-    /** Lista os personagens educacionais liberados pelo progresso da história. */
     function getUnlockedCharacterIds() {
-        var era = getCurrentEra();
         var ids = [];
+        if (hasFullLearningContent()) {
+            [1, 2, 3].forEach(function (era) {
+                ids = ids.concat(ERA_CHARACTER_IDS[era] || []);
+            });
+            return ids;
+        }
+        var era = getCurrentEra();
         for (var e = 1; e <= era; e++) {
             if (e < 3) ids = ids.concat(ERA_CHARACTER_IDS[e] || []);
-            else if (e === 3 && (hasFullLearningContent() || isPremium())) ids = ids.concat(ERA_CHARACTER_IDS[3] || []);
         }
         return ids;
     }
@@ -192,7 +190,6 @@
         getCharacterEra: getCharacterEra,
         getStoryPartDone: getStoryPartDone,
         setStoryPartDone: setStoryPartDone,
-        isPremium: isPremium,
         getDeviaTransitionText: getDeviaTransitionText,
         isIntegradoraSuprema: isIntegradoraSuprema,
         getTimelineState: getTimelineState

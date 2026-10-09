@@ -376,7 +376,7 @@ body.super-trunfo {
     font-weight: 700;
 }
 
-/* ----- Selo Pawlowsky (sinete de cera) em cada carta ----- */
+/* ----- Selo sinete (sinete de cera) em cada carta ----- */
 .card-seal-pawlowsky {
     position: absolute;
     bottom: 8px;
@@ -898,7 +898,7 @@ body.super-trunfo.era-3 .reino-title { color: var(--gothic-gold); text-shadow: 0
     color: #1a0525;
 }
 
-/* ----- Selo Pawlowsky (seção da página) ----- */
+/* ----- Selo sinete (seção da página) ----- */
 .selo-pawlowsky {
     text-align: center;
     padding: 16px;
@@ -931,7 +931,7 @@ body.super-trunfo.era-3 .reino-title { color: var(--gothic-gold); text-shadow: 0
     text-shadow: 0 0 12px var(--gothic-gold-glow);
 }
 
-/* Tela treme ao jogar carta Premium */
+/* Tela treme ao jogar carta extra */
 @keyframes screen-shake-kf {
     0%, 100% { transform: translate(0, 0); }
     20% { transform: translate(-4px, 2px); }
@@ -1264,7 +1264,7 @@ body.super-trunfo.screen-shake {
     box-shadow: 0 0 20px var(--gothic-gold-glow);
 }
 
-/* Rodapé do modal: Selo Pawlowsky */
+/* Rodapé do modal: Selo sinete */
 .checkout-gothic-footer {
     padding: 16px 24px;
     border-top: 2px solid var(--gothic-gold);
@@ -1350,7 +1350,7 @@ body.super-trunfo.screen-shake {
 .checkout-chave-msg.ok { color: var(--gothic-success); }
 .checkout-chave-msg.err { color: #ef5350; }
 
-/* SOBERANO: remove desfoque das cartas Premium */
+/* SOBERANO: remove desfoque das cartas extra */
 body.reino-soberano .trunfo-card.locked,
 body.reino-soberano .carta-sombreada-premium .trunfo-card.locked-card {
     filter: none;

@@ -218,7 +218,7 @@ const flashcardData = {
                 character: "🧚",
                 question: "Pixie PKCE protege contra quais tipos de ataques?",
                 leigo: "Protege contra espiões que ficam no meio do caminho tentando roubar códigos de autorização para se passar por você.",
-                tecnico: "Authorization code interception attacks, man-in-the-middle attacks, e ataques onde o authorization code é interceptado mas não o code_verifier."
+                tecnico: "Authorization code interception attacks, interceptação ou injeção do authorization code. O PKCE protege contra interceptação ou injeção do authorization code."
             },
             {
                 character: "🧝‍♀️",
@@ -260,7 +260,7 @@ const flashcardData = {
                 character: "🧝‍♀️",
                 question: "IDA Token deve ser enviado em URLs?",
                 leigo: "Nunca! URLs ficam em logs, histórico do navegador e podem vazar. IDA deve viajar apenas por canais seguros e protegidos.",
-                tecnico: "Não. ID Tokens devem ser transmitidos apenas via POST request body ou headers, nunca em URL parameters devido a riscos de exposição."
+                tecnico: "O ID Token não deve ir na URL da aplicação. A ressalva é id_token_hint no logout e no prompt=none."
             }
         ]
     },
@@ -357,7 +357,7 @@ const flashcardData = {
                 character: "🏦",
                 question: "Como Seraph deve lidar com Cross-Origin Requests?",
                 leigo: "Seraph deve verificar se a requisição vem de um site confiável antes de aceitar, mas permitir que apps autorizados funcionem corretamente.",
-                tecnico: "Configurar CORS adequadamente com origins específicos, permitir credentials quando necessário, e validar Origin header contra whitelist."
+                tecnico: "Configurar CORS adequadamente com origins específicos, permitir credentials quando necessário, e validar Origin header contra lista de permissões."
             },
             {
                 character: "👩‍💻",
@@ -595,7 +595,7 @@ function showPathCompletion(pathData) {
             <div class="card shadow-lg border-0">
                 <div class="card-header text-white text-center" style="background: linear-gradient(45deg, #FFD700, #FFA500, #FF6B6B); padding: 2rem;">
                     <h1 class="display-4">🏆 MESTRE SUPREMO 🏆</h1>
-                    <h2 class="mb-0">CONGRATULAÇÕES PELO DOMÍNIO COMPLETO DO REINO OIDC!</h2>
+                    <h2 class="mb-0">PARABÉNS PELO DOMÍNIO COMPLETO DO REINO OIDC!</h2>
                 </div>
                 <div class="card-body text-center" style="padding: 2rem;">
                     <div class="row justify-content-center mb-4">
@@ -661,7 +661,7 @@ function showPathCompletion(pathData) {
                                 </a>
                             </div>
                             <div class="col-md-6 mb-2">
-                                <button class="btn btn-warning btn-lg w-100 shadow" onclick="resetAndReturnToSelection();">
+                                <button type="button" class="btn btn-warning btn-lg w-100 shadow" data-academy-action="reset-journey">
                                     🔄 Nova Jornada
                                 </button>
                             </div>
@@ -713,7 +713,7 @@ function showPathCompletion(pathData) {
             specificTitle = '🏆 Domínio Completo Alcançado!';
             specificMessage = `
                 <div class="alert alert-danger border-0 shadow-sm">
-                    <h5 class="alert-heading">👑 CONGRATULAÇÕES PELO DOMÍNIO DO ASSUNTO DO REINO OIDC!</h5>
+                    <h5 class="alert-heading">👑 PARABÉNS PELO DOMÍNIO DO ASSUNTO DO REINO OIDC!</h5>
                     <p class="mb-2">Você completou com maestria o <strong>Caminho do Mestre</strong> com todas as 20 perguntas randomizadas!</p>
                     <hr>
                     <p class="mb-0">🎓 <strong>Status Final:</strong> MESTRE SUPREMO DO REINO OIDC!</p>
@@ -744,12 +744,12 @@ function showPathCompletion(pathData) {
                     </div>
                     <div class="row mt-4">
                         <div class="col-md-6">
-                            <button class="btn btn-primary btn-lg w-100 shadow" onclick="startPath('${nextPath}')">
+                            <button type="button" class="btn btn-primary btn-lg w-100 shadow" data-academy-action="start-path" data-path="${nextPath}">
                                 🚀 Iniciar ${nextPathData.title}
                             </button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-outline-secondary btn-lg w-100" onclick="goBackToSelection()">
+                            <button type="button" class="btn btn-outline-secondary btn-lg w-100" data-academy-action="back">
                                 📚 Escolher Caminho
                             </button>
                         </div>
@@ -774,7 +774,7 @@ function showPathCompletion(pathData) {
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <button class="btn btn-warning btn-lg w-100" onclick="goBackToSelection()">
+                            <button type="button" class="btn btn-warning btn-lg w-100" data-academy-action="back">
                                 📚 Explorar Novamente
                             </button>
                         </div>
@@ -783,7 +783,7 @@ function showPathCompletion(pathData) {
             completionHTML += `
                     <div class="row mt-4">
                         <div class="col-md-12">
-                            <button class="btn btn-success btn-lg w-100" onclick="goBackToSelection()">
+                            <button type="button" class="btn btn-success btn-lg w-100" data-academy-action="back">
                                 📚 Voltar à Seleção
                             </button>
                         </div>
@@ -858,8 +858,19 @@ function highlightRecommendedPath() {
 
 // Event listeners para teclado
 document.addEventListener('keydown', function(e) {
+    var card = document.activeElement;
+    if (card && card.classList && card.classList.contains('path-card') && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        if (card.getAttribute('data-path')) startPath(card.getAttribute('data-path'));
+        return;
+    }
+    if (card && card.id === 'flashcard' && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        flipCard();
+        return;
+    }
     if (gameState.currentPath && !document.getElementById('flashcardInterface').classList.contains('d-none')) {
-        if (e.code === 'Space') {
+        if (e.code === 'Space' && card && card.id !== 'flashcard') {
             e.preventDefault();
             flipCard();
         } else if (e.code === 'ArrowRight') {
@@ -872,8 +883,68 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
+var FLASH_SCORE_KEY = 'reino_oidc_flashcard_score';
+
+function loadFlashScore() {
+    try {
+        var raw = localStorage.getItem(FLASH_SCORE_KEY);
+        var data = raw ? JSON.parse(raw) : null;
+        if (!data || typeof data.acertos !== 'number' || typeof data.erros !== 'number') throw new Error('empty');
+        return data;
+    } catch (err) {
+        return { acertos: 0, erros: 0 };
+    }
+}
+
+function renderFlashScore() {
+    var el = document.getElementById('flashcard-placar');
+    if (!el) return;
+    var score = loadFlashScore();
+    el.textContent = 'Acertos ' + score.acertos + ' · Erros ' + score.erros;
+}
+
+function markFlash(correct) {
+    var score = loadFlashScore();
+    if (correct) score.acertos += 1;
+    else score.erros += 1;
+    try {
+        localStorage.setItem(FLASH_SCORE_KEY, JSON.stringify(score));
+    } catch (err) {}
+    renderFlashScore();
+}
+
+function bindAcademyControls() {
+    document.addEventListener('click', function (event) {
+        var trigger = event.target.closest ? event.target.closest('[data-academy-action]') : null;
+        if (!trigger) return;
+        var action = trigger.getAttribute('data-academy-action');
+        if (action === 'start-path') startPath(trigger.getAttribute('data-path'));
+        else if (action === 'back') goBackToSelection();
+        else if (action === 'reset-journey' && typeof resetAndReturnToSelection === 'function') resetAndReturnToSelection();
+    });
+    document.querySelectorAll('.path-card[data-path]').forEach(function (card) {
+        card.addEventListener('click', function () { startPath(card.getAttribute('data-path')); });
+    });
+    var flashcard = document.getElementById('flashcard');
+    if (flashcard) flashcard.addEventListener('click', flipCard);
+    var previous = document.getElementById('btnPrevious');
+    var next = document.getElementById('btnNext');
+    var reset = document.getElementById('btnResetPath');
+    var other = document.getElementById('btnOutroCaminho');
+    var acertei = document.getElementById('btnAcertei');
+    var errei = document.getElementById('btnErrei');
+    if (previous) previous.addEventListener('click', previousCard);
+    if (next) next.addEventListener('click', nextCard);
+    if (reset) reset.addEventListener('click', resetPath);
+    if (other) other.addEventListener('click', goBackToSelection);
+    if (acertei) acertei.addEventListener('click', function () { markFlash(true); });
+    if (errei) errei.addEventListener('click', function () { markFlash(false); });
+    renderFlashScore();
+}
+
 // Inicialização quando a página carrega
 document.addEventListener('DOMContentLoaded', function() {
+    bindAcademyControls();
     updatePathStatus();
     highlightRecommendedPath();
     
@@ -884,11 +955,13 @@ document.addEventListener('DOMContentLoaded', function() {
         resetButton.innerHTML = `
             <div class="alert alert-success">
                 <h5>🏆 Todos os caminhos conquistados!</h5>
-                <button class="btn btn-warning" onclick="resetAndReload();">
+                <button type="button" class="btn btn-warning" id="btnReiniciarJornada">
                     🔄 Reiniciar Jornada Completa
                 </button>
             </div>
         `;
         document.getElementById('pathSelection').appendChild(resetButton);
+        var restart = document.getElementById('btnReiniciarJornada');
+        if (restart) restart.addEventListener('click', resetAndReload);
     }
 });

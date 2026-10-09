@@ -2,9 +2,12 @@
 <html lang="pt-BR">
 <head>
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Reino da Identidade Federada - Mundo do Conhecimento</title>
+    <meta name="description" content="Guia do Mundo do Conhecimento do Reino OIDC: OAuth 2.0, OAuth 2.1, OpenID Connect, PKCE, tokens e boas práticas.">
+    <link rel="canonical" href="https://oidc.caracore.com.br/mundo_do_conhecimento.html">
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -27,7 +30,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">📖 História</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="historia_p1.html">Parte I — A Era das Senhas e a Chegada de Lady OAuth</a></li>
-                            <li><a class="dropdown-item" href="historia_p2.html">Parte II — A Era da Confiança e o Mago OIDC</a></li>
+                            <li><a class="dropdown-item" href="historia_p2.html">Parte II — A Era da Confiança e o Lord OIDC</a></li>
                             <li><a class="dropdown-item" href="historia_p3.html">Parte III — A Nova Ordem Digital e a Aprendiz Devia</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="conclusao.html">Conclusão</a></li>
@@ -69,12 +72,12 @@
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#oidcAccordion">
                             <div class="accordion-body">
                                 <div class="alert alert-primary">
-                                    <h6><strong>🏰 História do Reino:</strong></h6>
-                                    <p class="mb-1"><em>Era uma vez, no Reino de Federápolis, onde Lady OAuth reinava sozinha com suas autorizações. Mas os súditos perguntavam: "Sabemos que posso entrar, mas quem sou eu realmente?" Foi então que Lord OIDC apareceu com seu pergaminho mágico, trazendo não apenas chaves de acesso, mas também identidade verificada...</em></p>
+                                    <h3 class="h6"><strong>🏰 História do Reino:</strong></h3>
+                                    <p class="mb-1"><em>Era uma vez, no Reino de Federápolis, onde Lady OAuth reinava sozinha com suas autorizações. Mas os súditos perguntavam: "Sabemos que podemos entrar, mas quem sou eu realmente?" Foi então que Lord OIDC apareceu com seu pergaminho mágico, trazendo não apenas chaves de acesso, mas também identidade verificada...</em></p>
                                 </div>
                                 
                                 <p><strong>O que é o OpenID Connect (OIDC)?</strong><br>
-                                É um protocolo de autenticação baseado no OAuth 2.0 que permite que usuários se identifiquem com provedores de identidade (Google, Microsoft etc.).</p>
+                                OIDC é uma camada de identidade sobre o OAuth 2.0, alinhada às práticas do OAuth 2.1. Permite que usuários se identifiquem com provedores de identidade (Google, Microsoft etc.).</p>
                                 <p><strong>Como o OIDC se diferencia do OAuth 2.0?</strong><br>
                                 OAuth 2.0 → autorização (acesso a recursos) - <em>Lady OAuth pergunta: "O que você pode fazer?"</em><br>
                                 OIDC → autenticação (verificação de identidade) - <em>Lord OIDC declara: "Quem você é!"</em></p>
@@ -94,17 +97,17 @@
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#oidcAccordion">
                             <div class="accordion-body">
                                 <div class="alert alert-info">
-                                    <h6><strong>⚔️ A Grande Reforma do Reino:</strong></h6>
+                                    <h3 class="h6"><strong>⚔️ A Grande Reforma do Reino:</strong></h3>
                                     <p class="mb-1"><em>Após anos reinando, Lady OAuth percebeu que algumas práticas antigas estavam causando vulnerabilidades no reino. "É hora de uma reforma!" declarou ela. "OAuth 2.1 será minha nova constituição - mais simples, mais segura, e sem as práticas que causaram problemas!" Assim, ela removeu caminhos perigosos, tornou PKCE obrigatório e simplificou as regras para proteger melhor seus súditos.</em></p>
                                 </div>
                                 
-                                <h6><strong>🚀 O que é OAuth 2.1?</strong></h6>
+                                <h3 class="h6"><strong>🚀 O que é OAuth 2.1?</strong></h3>
                                 <p>OAuth 2.1 é uma <strong>evolução e consolidação</strong> do OAuth 2.0, incorporando as melhores práticas de segurança que se desenvolveram ao longo dos anos. Não é uma versão completamente nova, mas sim uma <strong>"limpeza da casa"</strong> que remove práticas inseguras e torna obrigatórias as práticas recomendadas.</p>
                                 
-                                <h6><strong>🛡️ Principais Mudanças e Melhorias:</strong></h6>
+                                <h3 class="h6"><strong>🛡️ Principais Mudanças e Melhorias:</strong></h3>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6 class="text-success"><strong>✅ O que FICOU melhor:</strong></h6>
+                                        <h3 class="h6 text-success"><strong>✅ O que FICOU melhor:</strong></h3>
                                         <ul class="small">
                                             <li><strong>PKCE obrigatório</strong> - <em>Pixie PKCE agora acompanha todos os clients</em></li>
                                             <li><strong>Redirect URI exato</strong> - <em>Endereços precisos, sem wildcards</em></li>
@@ -114,7 +117,7 @@
                                         </ul>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6 class="text-danger"><strong>❌ O que foi REMOVIDO:</strong></h6>
+                                        <h3 class="h6 text-danger"><strong>❌ O que foi REMOVIDO:</strong></h3>
                                         <ul class="small">
                                             <li><strong>Implicit Flow</strong> - <em>A ponte perigosa foi demolida</em></li>
                                             <li><strong>Resource Owner Password</strong> - <em>Senhas banidas do reino</em></li>
@@ -125,33 +128,33 @@
                                     </div>
                                 </div>
 
-                                <h6><strong>🎯 Por que OAuth 2.1 é importante?</strong></h6>
+                                <h3 class="h6"><strong>🎯 Por que OAuth 2.1 é importante?</strong></h3>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="text-center p-3 border rounded">
-                                            <h5>🛡️</h5>
-                                            <h6><strong>Segurança</strong></h6>
+                                            <h3 class="h5">🛡️</h3>
+                                            <h4 class="h6"><strong>Segurança</strong></h4>
                                             <p class="small">Remove vetores de ataque conhecidos e torna práticas seguras obrigatórias</p>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="text-center p-3 border rounded">
-                                            <h5>📖</h5>
-                                            <h6><strong>Simplicidade</strong></h6>
+                                            <h3 class="h5">📖</h3>
+                                            <h4 class="h6"><strong>Simplicidade</strong></h4>
                                             <p class="small">Menos opções confusas, diretrizes mais claras para desenvolvedores</p>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="text-center p-3 border rounded">
-                                            <h5>🏗️</h5>
-                                            <h6><strong>Modernização</strong></h6>
+                                            <h3 class="h5">🏗️</h3>
+                                            <h4 class="h6"><strong>Modernização</strong></h4>
                                             <p class="small">Alinhado com as realidades atuais de aplicações web e mobile</p>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="alert alert-warning mt-3">
-                                    <h6><strong>🔄 Migração do OAuth 2.0 para 2.1:</strong></h6>
+                                    <h4 class="h6"><strong>🔄 Migração do OAuth 2.0 para 2.1:</strong></h4>
                                     <p class="mb-2"><strong>Se você já usa boas práticas OAuth 2.0:</strong></p>
                                     <ul class="mb-2">
                                         <li>✅ Authorization Code + PKCE → Você já está compatível!</li>
@@ -184,8 +187,8 @@
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#oidcAccordion">
                             <div class="accordion-body">
                                 <div class="alert alert-success">
-                                    <h6><strong>🎭 Teatro dos Conceitos:</strong></h6>
-                                    <p class="mb-1"><em>No grande teatro de Federápolis, três atores principais sobem ao palco: "Quem eu sou?" grita o primeiro (Identidade). "Você é realmente quem diz ser?" questiona o segundo (Autenticação). "O que você pode fazer aqui?" pergunta o terceiro (Autorização). Lady OAuth e Lord OIDC applaudem - cada um tem seu papel fundamental no espetáculo da segurança digital!</em></p>
+                                    <h3 class="h6"><strong>🎭 Teatro dos Conceitos:</strong></h3>
+                                    <p class="mb-1"><em>No grande teatro de Federápolis, três atores principais sobem ao palco: "Quem eu sou?" grita o primeiro (Identidade). "Você é realmente quem diz ser?" questiona o segundo (Autenticação). "O que você pode fazer aqui?" pergunta o terceiro (Autorização). Lady OAuth e Lord OIDC aplaudem - cada um tem seu papel fundamental no espetáculo da segurança digital!</em></p>
                                 </div>
                                 
                                 <p><strong>O que é identidade digital?</strong><br>
@@ -206,15 +209,15 @@
 
                     <!-- Terminologia e Conceitos-Chave -->
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                🟨 3. Terminologia e Conceitos-Chave
+                        <h2 class="accordion-header" id="headingTerminology">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTerminology" aria-expanded="false" aria-controls="collapseTerminology">
+                                🟨 4. Terminologia e Conceitos-Chave
                             </button>
                         </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#oidcAccordion">
+                        <div id="collapseTerminology" class="accordion-collapse collapse" aria-labelledby="headingTerminology" data-bs-parent="#oidcAccordion">
                             <div class="accordion-body">
                                 <div class="alert alert-warning">
-                                    <h6><strong>📜 O Pergaminho dos Nomes Sagrados:</strong></h6>
+                                    <h3 class="h6"><strong>📜 O Pergaminho dos Nomes Sagrados:</strong></h3>
                                     <p class="mb-1"><em>Lord OIDC desenrola um pergaminho dourado: "Cada habitante do nosso reino tem um nome e uma função. Alex Client é nosso mensageiro, Lady OAuth comanda o Authorization Server, Seraph Resource protege os tesouros, e os cidadãos são nossos End Users. Conhecer estes nomes é a primeira sabedoria do Reino!"</em></p>
                                 </div>
                                 
@@ -269,13 +272,13 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingFour">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                🟥 4. Componentes do Protocolo OIDC
+                                🟥 5. Componentes do Protocolo OIDC
                             </button>
                         </h2>
                         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#oidcAccordion">
                             <div class="accordion-body">
                                 <div class="alert alert-danger">
-                                    <h6><strong>🏛️ Os Portais Sagrados do Reino:</strong></h6>
+                                    <h3 class="h6"><strong>🏛️ Os Portais Sagrados do Reino:</strong></h3>
                                     <p class="mb-1"><em>Lord OIDC ergue sua varinha e revela os portais mágicos de seu castelo: "Cada portal tem sua função! O '/authorize' é onde os visitantes batem à porta, o '/token' é onde as trocas secretas acontecem, o '/userinfo' revela segredos pessoais, e o '/.well-known/openid-configuration' é meu livro de regras aberto a todos. Nele, publico o jwks_uri, a URL exata do cofre das chaves públicas — que pode variar conforme o provedor!"</em></p>
                                 </div>
                                 
@@ -299,13 +302,13 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingFive">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                🟪 5. Tipos de Fluxos (Flows)
+                                🟪 6. Tipos de Fluxos (Flows)
                             </button>
                         </h2>
                         <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#oidcAccordion">
                             <div class="accordion-body">
                                 <div class="alert alert-info">
-                                    <h6><strong>🛤️ Os Caminhos Sagrados da Jornada:</strong></h6>
+                                    <h3 class="h6"><strong>🛤️ Os Caminhos Sagrados da Jornada:</strong></h3>
                                     <p class="mb-1"><em>Alex Client se aproxima de Pixie PKCE: "Qual caminho nos leva aos tokens?" Pixie sorri: "A Estrada Real (Authorization Code + PKCE) é o caminho de todos os mensageiros, com ou sem segredo de cliente; a Ponte Perigosa (Implicit) foi demolida; o Caminho Híbrido é legado para casos específicos."</em></p>
                                 </div>
                                 <div class="reino-media-block">
@@ -317,7 +320,7 @@
                                 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>🛡️ Authorization Code + PKCE</strong></h6>
+                                        <h3 class="h6"><strong>🛡️ Authorization Code + PKCE</strong></h3>
                                         <p><small><em>A Estrada Real - o caminho padrão para todos os tipos de cliente</em></small></p>
                                         <ul class="small">
                                             <li>Usuário → Authorization Server</li>
@@ -330,17 +333,17 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-md-6">
-                                        <h6><strong>⚠️ Implicit Flow</strong></h6>
+                                        <h3 class="h6"><strong>⚠️ Implicit Flow</strong></h3>
                                         <p><small class="text-danger"><em>A Ponte Perigosa - FECHADA para reformas</em></small></p>
                                         <ul class="small">
                                             <li>Tokens retornados diretamente</li>
-                                            <li>Vulnerável a ataques XSS</li>
+                                            <li>Vulnerável a XSS, token na URL, histórico, Referer e ausência de vinculação ao cliente</li>
                                             <li>Substituído por Auth Code + PKCE</li>
                                         </ul>
                                         <p class="small"><em>🚧 Seraph Resource colocou barreiras: "Caminho muito perigoso!"</em></p>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>🔮 Hybrid Flow</strong></h6>
+                                        <h3 class="h6"><strong>🔮 Hybrid Flow</strong></h3>
                                         <p><small><em>O Caminho Híbrido - para magos avançados</em></small></p>
                                         <ul class="small">
                                             <li>Alguns tokens via front-channel</li>
@@ -358,19 +361,19 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingSix">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                🔐 6. Tokens JWT no OIDC
+                                🔐 7. Tokens JWT no OIDC
                             </button>
                         </h2>
                         <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#oidcAccordion">
                             <div class="accordion-body">
                                 <div class="alert alert-secondary">
-                                    <h6><strong>👥 A Família Real dos Tokens:</strong></h6>
+                                    <h3 class="h6"><strong>👥 A Família Real dos Tokens:</strong></h3>
                                     <p class="mb-1"><em>No salão real, três irmãos se apresentam: IDA Token, elegante com seu medalhão de identidade, brilha com orgulho - "Eu sou a verdade sobre quem você é!" Ace Token, com seu escudo de guerreiro, proclama - "Eu carrego suas permissões de batalha!" E das sombras, Rex Token sussurra - "Eu sou o guardião do tempo, renovando o que expira." Cada um tem sua personalidade, tempo de vida e missão especial no reino!</em></p>
                                 </div>
                                 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>🏅 ID Token (IDA Token)</strong></h6>
+                                        <h3 class="h6"><strong>🏅 ID Token (IDA Token)</strong></h3>
                                         <ul class="small">
                                             <li><strong>Propósito:</strong> Autenticação</li>
                                             <li><strong>Formato:</strong> JWT assinado</li>
@@ -382,12 +385,12 @@
                                         <p class="small"><em>💎 IDA sussurra: "Carrego a essência de quem você é, assinada pelo próprio Lord OIDC!"</em></p>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>⚔️ Access Token (Ace Token)</strong></h6>
+                                        <h3 class="h6"><strong>⚔️ Access Token (Ace Token)</strong></h3>
                                         <ul class="small">
                                             <li><strong>Propósito:</strong> Autorização</li>
                                             <li><strong>Formato:</strong> JWT ou Opaque</li>
                                             <li><strong>Audiência:</strong> Resource Server</li>
-                                            <li><strong>Tempo:</strong> Médio (horas)</li>
+                                            <li><strong>Tempo:</strong> curto: minutos, tipicamente 5 a 60</li>
                                         </ul>
                                         <p class="small"><strong>Claims comuns:</strong></p>
                                         <code class="small">scope, client_id, sub</code>
@@ -396,7 +399,7 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-12">
-                                        <h6><strong>♻️ Refresh Token (Rex Token)</strong></h6>
+                                        <h3 class="h6"><strong>♻️ Refresh Token (Rex Token)</strong></h3>
                                         <ul class="small">
                                             <li><strong>Propósito:</strong> Renovar access tokens</li>
                                             <li><strong>Formato:</strong> String opaca</li>
@@ -417,21 +420,21 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingSeven">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                🛡️ 7. Segurança e Boas Práticas
+                                🛡️ 8. Segurança e Boas Práticas
                             </button>
                         </h2>
                         <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#oidcAccordion">
                             <div class="accordion-body">
                                 <div class="alert alert-warning">
-                                    <h6><strong>🛡️ O Código de Honra dos Guardiões:</strong></h6>
+                                    <h3 class="h6"><strong>🛡️ O Código de Honra dos Guardiões:</strong></h3>
                                     <p class="mb-1"><em>Seraph Resource reúne todos os personagens: "Escutem bem, companheiros! Nossa força está na vigilância constante. IDA e Ace, vocês devem ser verificados em cada entrada. Pixie PKCE, nunca deixe códigos soltos pelo caminho. Rex Token, mantenha-se sempre nas sombras seguras. E Alex Client, lembre-se: state e nonce são seus amuletos de proteção contra invasores!"</em></p>
                                 </div>
                                 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>🔍 Validação de Tokens</strong></h6>
+                                        <h3 class="h6"><strong>🔍 Validação de Tokens</strong></h3>
                                         <ul class="small">
-                                            <li>Verificar assinatura (JWKS) - <em>🔐 Selo de Lord OIDC</em></li>
+                                            <li>Verificar o cabeçalho <code>alg</code> e a assinatura com o JWKS (conjunto de chaves públicas) - <em>🔐 Selo de Lord OIDC</em></li>
                                             <li>Validar <code>iss</code> (issuer) - <em>👑 Origem real</em></li>
                                             <li>Validar <code>aud</code> (audience) - <em>🎯 Destinatário correto</em></li>
                                             <li>Verificar <code>exp</code> (expiration) - <em>⏰ Tempo ainda válido</em></li>
@@ -440,9 +443,9 @@
                                         <p class="small"><em>🔬 Seraph examina cada token como um detetive experiente!</em></p>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>🛡️ Proteções CSRF/XSS</strong></h6>
+                                        <h3 class="h6"><strong>🛡️ Proteções CSRF/XSS</strong></h3>
                                         <ul class="small">
-                                            <li><code>state</code> parameter obrigatório - <em>🎲 Dado mágico de Alex</em></li>
+                                            <li><code>state</code> é recomendado contra CSRF; com PKCE, o OAuth 2.1 permite dispensá-lo - <em>🎲 Dado mágico de Alex</em></li>
                                             <li><code>nonce</code> para ID tokens - <em>🌟 Estrela única de IDA</em></li>
                                             <li>HTTPS em produção sempre - <em>🔒 Túnel protegido</em></li>
                                             <li>Content Security Policy - <em>📜 Pergaminho de regras</em></li>
@@ -453,7 +456,7 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-12">
-                                        <h6><strong>📋 Configurações Recomendadas pelos Sábios do Reino</strong></h6>
+                                        <h3 class="h6"><strong>📋 Configurações Recomendadas pelos Sábios do Reino</strong></h3>
                                         <div class="table-responsive">
                                             <table class="table table-sm">
                                                 <thead>
@@ -507,14 +510,14 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingEight">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                                🏗️ 8. Cenários de Implementação
+                                🏗️ 9. Cenários de Implementação
                             </button>
                         </h2>
                         <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#oidcAccordion">
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>Single Sign-On (SSO)</strong></h6>
+                                        <h3 class="h6"><strong>Single Sign-On (SSO)</strong></h3>
                                         <p class="small">Um login para múltiplas aplicações</p>
                                         <ul class="small">
                                             <li>Provider central (IdP)</li>
@@ -524,7 +527,7 @@
                                         </ul>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>Federação de Identidades</strong></h6>
+                                        <h3 class="h6"><strong>Federação de Identidades</strong></h3>
                                         <p class="small">Conectar diferentes domínios de identidade</p>
                                         <ul class="small">
                                             <li>Identity Provider (Google, Azure AD)</li>
@@ -536,7 +539,7 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-md-6">
-                                        <h6><strong>API Gateway Pattern</strong></h6>
+                                        <h3 class="h6"><strong>API Gateway Pattern</strong></h3>
                                         <ul class="small">
                                             <li>Gateway valida tokens</li>
                                             <li>Microservices confiam no gateway</li>
@@ -545,7 +548,7 @@
                                         </ul>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>Zero Trust Architecture</strong></h6>
+                                        <h3 class="h6"><strong>Zero Trust Architecture</strong></h3>
                                         <ul class="small">
                                             <li>Verificar toda requisição</li>
                                             <li>Least privilege access</li>
@@ -562,13 +565,13 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingNine">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
-                                🔧 9. Troubleshooting Comum
+                                🔧 10. Troubleshooting Comum
                             </button>
                         </h2>
                         <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#oidcAccordion">
                             <div class="accordion-body">
                                 <div class="alert alert-danger">
-                                    <h6><strong>🚨 O Hospital dos Tokens Perdidos:</strong></h6>
+                                    <h3 class="h6"><strong>🚨 O Hospital dos Tokens Perdidos:</strong></h3>
                                     <p class="mb-1"><em>No reino, às vezes as coisas dão errado. Alex Client chega desesperado: "Meus tokens foram rejeitados!" Devia, agora uma doutora experiente, examina os sintomas. Seraph Resource resmunge sobre assinaturas inválidas. Pixie PKCE aponta erros de CORS. E Rex Token sussurra sobre rotações mal feitas. Aqui estão os casos mais comuns que a Dra. Devia trata em seu consultório digital!</em></p>
                                 </div>
                                 <div class="reino-media-block">
@@ -580,12 +583,12 @@
                                 
                                 <div class="accordion" id="troubleshootingAccordion">
                                     <div class="accordion-item">
-                                        <h6 class="accordion-header" id="troubleOne">
+                                        <h3 class="h6 accordion-header" id="troubleOne">
                                             <button class="accordion-button collapsed small" type="button" data-bs-toggle="collapse" data-bs-target="#troubleCollapseOne">
                                                 ❌ "invalid_client" ou "unauthorized_client" 
                                                 <small><em>- Alex Client banido na porta</em></small>
                                             </button>
-                                        </h6>
+                                        </h3>
                                         <div id="troubleCollapseOne" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
                                             <div class="accordion-body small">
                                                 <p><em>🚪 "Alto lá!" - grita o guarda. "Alex Client não está na lista de convidados!"</em></p>
@@ -593,21 +596,21 @@
                                                 <ul>
                                                     <li>Client ID incorreto - <em>Alex esqueceu seu documento</em></li>
                                                     <li>Client secret inválido/ausente - <em>Senha secreta errada</em></li>
-                                                    <li>Redirect URI não registrado - <em>Endereço de retorno suspeito</em></li>
+                                                    <li>Redirect URI não registrado: o servidor não deve redirecionar e deve mostrar o erro ao usuário (invalid_request)</li>
                                                     <li>Client não ativo no IdP - <em>Cadastro expirado</em></li>
                                                 </ul>
-                                                <p><strong>🩺 Dr. Devia prescreve:</strong> Verificar configuração no IdP e no client.</p>
+                                                <p><strong>🩺 Dra. Devia prescreve:</strong> Verificar configuração no IdP e no client.</p>
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <div class="accordion-item">
-                                        <h6 class="accordion-header" id="troubleTwo">
+                                        <h3 class="h6 accordion-header" id="troubleTwo">
                                             <button class="accordion-button collapsed small" type="button" data-bs-toggle="collapse" data-bs-target="#troubleCollapseTwo">
                                                 ❌ "invalid_token" ou token expirado
                                                 <small><em>- Ace Token virou pó</em></small>
                                             </button>
-                                        </h6>
+                                        </h3>
                                         <div id="troubleCollapseTwo" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
                                             <div class="accordion-body small">
                                                 <p><em>⏰ Seraph Resource examina Ace Token e balança a cabeça: "Este guerreiro expirou! Virou pó há horas!"</em></p>
@@ -618,18 +621,18 @@
                                                     <li>Token revogado - <em>Ace foi banido do reino</em></li>
                                                     <li>Assinatura inválida - <em>Selo falsificado</em></li>
                                                 </ul>
-                                                <p><strong>🩺 Dr. Devia prescreve:</strong> Chamar Rex Token para renovação automática, sincronizar relógios.</p>
+                                                <p><strong>🩺 Dra. Devia prescreve:</strong> Chamar Rex Token para renovação automática, sincronizar relógios.</p>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="accordion-item">
-                                        <h6 class="accordion-header" id="troubleThree">
+                                        <h3 class="h6 accordion-header" id="troubleThree">
                                             <button class="accordion-button collapsed small" type="button" data-bs-toggle="collapse" data-bs-target="#troubleCollapseThree">
                                                 ❌ CORS errors em SPA
                                                 <small><em>- Pixie PKCE bloqueada na fronteira</em></small>
                                             </button>
-                                        </h6>
+                                        </h3>
                                         <div id="troubleCollapseThree" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
                                             <div class="accordion-body small">
                                                 <p><em>🌐 Pixie PKCE tenta voar entre os reinos, mas guardas invisíveis (CORS) a impedem: "Você não pode vir deste reino!"</em></p>
@@ -639,7 +642,7 @@
                                                     <li>Preflight OPTIONS não suportado - <em>Protocolo diplomático ignorado</em></li>
                                                     <li>Headers CORS ausentes - <em>Passaporte sem visto</em></li>
                                                 </ul>
-                                                <p><strong>🩺 Dr. Devia prescreve:</strong> Configurar CORS no IdP, usar proxy em desenvolvimento.</p>
+                                                <p><strong>🩺 Dra. Devia prescreve:</strong> Configurar CORS no IdP, usar proxy em desenvolvimento.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -652,31 +655,31 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingTen">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
-                                🛠️ 10. Ferramentas e Recursos
+                                🛠️ 11. Ferramentas e Recursos
                             </button>
                         </h2>
                         <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#oidcAccordion">
                             <div class="accordion-body">
                                 <div class="alert alert-success">
-                                    <h6><strong>🎒 A Oficina de Ferramentas de Devia:</strong></h6>
+                                    <h3 class="h6"><strong>🎒 A Oficina de Ferramentas de Devia:</strong></h3>
                                     <p class="mb-1"><em>Devia orgulhosamente apresenta sua oficina: "Aqui estão as ferramentas que todo desenvolvedor do Reino da Identidade Federada deve conhecer! JWT.io é meu microscópio para examinar tokens, OIDC Debugger é meu laboratório de testes, e estas bibliotecas são meus assistentes mágicos. E veja só - os próprios Lord OIDC e Lady OAuth endossam estes provedores de confiança!"</em></p>
                                 </div>
                                 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6><strong>🔬 Ferramentas de Debug</strong></h6>
+                                        <h3 class="h6"><strong>🔬 Ferramentas de Debug</strong></h3>
                                         <ul class="small">
-                                            <li><a href="https://jwt.io" target="_blank">JWT.io</a> - <em>🔍 Microscópio de IDA Token</em></li>
-                                            <li><a href="https://oidcdebugger.com" target="_blank">OIDC Debugger</a> - <em>🧪 Laboratório de Alex Client</em></li>
-                                            <li><a href="https://oauth.tools" target="_blank">OAuth.tools</a> - <em>🧰 Caixa de ferramentas completa</em></li>
+                                            <li><a href="https://jwt.io" target="_blank" rel="noopener noreferrer">JWT.io</a> - <em>🔍 Microscópio de IDA Token</em></li>
+                                            <li><a href="https://oidcdebugger.com" target="_blank" rel="noopener noreferrer">OIDC Debugger</a> - <em>🧪 Laboratório de Alex Client</em></li>
+                                            <li><a href="https://oauth.tools" target="_blank" rel="noopener noreferrer">OAuth.tools</a> - <em>🧰 Caixa de ferramentas completa</em></li>
                                             <li>Postman/Insomnia - <em>📡 Telescópios para APIs distantes</em></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>📚 Bibliotecas Populares</strong></h6>
+                                        <h3 class="h6"><strong>📚 Bibliotecas Populares</strong></h3>
                                         <ul class="small">
-                                            <li><strong>JavaScript:</strong> oidc-client, @auth0/spa-js <em>- Assistentes de Pixie PKCE</em></li>
-                                            <li><strong>Python:</strong> authlib, python-jose <em>- Grimórios de Lord OIDC</em></li>
+                                            <li><strong>JavaScript:</strong> oidc-client-ts <em>- Assistentes de Pixie PKCE</em></li>
+                                            <li><strong>Python:</strong> PyJWT ou Authlib <em>- Grimórios de Lord OIDC</em></li>
                                             <li><strong>.NET:</strong> IdentityModel, AspNet Core <em>- Armaduras de Seraph Resource</em></li>
                                             <li><strong>Java:</strong> Spring Security, nimbus-jose <em>- Escudos de Ace Token</em></li>
                                         </ul>
@@ -684,7 +687,7 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-md-6">
-                                        <h6><strong>🏰 Provedores Conhecidos</strong></h6>
+                                        <h3 class="h6"><strong>🏰 Provedores Conhecidos</strong></h3>
                                         <ul class="small">
                                             <li>Google Identity Platform - <em>🌟 O Reino das Estrelas</em></li>
                                             <li>Microsoft Azure AD / Entra ID - <em>🏢 O Império Corporativo</em></li>
@@ -694,12 +697,14 @@
                                         </ul>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><strong>📜 Pergaminhos de Sabedoria (Specs)</strong></h6>
+                                        <h3 class="h6"><strong>📜 Pergaminhos de Sabedoria (Specs)</strong></h3>
                                         <ul class="small">
-                                            <li><a href="https://openid.net/specs/openid-connect-core-1_0.html" target="_blank">OIDC Core 1.0</a> - <em>📖 Livro de Lord OIDC</em></li>
-                                            <li><a href="https://tools.ietf.org/html/rfc6749" target="_blank">OAuth 2.0 (RFC 6749)</a> - <em>⚖️ Constituição de Lady OAuth</em></li>
-                                            <li><a href="https://tools.ietf.org/html/rfc7519" target="_blank">JWT (RFC 7519)</a> - <em>🎭 Manual dos Tokens</em></li>
-                                            <li><a href="https://tools.ietf.org/html/rfc7636" target="_blank">PKCE (RFC 7636)</a> - <em>✨ Grimório de Pixie PKCE</em></li>
+                                            <li><a href="https://openid.net/specs/openid-connect-core-1_0.html" target="_blank" rel="noopener noreferrer">OIDC Core 1.0</a> - <em>📖 Livro de Lord OIDC</em></li>
+                                            <li><a href="https://www.rfc-editor.org/rfc/rfc6749" target="_blank" rel="noopener noreferrer">OAuth 2.0 (RFC 6749)</a> - <em>⚖️ Constituição de Lady OAuth</em></li>
+                                            <li><a href="https://www.rfc-editor.org/rfc/rfc7519" target="_blank" rel="noopener noreferrer">JWT (RFC 7519)</a> - <em>🎭 Manual dos Tokens</em></li>
+                                            <li><a href="https://www.rfc-editor.org/rfc/rfc7636" target="_blank" rel="noopener noreferrer">PKCE (RFC 7636)</a> - <em>✨ Grimório de Pixie PKCE</em></li>
+                                            <li><a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1" target="_blank" rel="noopener noreferrer">OAuth 2.1</a> - <em>⚖️ Reforma de Lady OAuth</em></li>
+                                            <li><a href="https://www.rfc-editor.org/rfc/rfc9700" target="_blank" rel="noopener noreferrer">RFC 9700</a> - <em>🛡️ Boas práticas de segurança OAuth</em></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -711,14 +716,14 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingEleven">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
-                                💻 11. Exemplos Práticos de Código
+                                💻 12. Exemplos Práticos de Código
                             </button>
                         </h2>
                         <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven" data-bs-parent="#oidcAccordion">
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h6><strong>JavaScript - SPA com PKCE</strong></h6>
+                                        <h3 class="h6"><strong>JavaScript - SPA com PKCE</strong></h3>
                                         <div class="border border-success border-2 rounded p-3 bg-light code-school-box">
                                             <div class="d-flex align-items-center mb-2">
                                                 <i class="text-success me-2">📝</i>
@@ -811,7 +816,7 @@ function validateCallback(validatedIdToken, expectedNonce) {
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-12">
-                                        <h6><strong>Python - Validação de ID Token</strong></h6>
+                                        <h3 class="h6"><strong>Python - Validação de ID Token</strong></h3>
                                         <div class="border border-success border-2 rounded p-3 bg-light code-school-box">
                                             <div class="d-flex align-items-center mb-2">
                                                 <i class="text-success me-2">🐍</i>
@@ -848,7 +853,7 @@ def validate_id_token(token, issuer, client_id, nonce):
                         </div>
                         
                         <div class="alert alert-info mt-4">
-                            <h6><strong>📚 Precisa de definições de termos técnicos?</strong></h6>
+                            <h3 class="h6"><strong>📚 Precisa de definições de termos técnicos?</strong></h3>
                             <p class="mb-2">Para explicações detalhadas de todos os conceitos OAuth 2.1 e OIDC, visite nosso:</p>
                             <div class="text-center">
                                 <a href="glossario.html" class="btn btn-primary">
@@ -860,7 +865,7 @@ def validate_id_token(token, issuer, client_id, nonce):
                             </p>
                         </div>
                         <div class="alert alert-success mt-4">
-                            <h6><strong>✨ Quer ver o fluxo completo funcionando perfeitamente?</strong></h6>
+                            <h3 class="h6"><strong>✨ Quer ver o fluxo completo funcionando perfeitamente?</strong></h3>
                             <p class="mb-2">Acompanhe o <strong>Authorization Code Flow</strong> passo a passo, do login até o sucesso:</p>
                             <div class="text-center">
                                 <a href="caminho_feliz.html" class="btn btn-success">
@@ -888,7 +893,6 @@ def validate_id_token(token, issuer, client_id, nonce):
                     <p class="mb-0 small">Material educacional sobre OAuth 2.1 e OpenID Connect</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <p class="mb-1 small">© 2025 Reino OIDC. Conteúdo gratuito para estudo pessoal; propriedade exclusiva da Cara Core Informática.</p>
                 </div>
             </div>
         </div>

@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Política de privacidade — Reino OIDC</title>
     <meta name="description" content="Política de privacidade da Edição Free do Reino OIDC, vigente desde 08/10/2026.">
+    <link rel="canonical" href="https://oidc.caracore.com.br/politica-privacidade.html">
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/evolution-status/evolution-status.css">
+  <link rel="stylesheet" href="/assets/caracore-core-typography.css">
+  <link rel="stylesheet" href="/assets/caracore-institutional-components.css">
 </head>
 <body class="cc-i-page">
-    <nav class="navbar navbar-expand-xl navbar-dark reino-site-nav sticky-top bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark reino-site-nav sticky-top bg-primary">
         <div class="container">
             <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
             <a class="nav-link text-white" href="index.html">Voltar ao Reino</a>
@@ -32,7 +38,7 @@
                 <p>Esta Edição Free não coleta pagamento e não pede comprovante de PIX.</p>
 
                 <h2 class="h4 mt-4">Identificador de dispositivo</h2>
-                <p>O executável já publicado na tag v2.0.1-free ainda contém código capaz de ler o MachineGuid do Windows e calcular um hash no próprio computador, sem mostrar esse valor na tela e sem enviá-lo à Cara Core. A próxima compilação da Edição Free desliga essas rotas. Até lá, a interface não pede licença nem pacote.</p>
+                <p>A Edição Free 2.0.2 não lê o identificador de máquina do Windows, não calcula esse hash e não oferece rotas de licença. O progresso fica no computador de quem estuda.</p>
 
                 <h2 class="h4 mt-4">Fontes e menores</h2>
                 <p>As páginas de download, licença e feedback desta loja não carregam fontes do Google. O material é de estudo. Se quem usa for menor de 18 anos, o contato com a Cara Core deve ser feito por um responsável.</p>
@@ -41,6 +47,8 @@
             </div>
         </article>
     </main>
+    <footer class="bg-dark text-white py-4 mt-5"><div class="container"></div></footer>
     <script src="assets/js/footer-propriedade.js"></script>
+    <script src="assets/js/loja.js"></script>
 </body>
 </html>
