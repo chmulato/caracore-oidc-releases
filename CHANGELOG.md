@@ -10,6 +10,21 @@ Cada versão inclui uma nota de **Impacto** para o público-alvo e para seguran�
 
 ---
 
+## [2.0.2-free] — 2026-10-08
+
+### [App Desktop]
+- Edição Free `v2.0.2-free` para Windows. Executável `ReinoOIDC-2.0.2-free.exe`, 17.861.640 bytes.
+- SHA-256 `d5c6121e921dedab678b056129653870ebb6fbfa28a75b12074f3d4fbc131bcc`. Sem certificado digital.
+- As três Eras continuam gratuitas para estudo pessoal. A edição paga está em desenvolvimento e não faz parte deste arquivo.
+- Dois baralhos do Super Trunfo (9 + 5 cartas). Requisito: Windows 10/11 64 bits com Microsoft Edge WebView2 Runtime.
+
+### [Web/Conteúdo]
+- A loja aponta o download para a release `v2.0.2-free`.
+- O CTA principal é Baixar Free (2.0.2). A loja não combina PIX nesta etapa.
+- `v2.0.1-free` e `v2.0.0` ficam no histórico. A nota da tag `v2.0.0` indica a substituição. Os assets antigos não foram removidos.
+
+---
+
 ## [2.0.1-free] — 2026-10-08
 
 ### [App Desktop]
