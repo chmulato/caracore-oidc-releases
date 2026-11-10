@@ -189,6 +189,19 @@ code {
     border-bottom: 1px solid var(--reino-gold-soft);
 }
 
+@media (min-width: 992px) {
+    .navbar .navbar-nav {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .navbar .navbar-nav .nav-link {
+        padding: 0.4rem 0.55rem;
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--reino-font-display, Georgia, serif);
     color: #2c3e50;
